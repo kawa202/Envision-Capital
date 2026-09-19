@@ -24,7 +24,7 @@ export function FeaturedInsights() {
           <h2 id="insights-heading" className="text-display-l text-navy">
             Insights
           </h2>
-          <Link href="/insights" className="link-inline">
+          <Link href="/insights" className="link-inline inline-flex min-h-11 items-center">
             All insights
           </Link>
         </div>

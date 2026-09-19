@@ -8,7 +8,7 @@ import { site } from "@/content/site";
 type Errors = { name?: string; email?: string };
 
 const field =
-  "w-full border-b border-line bg-transparent py-2.5 text-[0.9375rem] text-graphite transition-colors duration-300 hover:border-navy/40 focus:border-brass focus:outline-none";
+  "min-h-11 w-full border-b border-line bg-transparent py-2.5 text-[0.9375rem] text-graphite transition-colors duration-300 hover:border-navy/40 focus:border-brass focus:outline-none";
 const fieldError = "border-error hover:border-error";
 
 export function FinalCTA() {
@@ -55,17 +55,8 @@ export function FinalCTA() {
             </Reveal>
 
             <Reveal delay={0.1} className="mt-9">
-              <a
-                href={`mailto:${site.contact.email}`}
-                className="group inline-flex items-center gap-3 bg-navy px-7 py-4 text-[0.8125rem] tracking-[0.02em] text-white transition-colors duration-400 hover:bg-brass"
-              >
+              <a href={`mailto:${site.contact.email}`} className="btn-primary">
                 {site.finalCta.label}
-                <span
-                  className="transition-transform duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-1"
-                  aria-hidden="true"
-                >
-                  →
-                </span>
               </a>
             </Reveal>
 
@@ -74,10 +65,13 @@ export function FinalCTA() {
                 <div className="border-t border-line pt-4">
                   <dt className="text-meta text-muted">Email</dt>
                   <dd className="mt-2 text-[0.9rem] text-graphite">
-                    <a href={`mailto:${site.contact.email}`} className="link-draw text-analytical">
+                    <a
+                      href={`mailto:${site.contact.email}`}
+                      className="link-draw inline-flex min-h-11 items-center text-analytical"
+                    >
                       {site.contact.email}
                     </a>
-                    <span className="mt-1 block font-mono text-[0.6rem] tracking-[0.06em] text-analytical">
+                    <span className="mt-1 block text-meta text-muted">
                       {site.contact.emailNote}
                     </span>
                   </dd>
@@ -86,7 +80,7 @@ export function FinalCTA() {
                   <dt className="text-meta text-muted">Office</dt>
                   <dd className="mt-2 text-[0.9rem] text-graphite">
                     {site.contact.address}
-                    <span className="mt-1 block font-mono text-[0.6rem] tracking-[0.06em] text-analytical">
+                    <span className="mt-1 block text-meta text-muted">
                       {site.contact.phoneNote}
                     </span>
                   </dd>

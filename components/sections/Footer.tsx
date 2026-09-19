@@ -46,16 +46,19 @@ export function Footer() {
               {TAGLINE}
             </p>
 
-            <address className="mt-8 space-y-2 text-body not-italic text-on-navy/80">
+            <address className="mt-6 text-body not-italic text-on-navy/80">
               <p>
-                <a href={`mailto:${site.contact.email}`} className="link-draw">
+                <a
+                  href={`mailto:${site.contact.email}`}
+                  className="link-draw inline-flex min-h-11 items-center"
+                >
                   {site.contact.email}
                 </a>
               </p>
               <p>
                 <a
                   href={`tel:${site.contact.phone.replace(/[^+\d]/g, "")}`}
-                  className="link-draw"
+                  className="link-draw inline-flex min-h-11 items-center"
                 >
                   {site.contact.phone}
                 </a>
@@ -68,12 +71,17 @@ export function Footer() {
             {columns.map((column) => (
               <nav key={column.heading} aria-label={column.heading}>
                 <h2 className="text-meta text-on-navy">{column.heading}</h2>
-                <ul className="mt-4 space-y-2">
+                <ul className="mt-2">
                   {column.links.map((link) => (
                     <li key={link.label}>
                       <Link
                         href={link.href}
-                        className="link-draw text-[0.9375rem] text-on-navy/80 transition-colors duration-200 hover:text-white"
+                        /* The footer is a site map, not the likely next
+                           click. Prefetching all sixteen of these cost more
+                           bandwidth on the homepage than every photograph
+                           on it put together. */
+                        prefetch={false}
+                        className="link-draw inline-flex min-h-11 items-center text-[0.9375rem] text-on-navy/80 transition-colors duration-200 hover:text-white"
                       >
                         {link.label}
                       </Link>

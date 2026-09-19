@@ -173,7 +173,7 @@ export function EditorialGallery() {
         ))}
       </ul>
 
-      <p className="shell mt-2 font-mono text-[0.64rem] tracking-[0.06em] text-muted/70">
+      <p className="shell mt-2 text-meta text-muted">
         Drag, scroll or use the arrow keys to move through the sequence.
       </p>
     </section>

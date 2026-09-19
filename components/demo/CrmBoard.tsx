@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import {
   readDemoBookings,
@@ -55,9 +56,9 @@ export function CrmBoard() {
       <div className="measure">
         <p className="text-body text-muted">
           No demo bookings yet. Complete the flow on{" "}
-          <a href="/book" className="link-inline">
+          <Link href="/book" className="link-inline">
             /book
-          </a>{" "}
+          </Link>{" "}
           and the record appears here, in this browser.
         </p>
       </div>

@@ -250,9 +250,11 @@
     background-color: var(--ec-brass);
     color: var(--ec-navy);
   }
+  /* Navy on the hover brass too: warm white over #A67B31 measures 3.7:1
+     and fails at this size. The hover is the darker ground, not new text. */
   .btn-primary:hover {
     background-color: var(--ec-brass-hover);
-    color: var(--ec-white);
+    color: var(--ec-navy);
   }
   .btn-secondary {
     border: 1px solid var(--ec-navy);

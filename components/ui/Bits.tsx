@@ -20,7 +20,7 @@ export function ArrowLink({
   return (
     <Link
       href={href}
-      className={`group inline-flex items-center gap-2.5 text-[0.8125rem] transition-colors duration-300 ${
+      className={`group inline-flex min-h-11 items-center gap-2.5 text-[0.8125rem] transition-colors duration-300 ${
         invert ? "text-white/85 hover:text-white" : "text-analytical hover:text-navy"
       } ${className}`}
     >

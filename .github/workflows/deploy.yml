@@ -34,16 +34,16 @@ jobs:
 
       - run: npm ci
 
-      # Static export under the repository sub-path, with pre-generated
-      # responsive images and search-engine indexing switched off.
+      # GITHUB_PAGES is the only switch: next.config.ts derives the export,
+      # the sub-path, the image loader and the crawler rules from it.
+      # build:pages generates the responsive WebP sizes first.
       - run: npm run build:pages
         env:
-          NEXT_PUBLIC_PAGES_PREVIEW: "true"
-          NEXT_PUBLIC_BASE_PATH: /Envision-Capital
+          GITHUB_PAGES: "true"
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: out
+          path: ./out
 
   deploy:
     needs: build

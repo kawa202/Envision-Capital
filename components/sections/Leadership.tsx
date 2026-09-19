@@ -62,13 +62,13 @@ export function Leadership() {
 
                   <dl className="mt-4 space-y-2.5 text-[0.8125rem] leading-relaxed">
                     <div>
-                      <dt className="text-muted/70">Expertise</dt>
+                      <dt className="text-muted">Expertise</dt>
                       <dd className="mt-0.5 text-graphite">
                         {person.expertise.join(" · ")}
                       </dd>
                     </div>
                     <div>
-                      <dt className="text-muted/70">Industries</dt>
+                      <dt className="text-muted">Industries</dt>
                       <dd className="mt-0.5 text-graphite">
                         {person.industries.join(" · ")}
                       </dd>

@@ -7,7 +7,7 @@ const SITE_URL = "https://www.envisioncapital.co.zw";
 
 export default function robots(): MetadataRoute.Robots {
   /* Preview build (GitHub Pages): keep crawlers out entirely. */
-  if (process.env.NEXT_PUBLIC_PAGES_PREVIEW === "true") {
+  if (process.env.GITHUB_PAGES === "true") {
     return { rules: { userAgent: "*", disallow: "/" } };
   }
   return {

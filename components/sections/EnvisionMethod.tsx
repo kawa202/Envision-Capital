@@ -66,7 +66,7 @@ export function EnvisionMethod() {
                 className="grid grid-cols-[1.375rem_1fr] gap-x-6 pb-12 md:grid-cols-[4rem_1.375rem_1fr] md:gap-x-8 md:pb-14"
               >
                 {/* Stage number, outside the rail on desktop */}
-                <span className="hidden pt-0.5 text-right font-mono text-[0.7rem] text-white/35 tnum md:block">
+                <span className="hidden pt-0.5 text-right text-meta text-on-navy tnum md:block">
                   {step.index}
                 </span>
 
@@ -95,7 +95,7 @@ export function EnvisionMethod() {
                     {step.outputs.map((output) => (
                       <li
                         key={output}
-                        className="font-mono text-[0.66rem] tracking-[0.04em] text-white/35"
+                        className="text-meta text-on-navy"
                       >
                         {output}
                       </li>

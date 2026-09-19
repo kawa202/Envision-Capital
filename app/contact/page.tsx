@@ -29,7 +29,7 @@ export default function ContactPage() {
             end. Nothing is booked, charged or emailed.
           </p>
           <p className="mt-6">
-            <Link href="/book" className="link-inline">
+            <Link href="/book" className="link-inline inline-flex min-h-11 items-center">
               Book a session (demo)
             </Link>
           </p>

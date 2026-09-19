@@ -76,7 +76,7 @@ export function PracticeSnapshot() {
         </ul>
 
         <p className="mt-12">
-          <Link href="/what-we-do#advisory-products" className="link-inline">
+          <Link href="/what-we-do#advisory-products" className="link-inline inline-flex min-h-11 items-center">
             Advisory Products
           </Link>
         </p>

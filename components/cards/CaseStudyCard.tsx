@@ -26,7 +26,7 @@ export function CaseStudyCard({
       >
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
           <span className="text-meta text-muted">{caseStudy.client}</span>
-          <span className="text-line" aria-hidden="true">
+          <span className="text-muted" aria-hidden="true">
             /
           </span>
           <span className="text-meta text-muted">{caseStudy.mandate}</span>

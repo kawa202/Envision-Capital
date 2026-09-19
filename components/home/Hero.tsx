@@ -44,7 +44,7 @@ export function Hero() {
           </Link>
           <Link
             href="/what-we-do"
-            className="text-white underline underline-offset-[0.35em]"
+            className="inline-flex min-h-11 items-center text-white underline underline-offset-[0.35em]"
           >
             Our services
           </Link>

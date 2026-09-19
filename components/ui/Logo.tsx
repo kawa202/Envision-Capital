@@ -25,8 +25,10 @@ export function Logo({ className = "" }: { className?: string }) {
           stroke="currentColor"
           strokeWidth="1.5"
         />
-        {/* Top bar is the single brass detail in the header. */}
-        <rect x="11" y="12.5" width="18" height="2.5" fill="#B88A3A" />
+        {/* Top bar is the single brass detail in the header, and it
+            takes the token rather than a literal so the palette stays in
+            one file. */}
+        <rect x="11" y="12.5" width="18" height="2.5" className="fill-brass" />
         <rect x="11" y="18.75" width="13" height="2.5" fill="currentColor" />
         <rect x="11" y="25" width="8" height="2.5" fill="currentColor" />
       </svg>

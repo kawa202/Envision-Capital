@@ -82,7 +82,7 @@ export function NewsletterCTA() {
               />
               <button
                 type="submit"
-                className="shrink-0 cursor-pointer bg-brass px-8 py-3.5 text-[0.8125rem] tracking-[0.02em] whitespace-nowrap text-white transition-colors duration-400 hover:bg-navy"
+                className="btn-primary shrink-0"
               >
                 Subscribe
               </button>

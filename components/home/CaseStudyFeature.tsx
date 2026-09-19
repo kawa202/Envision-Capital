@@ -31,7 +31,7 @@ export function CaseStudyFeature() {
           </h2>
           <p className="mt-6 text-body text-muted">[Outcome]</p>
           <p className="mt-8">
-            <Link href="/work" className="link-inline">
+            <Link href="/work" className="link-inline inline-flex min-h-11 items-center">
               Selected work
             </Link>
           </p>

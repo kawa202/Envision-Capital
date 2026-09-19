@@ -53,7 +53,7 @@ export function IndustryExplorer() {
                   {industry.focus}
                 </p>
 
-                <p className="font-mono text-[0.66rem] leading-snug tracking-[0.04em] text-white/35 md:col-span-2 md:text-right">
+                <p className="text-meta leading-snug text-on-navy md:col-span-2 md:text-right">
                   {industry.constraint}
                 </p>
               </div>
@@ -62,7 +62,7 @@ export function IndustryExplorer() {
         </RevealGroup>
 
         <Reveal className="mt-8">
-          <p className="font-mono text-[0.68rem] leading-relaxed tracking-[0.04em] text-white/35">
+          <p className="text-meta leading-relaxed text-on-navy">
             [SECTOR COVERAGE REQUIRES CONFIRMATION] — Sectors above reflect those
             named in Envision&rsquo;s existing positioning. Confirm against real
             engagement history before launch.
