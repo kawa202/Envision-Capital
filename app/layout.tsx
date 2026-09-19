@@ -1,46 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { DM_Serif_Display, Inter, JetBrains_Mono } from "next/font/google";
+import { fontVariables } from "./fonts";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/sections/Footer";
 import { site } from "@/content/site";
 import "./globals.css";
-
-/* --------------------------------------------------------------------------
-   Typography — self-optimised, subset and preloaded by next/font. Google
-   fonts are downloaded at build time and served from this domain as WOFF2,
-   which satisfies the brand requirement to self-host.
-
-   Brand spec: GT Sectra Display (headings), Inter (body/UI), JetBrains Mono
-   (data). GT Sectra is a commercial Grilli Type face and needs a web licence
-   from Envision. Until the WOFF2 files are supplied, DM Serif Display stands
-   in. To switch: put the files in app/fonts/, replace dmSerif below with
-   localFont({ src: [...], variable: "--font-dm-serif" }) from
-   "next/font/local", and nothing else needs to change.
-
-   Display weight is deliberately single-weight: editorial serifs carry
-   authority through scale and spacing, not through weight variation.
-   -------------------------------------------------------------------------- */
-
-const dmSerif = DM_Serif_Display({
-  variable: "--font-dm-serif",
-  subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
-  display: "swap",
-});
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const jetbrains = JetBrains_Mono({
-  variable: "--font-jetbrains",
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  display: "swap",
-});
 
 const SITE_URL = "https://www.envisioncapital.co.zw";
 
@@ -87,14 +50,9 @@ export const metadata: Metadata = {
   },
   /* The GitHub Pages build is a client preview that still carries
      placeholder content, so it asks search engines not to index it. */
-  robots:
-    process.env.NEXT_PUBLIC_PAGES_PREVIEW === "true"
-      ? { index: false, follow: false }
-      : {
-          index: true,
-          follow: true,
-          googleBot: { index: true, follow: true, "max-image-preview": "large" },
-        },
+  /* PROTOTYPE: the whole site asks search engines to stay away while it
+     carries placeholder content. Remove when verified content lands. */
+  robots: { index: false, follow: false },
 };
 
 export const viewport: Viewport = {
@@ -138,7 +96,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
          this attribute is present. The site uses smooth in-page anchors, so
          route transitions still need to land instantly. */
       data-scroll-behavior="smooth"
-      className={`${dmSerif.variable} ${inter.variable} ${jetbrains.variable}`}
+      className={fontVariables}
     >
       <body className="min-h-dvh">
         {/* Motion server-renders each entrance animation's *hidden* state as an

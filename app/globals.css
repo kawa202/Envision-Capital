@@ -1,81 +1,131 @@
 @import "tailwindcss";
 
 /* =============================================================
-   ENVISION CAPITAL — "EDITORIAL CORPORATE FINANCE"
-   Brand register (Envision brand & visual direction): institutional,
-   editorial, serious. Colour rhythm 60% neutral / 30% navy / 10% accent.
+   ENVISION CAPITAL — DESIGN SYSTEM
+   Single source of truth. Every colour, type size and spacing step
+   used anywhere in the site resolves to one of the --ec-* tokens
+   below; the Tailwind theme underneath is only a mapping onto them,
+   so a utility class and a raw CSS rule can never drift apart.
+
+   Register: institutional, editorial, restrained. 60% warm white,
+   30% navy, 10% brass — and brass only on the primary action.
    ============================================================= */
 
-@theme {
-  /* --- Colour ------------------------------------------------ */
-  --color-navy: #0b1f3a;
-  --color-navy-2: #102a49;
-  --color-navy-3: #17395f;
-  /* Restrained Brass — accent only: rules, markers, the signature, and the
-     fill of the single primary action (.btn-primary). Never body or label
-     text on a light ground (2.9:1 on warm white). */
-  --color-brass: #b88a3a;
-  --color-brass-light: #d5ad6a;
-  /* Analytical Blue — links and UI on light grounds (6.7:1 on warm white). */
-  --color-analytical: #1f5aa0;
-  /* Warm White is the ground; paper-2 is a derived tint that separates
-     chapters. */
-  --color-paper: #fafaf7;
-  --color-paper-2: #f1f0eb;
-  --color-graphite: #2e2e2e;
-  --color-muted: #62676d;
+:root {
+  /* --- Colour --------------------------------------------------
+     Three backgrounds exist: warm white, stone, navy. Nothing else. */
+  --ec-navy: #0b1f3a;
+  --ec-brass: #b88a3a;
+  --ec-brass-hover: #a67b31;
+  --ec-blue: #1f5aa0;
+  --ec-white: #fafaf7;
+  --ec-stone: #f0efea;
+  --ec-ink: #2e2e2e;
+  --ec-muted: #444b57;
+  --ec-on-navy: #d5dbe3;
 
-  /* Hairlines. Used sparingly — structure comes from space and
-     typography, not from drawing a box around everything. */
-  --color-line: rgba(11, 31, 58, 0.14);
-  --color-line-soft: rgba(11, 31, 58, 0.08);
-  --color-line-invert: rgba(250, 250, 247, 0.18);
-  --color-line-invert-soft: rgba(250, 250, 247, 0.09);
+  /* Hairlines, derived from the palette rather than new greys. */
+  --ec-rule: rgb(11 31 58 / 0.16);
+  --ec-rule-invert: rgb(250 250 247 / 0.22);
 
-  /* --- Type -------------------------------------------------- */
-  --font-display: var(--font-dm-serif), "Iowan Old Style", Georgia, serif;
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-jetbrains), ui-monospace, "SF Mono", monospace;
+  /* --- Type ---------------------------------------------------- */
+  --ec-serif: var(--font-serif), Georgia, serif;
+  --ec-sans: var(--font-sans), "Helvetica Neue", Arial, sans-serif;
 
-  /* Display scale, calibrated to the reference site measured at 1440px and
-     390px (hero 52/36px bold, section headings 40/32px light, card titles
-     24px light). Envision sets these in a display serif, which reads larger
-     than a light sans at the same size, so section and card headings sit
-     about 10% under the reference; the hero matches it. */
-  --text-hero: clamp(2.25rem, 1.6rem + 1.9vw, 3.25rem);
-  --text-hero--line-height: 1.06;
-  --text-hero--letter-spacing: -0.02em;
+  /* Five sizes, and no more: h1, h2, h3, body, small. */
+  --ec-h1: clamp(2.75rem, 6vw, 4.75rem);
+  --ec-h2: clamp(2.125rem, 4vw, 3.25rem);
+  --ec-h3: clamp(1.625rem, 2.5vw, 2rem);
+  --ec-body: 1.0625rem;
+  --ec-small: 0.875rem;
+  --ec-leading: 1.6;
+  --ec-leading-display: 1.08;
+  --ec-tracking-display: -0.015em;
+  --ec-measure: 62ch;
 
-  --text-display-xl: clamp(2rem, 1.4rem + 1.8vw, 3rem);
-  --text-display-xl--line-height: 1.1;
-  --text-display-xl--letter-spacing: -0.021em;
+  /* --- Space ---------------------------------------------------- */
+  --ec-s1: 8px;
+  --ec-s2: 16px;
+  --ec-s3: 24px;
+  --ec-s4: 32px;
+  --ec-s6: 48px;
+  --ec-s8: 64px;
+  --ec-section: clamp(64px, 10vw, 120px);
+  --ec-gutter: clamp(20px, 5vw, 80px);
+  --ec-max: 1280px;
 
-  --text-display-l: clamp(1.75rem, 1.2rem + 1.6vw, 2.25rem);
-  --text-display-l--line-height: 1.16;
-  --text-display-l--letter-spacing: -0.018em;
+  /* --- Motion --------------------------------------------------- */
+  --ec-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --ec-dur: 240ms;
+}
 
-  --text-display-m: clamp(1.5rem, 1.1rem + 1.2vw, 1.875rem);
-  --text-display-m--line-height: 1.22;
-  --text-display-m--letter-spacing: -0.014em;
+/* -------------------------------------------------------------
+   Tailwind theme → tokens. Utilities such as `bg-navy`, `text-muted`
+   or `font-serif` compile to these variables, so the utilities and the
+   tokens are the same system.
 
-  --text-display-s: clamp(1.125rem, 1rem + 0.5vw, 1.3125rem);
-  --text-display-s--line-height: 1.3;
-  --text-display-s--letter-spacing: -0.01em;
+   Legacy aliases (paper, paper-2, graphite, navy-2, brass-light,
+   analytical, display type steps) are kept pointing at the new tokens
+   so the inner pages inherit the system untouched. navy-2 and navy-3
+   deliberately collapse onto navy: the palette allows one dark ground.
+   ------------------------------------------------------------- */
+@theme inline {
+  /* Plain white would be a fourth background: bg-white resolves to warm white. */
+  --color-white: var(--ec-white);
+  --color-navy: var(--ec-navy);
+  --color-navy-2: var(--ec-navy);
+  --color-navy-3: var(--ec-navy);
+  --color-brass: var(--ec-brass);
+  --color-brass-hover: var(--ec-brass-hover);
+  /* Gold is not a text colour: former brass-light text resolves to the
+     light tint used on navy. */
+  --color-brass-light: var(--ec-on-navy);
+  --color-analytical: var(--ec-blue);
+  --color-blue: var(--ec-blue);
+  --color-paper: var(--ec-white);
+  --color-white-warm: var(--ec-white);
+  --color-paper-2: var(--ec-stone);
+  --color-stone: var(--ec-stone);
+  --color-graphite: var(--ec-ink);
+  --color-ink: var(--ec-ink);
+  --color-muted: var(--ec-muted);
+  --color-on-navy: var(--ec-on-navy);
+  --color-line: var(--ec-rule);
+  --color-line-soft: var(--ec-rule);
+  --color-line-invert: var(--ec-rule-invert);
+  --color-line-invert-soft: var(--ec-rule-invert);
 
-  /* Editorial body sizes */
-  --text-lede: clamp(1.0625rem, 1.15vw, 1.1875rem);
-  --text-lede--line-height: 1.62;
+  --font-display: var(--ec-serif);
+  --font-serif: var(--ec-serif);
+  --font-sans: var(--ec-sans);
+  /* No third face: former mono labels set in the UI sans. */
+  --font-mono: var(--ec-sans);
 
-  --text-body: 0.9375rem;
-  --text-body--line-height: 1.68;
+  --text-hero: var(--ec-h1);
+  --text-hero--line-height: var(--ec-leading-display);
+  --text-hero--letter-spacing: var(--ec-tracking-display);
+  --text-display-xl: var(--ec-h1);
+  --text-display-xl--line-height: var(--ec-leading-display);
+  --text-display-xl--letter-spacing: var(--ec-tracking-display);
+  --text-display-l: var(--ec-h2);
+  --text-display-l--line-height: 1.1;
+  --text-display-l--letter-spacing: var(--ec-tracking-display);
+  --text-display-m: var(--ec-h3);
+  --text-display-m--line-height: 1.16;
+  --text-display-m--letter-spacing: -0.01em;
+  --text-display-s: var(--ec-h3);
+  --text-display-s--line-height: 1.2;
+  --text-lede: var(--ec-body);
+  --text-lede--line-height: var(--ec-leading);
+  --text-body: var(--ec-body);
+  --text-body--line-height: var(--ec-leading);
+  --text-meta: var(--ec-small);
+  --text-meta--line-height: 1.3;
+  --text-meta--letter-spacing: 0;
 
-  --text-meta: 0.6875rem;
-  --text-meta--line-height: 1.2;
-  --text-meta--letter-spacing: 0.16em;
-
-  /* --- Motion ------------------------------------------------ */
-  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-image: cubic-bezier(0.32, 0.72, 0, 1);
+  --radius-none: 0;
+  --ease-editorial: var(--ec-ease);
+  --ease-image: var(--ec-ease);
 }
 
 /* =============================================================
@@ -89,137 +139,156 @@
   }
 
   body {
-    /* Warm White is the institutional ground; the paper-2 tint is used to
-       separate chapters, not as the default surface. */
-    background-color: var(--color-paper);
-    color: var(--color-graphite);
-    font-family: var(--font-sans);
-    font-size: 1rem;
-    line-height: 1.65;
+    background-color: var(--ec-white);
+    color: var(--ec-ink);
+    font-family: var(--ec-sans);
+    font-size: var(--ec-body);
+    line-height: var(--ec-leading);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     overflow-x: clip;
   }
 
-  h1, h2, h3, h4 {
-    font-family: var(--font-display);
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--ec-serif);
     font-weight: 400;
+    line-height: var(--ec-leading-display);
+    letter-spacing: var(--ec-tracking-display);
     text-wrap: balance;
   }
+  h1 { font-size: var(--ec-h1); }
+  h2 { font-size: var(--ec-h2); }
+  h3 { font-size: var(--ec-h3); line-height: 1.2; }
 
   p { text-wrap: pretty; }
 
+  /* Square corners everywhere. */
+  *, *::before, *::after { border-radius: 0; }
+
   ::selection {
-    background-color: var(--color-brass);
-    color: #ffffff;
+    background-color: var(--ec-navy);
+    color: var(--ec-white);
   }
 
-  /* Focus is UI, so it takes Analytical Blue. On navy grounds blue falls
-     below the 3:1 a focus indicator needs, so it switches to light brass. */
+  /* One focus treatment, brass, on every ground. */
   :focus-visible {
-    outline: 2px solid var(--color-analytical);
+    outline: 2px solid var(--ec-brass);
     outline-offset: 3px;
-    border-radius: 1px;
-  }
-  :where(.bg-navy, .bg-navy-2, header, footer) :focus-visible {
-    outline-color: var(--color-brass-light);
   }
 
   .tnum { font-variant-numeric: tabular-nums; }
 }
 
 /* =============================================================
-   COMPONENT PRIMITIVES
+   PRIMITIVES
    ============================================================= */
 
-/* Distance from the viewport edge to the content edge of `.shell`. Lets
-   full-bleed layouts (image/text splits) line their text up with the column
-   every other section sits in. */
+/* Distance from the viewport edge to the content column, for
+   full-bleed layouts that still need to align with it. */
 :root {
-  --shell-gutter: clamp(1.25rem, 4.5vw, 4.5rem);
-  --shell-edge: max(var(--shell-gutter), calc((100vw - 88rem) / 2 + var(--shell-gutter)));
+  --shell-gutter: var(--ec-gutter);
+  --shell-edge: max(var(--ec-gutter), calc((100vw - var(--ec-max)) / 2 + var(--ec-gutter)));
 }
 
 @layer components {
-  /* ---- Actions --------------------------------------------------------
-     One primary action per view. It is the one place brass becomes a
-     surface: a small, deliberate fill that the eye finds first. Everything
-     else is outlined. Both are 48px tall — a comfortable touch target. */
+  /* ---- Layout -------------------------------------------------- */
+  .shell {
+    width: 100%;
+    max-width: var(--ec-max);
+    margin-inline: auto;
+    padding-inline: var(--ec-gutter);
+  }
+
+  .section-y {
+    padding-block: var(--ec-section);
+  }
+
+  /* Body copy never runs wider than a comfortable measure. */
+  .measure {
+    max-width: var(--ec-measure);
+  }
+
+  /* ---- Actions -------------------------------------------------
+     One primary action, brass, and one quiet alternative. Both are
+     48px tall: a comfortable target on every device. */
   .btn-primary,
-  .btn-secondary-invert,
-  .btn-secondary {
+  .btn-secondary,
+  .btn-secondary-invert {
     display: inline-flex;
-    min-height: 3rem;
+    min-height: 48px;
     align-items: center;
-    justify-content: space-between;
-    gap: 0.875rem;
-    padding-inline: 1.5rem;
-    font-size: 0.9375rem;
-    font-weight: 500;
-    letter-spacing: 0.005em;
+    justify-content: center;
+    gap: var(--ec-s2);
+    padding-inline: var(--ec-s3);
+    font-family: var(--ec-sans);
+    font-size: var(--ec-small);
+    font-weight: 600;
+    letter-spacing: 0.01em;
     white-space: nowrap;
     transition:
-      background-color 0.3s var(--ease-editorial),
-      border-color 0.3s var(--ease-editorial),
-      color 0.3s var(--ease-editorial);
+      background-color var(--ec-dur) var(--ec-ease),
+      border-color var(--ec-dur) var(--ec-ease),
+      color var(--ec-dur) var(--ec-ease);
   }
-  /* Navy on brass: 5.3:1. Lightens on hover rather than darkening, so the
-     change reads on a navy ground. */
+  /* Navy on brass: 5.3:1. */
   .btn-primary {
-    background-color: var(--color-brass);
-    color: var(--color-navy);
-    font-weight: 600;
+    background-color: var(--ec-brass);
+    color: var(--ec-navy);
   }
   .btn-primary:hover {
-    background-color: var(--color-brass-light);
-  }
-  .btn-secondary-invert {
-    border: 1px solid rgb(255 255 255 / 0.5);
-    color: #ffffff;
-  }
-  .btn-secondary-invert:hover {
-    border-color: #ffffff;
-    background-color: rgb(255 255 255 / 0.08);
+    background-color: var(--ec-brass-hover);
+    color: var(--ec-white);
   }
   .btn-secondary {
-    border: 1px solid var(--color-navy);
-    color: var(--color-navy);
+    border: 1px solid var(--ec-navy);
+    color: var(--ec-navy);
   }
   .btn-secondary:hover {
-    background-color: var(--color-navy);
-    color: #ffffff;
+    background-color: var(--ec-navy);
+    color: var(--ec-white);
+  }
+  .btn-secondary-invert {
+    border: 1px solid rgb(250 250 247 / 0.5);
+    color: var(--ec-white);
+  }
+  .btn-secondary-invert:hover {
+    border-color: var(--ec-white);
+    background-color: rgb(250 250 247 / 0.1);
   }
 
-  /* CTA arrow: a short nudge on hover or keyboard focus of its parent. */
-  .btn-arrow {
-    transition: transform 0.35s var(--ease-editorial);
+  /* ---- Links ---------------------------------------------------
+     Inline text links are blue and underlined; standalone editorial
+     links underline on hover and focus. */
+  .link-inline {
+    color: var(--ec-blue);
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
   }
-  :where(a, button):hover > .btn-arrow,
-  :where(a, button):focus-visible > .btn-arrow {
-    transform: translateX(3px);
+  .link-draw {
+    position: relative;
+    display: inline-block;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-underline-offset: 0.18em;
+    transition: text-decoration-color var(--ec-dur) var(--ec-ease);
+  }
+  .link-draw:hover,
+  .link-draw:focus-visible {
+    text-decoration-color: currentColor;
   }
 
-  /* ---- Hero scrim -----------------------------------------------------
-     The photograph carries the hero; the gradient exists only where the
-     words are. Large screens: a bottom-up fade under the copy and controls,
-     plus a left-hand fade tied to the text column (--shell-edge), so the
-     upper and right parts of the frame stay photograph. Small screens: the
-     copy covers most of the frame, so the fade reaches higher.
-     Every stop was set against measured contrast on each hero photograph —
-     re-measure if a photograph changes. */
-  /* Small screens: stops in rem from the bottom, not percentages — the
-     copy is a fixed height, so the dense band follows it at any phone
-     height and the photograph above it is left clear. */
+  /* ---- Hero scrim ----------------------------------------------
+     Navy, bottom-to-top, so a photograph can carry text without the
+     image being flattened. Stops were set against measured contrast. */
   .hero-scrim {
     background: linear-gradient(
       to top,
-      rgb(11 31 58 / 0.95) 0,
-      rgb(11 31 58 / 0.88) 14rem,
-      rgb(11 31 58 / 0.76) 26rem,
-      rgb(11 31 58 / 0.52) 32rem,
-      rgb(11 31 58 / 0.2) 37rem,
-      transparent 42rem
+      rgb(11 31 58 / 0.94) 0,
+      rgb(11 31 58 / 0.82) 28rem,
+      rgb(11 31 58 / 0.5) 38rem,
+      rgb(11 31 58 / 0.2) 46rem,
+      transparent 54rem
     );
   }
   @media (min-width: 64rem) {
@@ -227,91 +296,37 @@
       background:
         linear-gradient(
           to top,
-          rgb(11 31 58 / 0.9) 0%,
-          rgb(11 31 58 / 0.66) 28%,
-          rgb(11 31 58 / 0.4) 50%,
-          rgb(11 31 58 / 0.12) 63%,
-          transparent 72%
+          rgb(11 31 58 / 0.92) 0,
+          rgb(11 31 58 / 0.66) 30%,
+          rgb(11 31 58 / 0.3) 58%,
+          rgb(11 31 58 / 0.12) 100%
         ),
-        linear-gradient(
-          to right,
-          rgb(11 31 58 / 0.66) 0,
-          rgb(11 31 58 / 0.45) calc(var(--shell-edge) + 34rem),
-          transparent calc(var(--shell-edge) + 58rem)
-        );
+        linear-gradient(to right, rgb(11 31 58 / 0.55) 0, rgb(11 31 58 / 0.1) 70%);
     }
   }
 
-  /* A soft shadow under the hero copy. Not a substitute for contrast (that
-     is measured against the scrim alone) — it keeps letter edges crisp where
-     the photograph turns bright behind a word. */
-  .hero-copy {
-    text-shadow: 0 1px 14px rgb(11 31 58 / 0.4);
-  }
-
-  /* Page shell. Wider max-width and calmer gutters than the prototype —
-     professional-services layouts breathe horizontally. */
-  .shell {
-    width: 100%;
-    max-width: 88rem;
-    margin-inline: auto;
-    padding-inline: clamp(1.25rem, 4.5vw, 4.5rem);
-  }
-
-  /* Section rhythm, applied consistently so every chapter has the same
-     vertical weight. */
-  /* 40px on a phone to 64px on desktop. The reference runs 30px inside
-     each section; Envision keeps a little more air, but not the 136px it
-     had, which made every chapter read as a separate page. */
-  .section-y {
-    padding-block: clamp(2.5rem, 4.5vw, 4rem);
-  }
-
-  .eyebrow {
-    font-family: var(--font-mono);
-    font-size: var(--text-meta);
-    letter-spacing: var(--text-meta--letter-spacing);
-    text-transform: uppercase;
-    font-weight: 500;
-  }
-
-  /* Link with an underline that draws in from the left on hover. */
-  .link-draw {
+  /* ---- Editorial photography ------------------------------------
+     One treatment for every image: greyscale with navy laid into the
+     shadows, so a mixed placeholder set reads as one art direction. */
+  .duotone {
     position: relative;
-    display: inline-block;
+    isolation: isolate;
   }
-  .link-draw::after {
+  .duotone img {
+    filter: grayscale(1) contrast(1.05);
+  }
+  .duotone::after {
     content: "";
     position: absolute;
-    left: 0;
-    bottom: -2px;
-    width: 100%;
-    height: 1px;
-    background-color: currentColor;
-    transform: scaleX(0);
-    transform-origin: right;
-    transition: transform 0.45s var(--ease-editorial);
-  }
-  .link-draw:hover::after,
-  .link-draw:focus-visible::after {
-    transform: scaleX(1);
-    transform-origin: left;
-  }
-
-  /* A single brass rule above a section label. The one decorative motif
-     the system allows itself. */
-  .brass-rule::before {
-    content: "";
-    display: block;
-    width: 2.25rem;
-    height: 2px;
-    background-color: var(--color-brass);
-    margin-bottom: 1.25rem;
+    inset: 0;
+    background-color: var(--ec-navy);
+    mix-blend-mode: lighten;
+    pointer-events: none;
   }
 }
 
 /* =============================================================
-   ACCESSIBILITY — REDUCED MOTION
+   REDUCED MOTION
    ============================================================= */
 
 @media (prefers-reduced-motion: reduce) {
