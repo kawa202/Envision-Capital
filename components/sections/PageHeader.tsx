@@ -20,7 +20,7 @@ export function PageHeader({
   meta?: string;
 }) {
   return (
-    <header className="bg-navy pt-[calc(72px+clamp(2.5rem,5vw,4.5rem))] pb-[clamp(2.5rem,4.5vw,4rem)]">
+    <header className="bg-navy pt-[clamp(2.5rem,5vw,4.5rem)] pb-[clamp(2.5rem,4.5vw,4rem)]">
       <div className="shell">
         <h1 className="max-w-4xl font-display text-display-xl text-white">
           {title}

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Wordmark } from "@/components/ui/Bits";
+import { Logo } from "@/components/ui/Logo";
 import { industries } from "@/content/industries";
 import { services } from "@/content/services";
 import { site } from "@/content/site";
@@ -33,7 +33,7 @@ export function Footer() {
       <div className="shell py-16 md:py-20">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-3">
-            <Wordmark invert />
+            <Logo className="text-white" />
             <p className="mt-5 max-w-[16rem] font-display text-[1.0625rem] leading-snug text-white/75 italic">
               {site.philosophy}
             </p>

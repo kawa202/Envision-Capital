@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { fontVariables } from "./fonts";
-import { Navigation } from "@/components/Navigation";
+import { SiteHeader } from "@/components/SiteHeader";
 import { Footer } from "@/components/sections/Footer";
 import { site } from "@/content/site";
 import "./globals.css";
@@ -117,7 +117,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         >
           Skip to main content
         </a>
-        <Navigation />
+        <SiteHeader />
         {children}
         <Footer />
         <script

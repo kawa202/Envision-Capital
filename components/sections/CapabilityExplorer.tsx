@@ -71,7 +71,7 @@ export function CapabilityExplorer() {
     <section
       ref={sectionRef}
       id="what-we-do"
-      className="section-y scroll-mt-[72px] bg-paper-2"
+      className="section-y bg-paper-2"
       aria-labelledby="what-we-do-heading"
     >
       <div className="shell">

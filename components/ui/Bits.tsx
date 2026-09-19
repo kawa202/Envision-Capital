@@ -5,35 +5,6 @@ import type { ReactNode } from "react";
    Shared, server-rendered pieces. Nothing here needs interactivity.
    -------------------------------------------------------------------------- */
 
-/**
- * The Envision wordmark — typographic, not an image, so it stays crisp at
- * every size and inherits the brand serif.
- */
-export function Wordmark({
-  invert = false,
-  className = "",
-}: {
-  invert?: boolean;
-  className?: string;
-}) {
-  return (
-    <span className={`flex flex-col gap-[2px] ${className}`}>
-      <span
-        className={`font-display text-[1.0625rem] leading-none tracking-[0.13em] uppercase ${
-          invert ? "text-white" : "text-navy"
-        }`}
-      >
-        Envision
-      </span>
-      <span
-        className={`text-meta text-[0.5rem] ${invert ? "text-white/45" : "text-muted"}`}
-      >
-        Capital
-      </span>
-    </span>
-  );
-}
-
 /** Text link with an arrow that steps forward on hover of its group. */
 export function ArrowLink({
   href,
