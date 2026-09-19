@@ -1,24 +1,32 @@
 import Link from "next/link";
+import { FooterSignup } from "@/components/sections/FooterSignup";
 import { Logo } from "@/components/ui/Logo";
-import { industries } from "@/content/industries";
 import { services } from "@/content/services";
 import { site } from "@/content/site";
+import { TAGLINE } from "@/lib/brand";
 
+/**
+ * The footer carries the routes the four-item header does not, so the shorter
+ * bar costs nothing: every page on the site is one click away from here.
+ *
+ * Text on navy is set in --ec-on-navy rather than a white opacity. A white at
+ * 45% over navy measures 4.3:1, which fails; the tint measures 11.8:1 and the
+ * 80% step 8:1, so nothing in here is below AA.
+ */
 const columns = [
   {
     heading: "What we do",
-    links: services.map((service) => ({ label: service.name, href: "/what-we-do" })),
-  },
-  {
-    heading: "Industries",
-    links: industries.map((industry) => ({ label: industry.name, href: "/industries" })),
+    links: services.map((service) => ({
+      label: service.name,
+      href: `/what-we-do#${service.id}`,
+    })),
   },
   {
     heading: "Firm",
     links: [
       { label: "About us", href: "/about" },
       { label: "The Envision Method", href: "/method" },
-      { label: "Leadership", href: "/about#leadership" },
+      { label: "Industries", href: "/industries" },
       { label: "Selected work", href: "/work" },
       { label: "Insights", href: "/insights" },
       { label: "Newsroom", href: "/newsroom" },
@@ -32,28 +40,40 @@ export function Footer() {
     <footer className="bg-navy text-white">
       <div className="shell py-16 md:py-20">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-4">
             <Logo className="text-white" />
-            <p className="mt-5 max-w-[16rem] font-display text-[1.0625rem] leading-snug text-white/75 italic">
-              {site.philosophy}
+            <p className="mt-6 max-w-[18rem] font-serif text-[1.0625rem] leading-snug text-on-navy">
+              {TAGLINE}
             </p>
-            <p className="mt-5 max-w-[16rem] text-[0.8125rem] leading-relaxed text-white/45">
-              {site.descriptor} — {site.location}, advising across {site.region}.
-            </p>
+
+            <address className="mt-8 space-y-2 text-body not-italic text-on-navy/80">
+              <p>
+                <a href={`mailto:${site.contact.email}`} className="link-draw">
+                  {site.contact.email}
+                </a>
+              </p>
+              <p>
+                <a
+                  href={`tel:${site.contact.phone.replace(/[^+\d]/g, "")}`}
+                  className="link-draw"
+                >
+                  {site.contact.phone}
+                </a>
+              </p>
+              <p>{site.contact.address}</p>
+            </address>
           </div>
 
-          <div className="grid gap-10 sm:grid-cols-3 lg:col-span-8 lg:col-start-5">
+          <div className="grid gap-10 sm:grid-cols-2 lg:col-span-5">
             {columns.map((column) => (
               <nav key={column.heading} aria-label={column.heading}>
-                <h2 className="text-meta border-b border-line-invert pb-3 text-on-navy">
-                  {column.heading}
-                </h2>
+                <h2 className="text-meta text-on-navy">{column.heading}</h2>
                 <ul className="mt-4 space-y-2">
                   {column.links.map((link) => (
                     <li key={link.label}>
                       <Link
                         href={link.href}
-                        className="link-draw text-[0.8125rem] text-white/55 transition-colors duration-300 hover:text-white"
+                        className="link-draw text-[0.9375rem] text-on-navy/80 transition-colors duration-200 hover:text-white"
                       >
                         {link.label}
                       </Link>
@@ -63,18 +83,22 @@ export function Footer() {
               </nav>
             ))}
           </div>
+
+          <div className="lg:col-span-3">
+            <FooterSignup />
+          </div>
         </div>
 
         {/* ---------- Legal ---------- */}
-        <div className="mt-14 border-t border-line-invert-soft pt-8">
-          <p className="max-w-3xl text-[0.75rem] leading-relaxed text-white/40">
+        <div className="mt-14 border-t border-line-invert pt-8">
+          <p className="max-w-3xl text-meta leading-relaxed text-on-navy/80">
             {site.disclaimer}
           </p>
           <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
-            <p className="font-mono text-[0.66rem] tracking-[0.06em] text-white/35">
+            <p className="text-meta text-on-navy/80">
               © {new Date().getFullYear()} {site.name}
             </p>
-            <p className="text-meta text-on-navy/60">
+            <p className="text-meta text-on-navy/80">
               PROTOTYPE — CONTENT PENDING VERIFICATION
             </p>
           </div>

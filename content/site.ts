@@ -82,11 +82,13 @@ export const site = {
     label: "Talk to Envision",
   },
 
+  /* Supplied by Envision for the prototype brief. Still worth one
+     confirmation before launch, which is what the notes are for. */
   contact: {
-    email: "advisory@envisioncapital.co.zw",
-    emailNote: "[VERIFIED CONTACT EMAIL REQUIRED]",
-    phone: "+263 (0) 000 000 000",
-    phoneNote: "[VERIFIED CONTACT NUMBER REQUIRED]",
+    email: "info@envisioncapital.co.zw",
+    emailNote: "[CONFIRM BEFORE LAUNCH]",
+    phone: "+263 773 001 887",
+    phoneNote: "[CONFIRM BEFORE LAUNCH]",
     address: "Harare, Zimbabwe",
     linkedin: null as string | null,
   },

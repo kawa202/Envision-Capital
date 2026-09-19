@@ -1,6 +1,8 @@
 export type Insight = {
   slug: string;
   category: string;
+  /** ISO 8601. Formatted for display at render time. */
+  date: string;
   title: string;
   dek: string;
   href: string;
@@ -11,14 +13,16 @@ export type Insight = {
 /**
  * PLACEHOLDER ARTICLES.
  *
- * Titles and deks demonstrate the editorial hierarchy. No article exists
- * behind any `href`, and none of this has been through authorship or
- * compliance review. Replace before launch.
+ * Titles, deks and dates demonstrate the editorial hierarchy. No article
+ * exists behind any `href`, no date here records a real publication, and
+ * none of this has been through authorship or compliance review. Replace
+ * before launch.
  */
 export const insights: Insight[] = [
   {
     slug: "cost-of-capital",
     category: "Capital Markets",
+    date: "2026-08-18",
     title: "The cost of capital in a higher-for-longer regime",
     dek: "Why boards should revisit hurdle rates before the next raise.",
     href: "/insights/cost-of-capital",
@@ -27,6 +31,7 @@ export const insights: Insight[] = [
   {
     slug: "mid-market-multiples",
     category: "Valuation",
+    date: "2026-07-07",
     title: "Valuation multiples for mid-market African businesses",
     dek: "A practical framework for benchmarking private companies.",
     href: "/insights/mid-market-multiples",
@@ -35,6 +40,7 @@ export const insights: Insight[] = [
   {
     slug: "board-cross-border",
     category: "M&A",
+    date: "2026-06-02",
     title: "Preparing a board for a cross-border transaction",
     dek: "The five questions directors should ask before signing an NDA.",
     href: "/insights/board-cross-border",

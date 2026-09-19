@@ -1,40 +1,28 @@
-import { Affiliations } from "@/components/sections/Affiliations";
-import { CapabilityOverview } from "@/components/sections/CapabilityOverview";
-import { DiscoverMore } from "@/components/sections/DiscoverMore";
-import { ExploreByRole } from "@/components/sections/ExploreByRole";
-import { FeaturedInsights } from "@/components/sections/FeaturedInsights";
-import { Hero } from "@/components/sections/Hero";
-import { NewsletterCTA } from "@/components/sections/NewsletterCTA";
-import { Newsroom } from "@/components/sections/Newsroom";
-import { OnTheAgenda } from "@/components/sections/OnTheAgenda";
-import { SelectedWork } from "@/components/sections/SelectedWork";
-import { Spotlights } from "@/components/sections/Spotlights";
+import { CaseStudyFeature } from "@/components/home/CaseStudyFeature";
+import { CtaBand } from "@/components/home/CtaBand";
+import { FeaturedInsights } from "@/components/home/FeaturedInsights";
+import { Hero } from "@/components/home/Hero";
+import { PartnerProof } from "@/components/home/PartnerProof";
+import { PracticeSnapshot } from "@/components/home/PracticeSnapshot";
 
 /**
- * The hub.
+ * The homepage. Six sections, then the footer from app/layout.tsx.
  *
- * Follows the content architecture of a large professional-services homepage:
- * what the firm does, then its thinking, then who it is, then ways in by
- * role, then proof, news and topics — every section a door into its own
- * route. Depth lives on the spokes.
- *
- * Navigation and Footer are rendered by app/layout.tsx so all routes share
- * them.
+ * What it no longer carries: a rotating hero, a newsroom feed, "On the
+ * agenda", "Discover more", "Where are you coming from?", an affiliations
+ * strip and a case-study carousel. Eleven sections asked a reader to keep
+ * choosing; six tell them what the firm does, how it thinks, who stands
+ * behind it, what it has done, and what to do next.
  */
 export default function Home() {
   return (
     <main id="main">
       <Hero />
-      <CapabilityOverview />
+      <PracticeSnapshot />
       <FeaturedInsights />
-      <Spotlights />
-      <ExploreByRole />
-      <Affiliations />
-      <SelectedWork />
-      <NewsletterCTA />
-      <Newsroom />
-      <OnTheAgenda />
-      <DiscoverMore />
+      <PartnerProof />
+      <CaseStudyFeature />
+      <CtaBand />
     </main>
   );
 }
