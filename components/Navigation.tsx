@@ -194,7 +194,7 @@ export function Navigation() {
                       {rule}
                     </button>
                   ) : (
-                    <a
+                    <Link
                       href={item.href}
                       aria-current={isCurrent ? "page" : undefined}
                       onMouseEnter={scheduleClose}
@@ -202,7 +202,7 @@ export function Navigation() {
                     >
                       {item.label}
                       {rule}
-                    </a>
+                    </Link>
                   )}
                 </li>
               );
@@ -213,13 +213,13 @@ export function Navigation() {
               Between 1024 and 1280 the bar is tight: Search and the region
               collapse to icons with accessible names, so nothing wraps. */}
           <div className="ml-auto hidden items-center gap-5 lg:flex xl:gap-7">
-            <a
+            <Link
               href={utilityNav.contactHref}
               aria-current={isCurrentSection(pathname, utilityNav.contactHref) ? "page" : undefined}
               className={`${utilityLink} aria-[current=page]:text-white aria-[current=page]:underline aria-[current=page]:decoration-brass aria-[current=page]:underline-offset-8`}
             >
               {utilityNav.contactLabel}
-            </a>
+            </Link>
 
             {/* TODO: open site search once a search backend exists. */}
             <button type="button" aria-label={utilityNav.searchLabel} className={`${utilityLink} cursor-pointer`}>
@@ -231,13 +231,13 @@ export function Navigation() {
 
             {/* A restrained utility button: the one bordered item in the bar,
                 because it is the one that leads somewhere different in kind. */}
-            <a
+            <Link
               href={utilityNav.portalHref}
               className="flex h-9 items-center gap-2 border border-white/30 px-3.5 text-[0.8125rem] whitespace-nowrap text-white transition-colors duration-300 hover:border-brass-light hover:bg-white/6"
             >
               <PersonIcon />
               {utilityNav.portalLabel}
-            </a>
+            </Link>
 
             <button
               type="button"
@@ -303,28 +303,28 @@ export function Navigation() {
                 <p className="mt-4 max-w-[17rem] text-[0.875rem] leading-relaxed text-white/70">
                   {active.panel.description}
                 </p>
-                <a
+                <Link
                   href={active.panel.exploreHref}
                   onClick={() => setOpenPanel(null)}
                   className="btn-secondary-invert mt-7"
                 >
                   {active.panel.exploreLabel}
                   <ArrowIcon />
-                </a>
+                </Link>
               </div>
 
               {/* Centre: the section index */}
               <ul className="col-span-6">
                 {active.panel.links.map((link) => (
                   <li key={link.label}>
-                    <a
+                    <Link
                       href={link.href}
                       onClick={() => setOpenPanel(null)}
                       className="flex items-center justify-between gap-6 border-b border-white/12 py-3.5 text-[0.9375rem] text-white transition-colors duration-300 hover:text-brass-light"
                     >
                       {link.label}
                       <ArrowIcon />
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -337,7 +337,7 @@ export function Navigation() {
                 <ul className="mt-5 space-y-5">
                   {active.panel.spotlight.items.map((item) => (
                     <li key={item.label}>
-                      <a
+                      <Link
                         href={item.href}
                         onClick={() => setOpenPanel(null)}
                         className="group block"
@@ -355,7 +355,7 @@ export function Navigation() {
                             {item.meta}
                           </span>
                         )}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>
@@ -452,31 +452,31 @@ export function Navigation() {
                           {expanded && (
                             <ul id={sectionId} className="pb-4">
                               <li>
-                                <a
+                                <Link
                                   href={item.href}
                                   onClick={() => setMobileOpen(false)}
                                   className="flex min-h-11 items-center gap-2.5 text-[0.9375rem] font-medium text-brass-light"
                                 >
                                   {item.panel.exploreLabel}
                                   <ArrowIcon />
-                                </a>
+                                </Link>
                               </li>
                               {item.panel.links.map((link) => (
                                 <li key={link.label}>
-                                  <a
+                                  <Link
                                     href={link.href}
                                     onClick={() => setMobileOpen(false)}
                                     className="flex min-h-11 items-center text-[0.9375rem] text-white/80 transition-colors duration-300 hover:text-white"
                                   >
                                     {link.label}
-                                  </a>
+                                  </Link>
                                 </li>
                               ))}
                             </ul>
                           )}
                         </>
                       ) : (
-                        <a
+                        <Link
                           href={item.href}
                           aria-current={isCurrent ? "page" : undefined}
                           onClick={() => setMobileOpen(false)}
@@ -484,7 +484,7 @@ export function Navigation() {
                         >
                           {isCurrent && <span className="h-5 w-[3px] bg-brass" aria-hidden="true" />}
                           {item.label}
-                        </a>
+                        </Link>
                       )}
                     </li>
                   );
@@ -493,9 +493,9 @@ export function Navigation() {
 
               <ul className="mt-6 grid grid-cols-2 gap-x-6 text-[0.875rem] text-white/85">
                 <li>
-                  <a href={utilityNav.contactHref} onClick={() => setMobileOpen(false)} className="flex min-h-11 items-center">
+                  <Link href={utilityNav.contactHref} onClick={() => setMobileOpen(false)} className="flex min-h-11 items-center">
                     {utilityNav.contactLabel}
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <button type="button" className="flex min-h-11 cursor-pointer items-center gap-2.5">
@@ -504,10 +504,10 @@ export function Navigation() {
                   </button>
                 </li>
                 <li>
-                  <a href={utilityNav.portalHref} onClick={() => setMobileOpen(false)} className="flex min-h-11 items-center gap-2.5">
+                  <Link href={utilityNav.portalHref} onClick={() => setMobileOpen(false)} className="flex min-h-11 items-center gap-2.5">
                     <PersonIcon />
                     {utilityNav.portalLabel}
-                  </a>
+                  </Link>
                 </li>
                 <li>
                   <button type="button" className="flex min-h-11 cursor-pointer items-center gap-2.5">
@@ -520,14 +520,14 @@ export function Navigation() {
 
               {/* Pinned to the foot of the drawer on tall screens. */}
               <div className="mt-auto pt-10">
-                <a
+                <Link
                   href="/contact"
                   onClick={() => setMobileOpen(false)}
                   className="btn-primary w-full"
                 >
                   Talk to Envision
                   <ArrowIcon />
-                </a>
+                </Link>
               </div>
             </div>
           </motion.div>

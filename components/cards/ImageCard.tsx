@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 import type { ReactNode } from "react";
 import { keepCompoundsTogether } from "@/lib/typography";
@@ -33,7 +34,7 @@ export function ImageCard({
 
   return (
     <article className="h-full">
-      <a
+      <Link
         href={href}
         /* Hover and keyboard focus get the same treatment, and colour is
            never the only signal: the dark card lifts and casts a shadow, and
@@ -86,7 +87,7 @@ export function ImageCard({
 
           {footer && <div className="mt-auto pt-5">{footer}</div>}
         </div>
-      </a>
+      </Link>
     </article>
   );
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -193,12 +194,12 @@ export function Hero() {
                 {asLinks ? (
                   /* The headline is the link, as in the reference: the
                      underline arrives on hover and keyboard focus. */
-                  <a
+                  <Link
                     href={slide.href}
                     className="decoration-brass-light decoration-2 underline-offset-[0.14em] hover:underline focus-visible:underline"
                   >
                     {keepCompoundsTogether(slide.headline)}
-                  </a>
+                  </Link>
                 ) : (
                   keepCompoundsTogether(slide.headline)
                 )}
@@ -228,7 +229,7 @@ export function Hero() {
                       transition={{ duration: 0.6, ease: EASE_EDITORIAL }}
                       className="mt-7"
                     >
-                      <a
+                      <Link
                         href={quietLink.href}
                         data-hero-cta="primary"
                         className="inline-flex min-h-11 items-center gap-2.5 text-[0.9375rem] font-semibold text-white"
@@ -237,7 +238,7 @@ export function Hero() {
                           {quietLink.label}
                         </span>
                         <ArrowIcon />
-                      </a>
+                      </Link>
                     </motion.div>
                   )
                 : (
@@ -246,19 +247,19 @@ export function Hero() {
                       transition={{ duration: 0.6, ease: EASE_EDITORIAL }}
                       className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4"
                     >
-                      <a href={slide.primaryCta.href} data-hero-cta="primary" className="btn-primary">
+                      <Link href={slide.primaryCta.href} data-hero-cta="primary" className="btn-primary">
                         {slide.primaryCta.label}
                         <ArrowIcon />
-                      </a>
+                      </Link>
                       {slide.secondaryCta && (
-                        <a
+                        <Link
                           href={slide.secondaryCta.href}
                           data-hero-cta="secondary"
                           className="btn-secondary-invert"
                         >
                           {slide.secondaryCta.label}
                           <ArrowIcon />
-                        </a>
+                        </Link>
                       )}
                     </motion.div>
                   )}

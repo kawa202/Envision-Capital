@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ImageCard } from "@/components/cards/ImageCard";
 import { ArrowLink } from "@/components/ui/Bits";
 import { HubHeader } from "@/components/ui/HubHeader";
@@ -63,12 +64,12 @@ export function Newsroom() {
             <ul className="mt-5">
               {more.map((item) => (
                 <li key={item.slug} className="border-t border-line py-5 first:border-t-0 first:pt-0">
-                  <a
+                  <Link
                     href={item.href}
                     className="font-display text-[1.125rem] leading-snug text-navy transition-colors duration-300 hover:text-analytical"
                   >
                     {item.title}
-                  </a>
+                  </Link>
                   <div className="mt-2.5">
                     <Dateline item={item} />
                   </div>

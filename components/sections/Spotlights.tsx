@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 import { Reveal } from "@/components/ui/Reveal";
 import { spotlights, type Spotlight } from "@/content/home";
@@ -65,19 +66,19 @@ function SpotlightSplit({
           <p className="mt-5 text-lede text-graphite">{spotlight.body}</p>
 
           {spotlight.button && (
-            <a
+            <Link
               href={spotlight.button.href}
               className="mt-8 inline-flex items-center border border-navy px-7 py-3.5 text-[0.875rem] font-medium text-navy transition-colors duration-300 hover:bg-navy hover:text-white"
             >
               {spotlight.button.label}
-            </a>
+            </Link>
           )}
 
           {spotlight.links && (
             <ul className="mt-7 space-y-4">
               {spotlight.links.map((link) => (
                 <li key={link.href}>
-                  <a
+                  <Link
                     href={link.href}
                     className="group inline-flex items-center gap-2.5 text-[0.9375rem] font-semibold text-analytical transition-colors duration-300 hover:text-navy"
                   >
@@ -88,7 +89,7 @@ function SpotlightSplit({
                     >
                       →
                     </span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

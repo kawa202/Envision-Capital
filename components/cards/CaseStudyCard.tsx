@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { UnverifiedFlag } from "@/components/ui/Bits";
 import type { CaseStudy } from "@/content/caseStudies";
 
@@ -19,7 +20,7 @@ export function CaseStudyCard({
 
   return (
     <article className={isLarge ? "h-full" : ""}>
-      <a
+      <Link
         href={caseStudy.href}
         className={`group flex h-full flex-col border-t transition-colors duration-500 ${
           isLarge
@@ -61,7 +62,7 @@ export function CaseStudyCard({
           </span>
           {caseStudy.unverified && <UnverifiedFlag>Placeholder</UnverifiedFlag>}
         </div>
-      </a>
+      </Link>
     </article>
   );
 }

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 import { agenda } from "@/content/home";
 import { services } from "@/content/services";
@@ -27,7 +28,7 @@ export function OnTheAgenda() {
       <ul className="grid sm:grid-cols-2 lg:grid-cols-4">
         {panels.map((panel, index) => (
           <li key={panel.serviceId} className="relative">
-            <a
+            <Link
               href={panel.href}
               className={`group relative flex h-[15rem] flex-col justify-end overflow-hidden p-6 sm:h-[20rem] md:h-[26rem] md:p-8 lg:h-[32rem] ${
                 index > 0 ? "lg:border-l lg:border-white/15" : ""
@@ -59,7 +60,7 @@ export function OnTheAgenda() {
                   </span>
                 </div>
               </div>
-            </a>
+            </Link>
           </li>
         ))}
       </ul>

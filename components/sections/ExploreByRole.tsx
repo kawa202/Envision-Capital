@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
 import { roles } from "@/content/home";
 
@@ -27,12 +28,12 @@ export function ExploreByRole() {
         >
           {roles.map((role) => (
             <RevealItem as="li" key={role.label}>
-              <a
+              <Link
                 href={role.href}
                 className="flex min-h-[4.25rem] items-center justify-center border border-white/35 px-6 py-4 text-center text-[0.9375rem] font-semibold text-white transition-colors duration-300 hover:border-brass-light hover:bg-white/6"
               >
                 {role.label}
-              </a>
+              </Link>
             </RevealItem>
           ))}
         </RevealGroup>

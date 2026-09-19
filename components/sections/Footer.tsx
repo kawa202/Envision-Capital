@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Wordmark } from "@/components/ui/Bits";
 import { industries } from "@/content/industries";
 import { services } from "@/content/services";
@@ -50,12 +51,12 @@ export function Footer() {
                 <ul className="mt-4 space-y-2">
                   {column.links.map((link) => (
                     <li key={link.label}>
-                      <a
+                      <Link
                         href={link.href}
                         className="link-draw text-[0.8125rem] text-white/55 transition-colors duration-300 hover:text-white"
                       >
                         {link.label}
-                      </a>
+                      </Link>
                     </li>
                   ))}
                 </ul>

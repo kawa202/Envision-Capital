@@ -3,6 +3,9 @@ import { caseStudies } from "@/content/caseStudies";
 import { insights } from "@/content/insights";
 import { news } from "@/content/news";
 
+/* Generated once at build time — required for the static export. */
+export const dynamic = "force-static";
+
 const SITE_URL = "https://www.envisioncapital.co.zw";
 
 /**

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { NewsItem } from "@/content/news";
 
 /** "29 JUL 2026" — small caps, tabular, stable width across rows. */
@@ -15,7 +16,7 @@ function formatDate(iso: string) {
 export function NewsRow({ item }: { item: NewsItem }) {
   return (
     <article>
-      <a
+      <Link
         href={item.href}
         className="group grid items-baseline gap-x-8 gap-y-2 border-t border-brass/35 py-6 transition-colors duration-300 hover:bg-paper-2 md:grid-cols-12 md:py-7"
       >
@@ -36,7 +37,7 @@ export function NewsRow({ item }: { item: NewsItem }) {
         <p className="text-[0.8125rem] leading-snug text-muted md:col-span-3 md:text-right">
           {item.location} — {item.author}
         </p>
-      </a>
+      </Link>
     </article>
   );
 }

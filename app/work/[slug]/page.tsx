@@ -4,6 +4,10 @@ import { ArrowLink, UnverifiedFlag } from "@/components/ui/Bits";
 import { PageHeader } from "@/components/sections/PageHeader";
 import { caseStudies } from "@/content/caseStudies";
 
+/* Only the slugs generated at build time exist — required for the static
+   export, and an unknown slug returns 404 rather than rendering on demand. */
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return caseStudies.map((item) => ({ slug: item.slug }));
 }

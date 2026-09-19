@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { utilityNav } from "@/content/navigation";
 import { quickLinks } from "@/content/home";
 
@@ -37,12 +38,12 @@ export function DiscoverMore() {
           <ul className="mt-5 flex flex-wrap gap-2.5">
             {quickLinks.map((link) => (
               <li key={link.href}>
-                <a
+                <Link
                   href={link.href}
                   className="inline-flex border border-white/35 px-3.5 py-2 text-[0.8125rem] font-medium text-white transition-colors duration-300 hover:border-brass-light hover:bg-white/6"
                 >
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

@@ -1,8 +1,13 @@
+import Link from "next/link";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ArrowLink } from "@/components/ui/Bits";
 import { PageHeader } from "@/components/sections/PageHeader";
 import { insights } from "@/content/insights";
+
+/* Only the slugs generated at build time exist — required for the static
+   export, and an unknown slug returns 404 rather than rendering on demand. */
+export const dynamicParams = false;
 
 export function generateStaticParams() {
   return insights.map((insight) => ({ slug: insight.slug }));
@@ -75,9 +80,9 @@ export default async function InsightPage(
                 <li key={item.slug} className="border-t border-line pt-5">
                   <p className="eyebrow text-analytical">{item.category}</p>
                   <h3 className="mt-3 font-display text-[1.25rem] leading-snug text-navy">
-                    <a href={item.href} className="link-draw">
+                    <Link href={item.href} className="link-draw">
                       {item.title}
-                    </a>
+                    </Link>
                   </h3>
                   <p className="mt-2 text-[0.875rem] leading-relaxed text-muted">
                     {item.dek}

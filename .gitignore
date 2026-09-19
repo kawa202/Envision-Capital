@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# responsive image copies for the GitHub Pages build (scripts/build-images.mjs)
+/public/_img/

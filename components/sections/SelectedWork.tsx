@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion, useReducedMotion } from "motion/react";
 import Image from "next/image";
 import { useState } from "react";
@@ -72,12 +73,12 @@ export function SelectedWork() {
                     {item.outcome}
                   </h3>
                   <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-                    <a
+                    <Link
                       href={item.href}
                       className="border-b border-brass-light pb-1 text-[0.875rem] font-medium text-white transition-colors duration-300 hover:border-white"
                     >
                       Read the case study
-                    </a>
+                    </Link>
                     {item.unverified && <UnverifiedFlag>Placeholder</UnverifiedFlag>}
                   </div>
                 </div>

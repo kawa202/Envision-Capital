@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Insight } from "@/content/insights";
 
 /**
@@ -11,7 +12,7 @@ import type { Insight } from "@/content/insights";
 export function InsightCard({ insight }: { insight: Insight }) {
   return (
     <article className="h-full">
-      <a
+      <Link
         href={insight.href}
         className="group flex h-full flex-col border-t border-line pt-5 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1"
       >
@@ -39,7 +40,7 @@ export function InsightCard({ insight }: { insight: Insight }) {
             →
           </span>
         </span>
-      </a>
+      </Link>
     </article>
   );
 }

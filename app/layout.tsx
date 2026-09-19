@@ -85,11 +85,16 @@ export const metadata: Metadata = {
     description: site.hero.lede,
     images: ["/images/hero/positioning-boardroom.jpg"],
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: { index: true, follow: true, "max-image-preview": "large" },
-  },
+  /* The GitHub Pages build is a client preview that still carries
+     placeholder content, so it asks search engines not to index it. */
+  robots:
+    process.env.NEXT_PUBLIC_PAGES_PREVIEW === "true"
+      ? { index: false, follow: false }
+      : {
+          index: true,
+          follow: true,
+          googleBot: { index: true, follow: true, "max-image-preview": "large" },
+        },
 };
 
 export const viewport: Viewport = {

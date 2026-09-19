@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ArrowIcon } from "@/components/ui/ArrowIcon";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
 import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
@@ -28,10 +29,10 @@ export function CapabilityOverview() {
             {capabilityOverview.heading}
           </h2>
           <p className="mt-6 max-w-md text-lede text-graphite">{capabilityOverview.lede}</p>
-          <a href={capabilityOverview.link.href} className="btn-secondary mt-8">
+          <Link href={capabilityOverview.link.href} className="btn-secondary mt-8">
             {capabilityOverview.link.label}
             <ArrowIcon />
-          </a>
+          </Link>
         </Reveal>
 
         <RevealGroup
@@ -41,7 +42,7 @@ export function CapabilityOverview() {
         >
           {entries.map((service, position) => (
             <RevealItem as="li" key={service.id}>
-              <a
+              <Link
                 href={`/what-we-do#${service.id}`}
                 className="group relative flex h-full flex-col pt-5 pb-6"
               >
@@ -69,7 +70,7 @@ export function CapabilityOverview() {
                   <span className="sr-only"> {service.name}</span>
                   <ArrowIcon />
                 </span>
-              </a>
+              </Link>
             </RevealItem>
           ))}
         </RevealGroup>
