@@ -82,11 +82,11 @@ export function Newsroom() {
           </Reveal>
         </div>
 
-        <p className="mt-8 font-mono text-[0.68rem] leading-relaxed tracking-[0.04em] text-muted">
-          [ANNOUNCEMENT CONTENT REQUIRED] — Fabricated placeholders demonstrating
-          the newsroom layout. The transaction value, the regional footprint, the
-          award and the named partners are all invented. Verify every one with
-          Envision before this page is published.
+        <p className="mt-8 text-meta leading-relaxed text-muted">
+          [ANNOUNCEMENT CONTENT REQUIRED] — The rows above are empty slots that
+          demonstrate the newsroom layout. Titles, dates, places and attribution
+          come from Envision; nothing has been drafted on the firm&rsquo;s
+          behalf.
         </p>
       </div>
     </section>

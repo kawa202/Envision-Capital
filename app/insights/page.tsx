@@ -14,7 +14,6 @@ export default function InsightsIndexPage() {
   return (
     <main id="main">
       <PageHeader
-        eyebrow="Insights"
         title="Perspectives on the decisions that shape capital."
         lede="Written for boards, investors and finance leaders who have to act on them — not for search engines."
       />
@@ -35,7 +34,7 @@ export default function InsightsIndexPage() {
             ))}
           </ul>
 
-          <p className="mt-14 border-t border-line pt-5 font-mono text-[0.68rem] leading-relaxed tracking-[0.04em] text-muted">
+          <p className="mt-14 border-t border-line pt-5 text-meta leading-relaxed text-muted">
             [ARTICLE CONTENT REQUIRED] — Headlines and deks demonstrate the
             editorial hierarchy. No article body exists behind these links;
             each requires authorship and compliance review before publication.

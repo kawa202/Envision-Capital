@@ -10,25 +10,21 @@ import type { Credential } from "./types";
  */
 export const credentials: Credential[] = [
   {
-    prefix: "USD ",
-    value: "250",
-    suffix: "M+",
+    value: "[Figure]",
     label: "In transactions advised",
-    note: "Across debt, equity and M&A mandates",
+    note: "[Verified figure required]",
     unverified: true,
   },
   {
-    value: "60",
-    suffix: "+",
+    value: "[Figure]",
     label: "Engagements delivered",
-    note: "From defined-scope diagnostics to full mandates",
+    note: "[Verified figure required]",
     unverified: true,
   },
   {
-    value: "12",
-    suffix: "+",
+    value: "[Figure]",
     label: "Sectors covered",
-    note: "Across Zimbabwe and the wider region",
+    note: "[Verified figure required]",
     unverified: true,
   },
 ];

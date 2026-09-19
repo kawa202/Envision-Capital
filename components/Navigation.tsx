@@ -331,7 +331,7 @@ export function Navigation() {
 
               {/* Right: spotlight */}
               <div className="col-span-3">
-                <h3 className="eyebrow text-brass-light">
+                <h3 className="text-meta text-brass-light">
                   {active.panel.spotlight.heading}
                 </h3>
                 <ul className="mt-5 space-y-5">

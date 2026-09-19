@@ -14,7 +14,6 @@ export default function MethodPage() {
   return (
     <main id="main">
       <PageHeader
-        eyebrow="The Envision Method"
         title="Six stages, in sequence."
         lede="Every mandate runs the same disciplined sequence. It is how we make sure a conclusion still holds once someone sets out to dismantle it."
       />

@@ -40,17 +40,17 @@ export default async function InsightPage(
   return (
     <main id="main">
       <PageHeader
-        eyebrow={insight.category}
         title={insight.title}
         lede={insight.dek}
+        meta={insight.category}
       />
 
       <article className="section-y bg-paper">
         <div className="shell">
           {/* The body is deliberately absent rather than invented. Authorship
               and compliance review come before publication. */}
-          <div className="max-w-2xl border-l-2 border-brass py-2 pl-6">
-            <p className="font-mono text-[0.72rem] leading-relaxed tracking-[0.06em] text-analytical">
+          <div className="max-w-2xl border-t border-line pt-6">
+            <p className="text-meta text-ink">
               [ARTICLE BODY REQUIRED]
             </p>
             <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted">
@@ -78,7 +78,7 @@ export default async function InsightPage(
             <ul className="mt-10 grid gap-x-10 gap-y-10 md:grid-cols-2">
               {others.map((item) => (
                 <li key={item.slug} className="border-t border-line pt-5">
-                  <p className="eyebrow text-analytical">{item.category}</p>
+                  <p className="text-meta text-analytical">{item.category}</p>
                   <h3 className="mt-3 font-display text-[1.25rem] leading-snug text-navy">
                     <Link href={item.href} className="link-draw">
                       {item.title}

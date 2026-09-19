@@ -3,7 +3,7 @@
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { EditorialImage } from "@/components/ui/EditorialImage";
-import { SectionLabel, UnverifiedFlag } from "@/components/ui/Bits";
+import { UnverifiedFlag } from "@/components/ui/Bits";
 import { Reveal } from "@/components/ui/Reveal";
 import { services, servicesByGroup } from "@/content/services";
 import { EASE_EDITORIAL, EASE_IMAGE } from "@/lib/motion";
@@ -77,10 +77,9 @@ export function CapabilityExplorer() {
       <div className="shell">
         <Reveal className="grid gap-8 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
-            <SectionLabel>What we do</SectionLabel>
             <h2
               id="what-we-do-heading"
-              className="mt-6 font-display text-display-l text-navy"
+              className="font-display text-display-l text-navy"
             >
               Capability across the decision, not one part of it.
             </h2>
@@ -129,7 +128,7 @@ export function CapabilityExplorer() {
                   transition={{ duration: 0.35, ease: EASE_EDITORIAL }}
                   className="pt-7"
                 >
-                  <p className="eyebrow text-analytical">{service.group}</p>
+                  <p className="text-meta text-analytical">{service.group}</p>
                   <h3 className="mt-3 font-display text-display-s text-navy">
                     {service.name}
                   </h3>
@@ -143,7 +142,7 @@ export function CapabilityExplorer() {
                         key={item}
                         className="flex gap-3 text-[0.84rem] leading-snug text-graphite"
                       >
-                        <span className="text-brass" aria-hidden="true">
+                        <span className="text-muted" aria-hidden="true">
                           ·
                         </span>
                         {item}
@@ -201,14 +200,6 @@ export function CapabilityExplorer() {
                       onClick={() => setActive(index)}
                       className="group relative block w-full cursor-pointer border-b border-line-soft py-5 text-left"
                     >
-                      {/* Brass marker for the selected line */}
-                      <span
-                        className={`absolute top-0 bottom-0 -left-4 w-px bg-brass transition-opacity duration-400 ${
-                          isActive ? "opacity-100" : "opacity-0"
-                        }`}
-                        aria-hidden="true"
-                      />
-
                       <span className="flex items-baseline justify-between gap-6">
                         <span>
                           <span

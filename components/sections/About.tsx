@@ -1,4 +1,3 @@
-import { SectionLabel } from "@/components/ui/Bits";
 import { EditorialImage } from "@/components/ui/EditorialImage";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
 import { site } from "@/content/site";
@@ -10,8 +9,7 @@ export function About() {
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-6">
             <Reveal>
-              <SectionLabel>About us</SectionLabel>
-              <h2 id="about-heading" className="mt-6 font-display text-display-l text-navy">
+              <h2 id="about-heading" className="font-display text-display-l text-navy">
                 A firm built on earned trust.
               </h2>
             </Reveal>
@@ -60,7 +58,7 @@ export function About() {
             <p className="font-display text-display-m text-navy italic lg:col-span-8">
               &ldquo;{site.pullQuote}&rdquo;
             </p>
-            <footer className="eyebrow text-muted lg:col-span-3 lg:col-start-10 lg:pt-3">
+            <footer className="text-meta text-muted lg:col-span-3 lg:col-start-10 lg:pt-3">
               The Envision standard
             </footer>
           </blockquote>
@@ -69,7 +67,7 @@ export function About() {
         {/* ---------- Commitments ---------- */}
         <div className="mt-14 lg:mt-20">
           <Reveal>
-            <p className="eyebrow text-muted">How we work</p>
+            <p className="text-meta text-muted">How we work</p>
           </Reveal>
           <RevealGroup
             className="mt-7 grid gap-x-12 gap-y-8 sm:grid-cols-2 lg:grid-cols-3"

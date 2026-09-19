@@ -34,36 +34,36 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
   return (
     <main id="main">
       <PageHeader
-        eyebrow={item.mandate}
         title={item.outcome}
         lede={item.client}
+        meta={item.mandate}
       />
 
       <article className="section-y bg-paper">
         <div className="shell">
           <dl className="grid max-w-2xl gap-6 border-b border-line pb-8 sm:grid-cols-2">
             <div>
-              <dt className="eyebrow text-muted">Client</dt>
+              <dt className="text-meta text-muted">Client</dt>
               <dd className="mt-2 text-[0.9375rem] text-graphite">
                 {item.client}
               </dd>
             </div>
             <div>
-              <dt className="eyebrow text-muted">Mandate</dt>
+              <dt className="text-meta text-muted">Mandate</dt>
               <dd className="mt-2 text-[0.9375rem] text-graphite">
                 {item.mandate}
               </dd>
             </div>
           </dl>
 
-          <div className="mt-10 max-w-2xl border-l-2 border-brass py-2 pl-6">
-            <p className="font-mono text-[0.72rem] leading-relaxed tracking-[0.06em] text-analytical">
+          <div className="mt-10 max-w-2xl border-t border-line pt-6">
+            <p className="text-meta text-ink">
               [CASE STUDY BODY REQUIRED]
             </p>
             <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted">
               Challenge, approach, role and outcome require verified,
-              client-consented content. The mandate summarised above is a
-              fabricated placeholder, figures included.
+              client-consented content. The mandate summarised above is an
+              empty placeholder.
             </p>
           </div>
 

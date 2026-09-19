@@ -9,7 +9,7 @@ import {
   useTransform,
 } from "motion/react";
 import { useEffect, useRef } from "react";
-import { SectionLabel, UnverifiedFlag } from "@/components/ui/Bits";
+import { UnverifiedFlag } from "@/components/ui/Bits";
 import { CREDENTIALS_WARNING, credentials } from "@/content/credentials";
 import { EASE_EDITORIAL } from "@/lib/motion";
 
@@ -55,10 +55,9 @@ export function Credentials() {
       <div className="shell">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
-            <SectionLabel>Experience</SectionLabel>
             <h2
               id="credentials-heading"
-              className="mt-6 font-display text-display-l text-navy"
+              className="font-display text-display-l text-navy"
             >
               Experience that informs decisions.
             </h2>

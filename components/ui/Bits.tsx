@@ -26,34 +26,11 @@ export function Wordmark({
         Envision
       </span>
       <span
-        className={`eyebrow text-[0.5rem] ${invert ? "text-white/45" : "text-muted"}`}
+        className={`text-meta text-[0.5rem] ${invert ? "text-white/45" : "text-muted"}`}
       >
         Capital
       </span>
     </span>
-  );
-}
-
-/**
- * Section label: a short brass rule over a mono eyebrow.
- *
- * Deliberately unnumbered. Running "01 / 02 / 03" down a professional-services
- * homepage reads as a design system showing its work; the sections are
- * self-evident from their headings.
- */
-export function SectionLabel({
-  children,
-  invert = false,
-  className = "",
-}: {
-  children: ReactNode;
-  invert?: boolean;
-  className?: string;
-}) {
-  return (
-    <p className={`brass-rule eyebrow ${invert ? "text-white/55" : "text-muted"} ${className}`}>
-      {children}
-    </p>
   );
 }
 
@@ -96,7 +73,7 @@ export function UnverifiedFlag({ children }: { children: ReactNode }) {
   if (process.env.NODE_ENV === "production") return null;
 
   return (
-    <span className="inline-flex items-center gap-1.5 border border-brass/45 px-2 py-0.5 font-mono text-[0.55rem] tracking-[0.1em] text-brass uppercase">
+    <span className="inline-flex items-center gap-1.5 border border-ink/35 px-2 py-1 text-meta text-ink">
       {children}
     </span>
   );

@@ -1,4 +1,3 @@
-import { SectionLabel } from "@/components/ui/Bits";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
 import { site } from "@/content/site";
 
@@ -14,10 +13,9 @@ export function IntroStatement() {
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
             <Reveal>
-              <SectionLabel>Our role</SectionLabel>
               <h2
                 id="intro-heading"
-                className="mt-6 font-display text-display-l text-navy"
+                className="font-display text-display-l text-navy"
               >
                 {site.intro.heading}
               </h2>
@@ -44,7 +42,7 @@ export function IntroStatement() {
         {/* The questions Envision is brought in to answer. Presented as a
             plain index, not as marketing copy. */}
         <Reveal className="mt-16 border-t border-line pt-10 lg:mt-24">
-          <p className="eyebrow text-muted">
+          <p className="text-meta text-muted">
             The questions we are usually asked to settle
           </p>
           <RevealGroup

@@ -16,7 +16,6 @@ export default function AboutPage() {
   return (
     <main id="main">
       <PageHeader
-        eyebrow="About us"
         title="A firm built on earned trust."
         lede="We advise. We do not take principal positions, manage funds or broker products — and that clarity of purpose is what makes the counsel worth having."
       />

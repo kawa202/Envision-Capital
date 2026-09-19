@@ -45,7 +45,7 @@ export function Footer() {
           <div className="grid gap-10 sm:grid-cols-3 lg:col-span-8 lg:col-start-5">
             {columns.map((column) => (
               <nav key={column.heading} aria-label={column.heading}>
-                <h2 className="eyebrow border-b border-line-invert-soft pb-3 text-brass">
+                <h2 className="text-meta border-b border-line-invert pb-3 text-on-navy">
                   {column.heading}
                 </h2>
                 <ul className="mt-4 space-y-2">
@@ -74,7 +74,7 @@ export function Footer() {
             <p className="font-mono text-[0.66rem] tracking-[0.06em] text-white/35">
               © {new Date().getFullYear()} {site.name}
             </p>
-            <p className="font-mono text-[0.6rem] tracking-[0.06em] text-brass/60">
+            <p className="text-meta text-on-navy/60">
               PROTOTYPE — CONTENT PENDING VERIFICATION
             </p>
           </div>

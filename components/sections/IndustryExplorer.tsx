@@ -1,4 +1,3 @@
-import { SectionLabel } from "@/components/ui/Bits";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
 import { industries } from "@/content/industries";
 
@@ -20,10 +19,9 @@ export function IndustryExplorer() {
       <div className="shell">
         <Reveal className="grid gap-8 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-6">
-            <SectionLabel invert>Industries</SectionLabel>
             <h2
               id="industries-heading"
-              className="mt-6 font-display text-display-l text-white"
+              className="font-display text-display-l text-white"
             >
               Sector insight. Financial discipline.
             </h2>
@@ -43,7 +41,7 @@ export function IndustryExplorer() {
           {industries.map((industry) => (
             <RevealItem as="li" key={industry.index}>
               <div className="group grid grid-cols-1 items-baseline gap-x-8 gap-y-2 border-b border-line-invert-soft py-6 transition-colors duration-500 hover:bg-white/3 md:grid-cols-12 md:py-7">
-                <span className="font-mono text-[0.68rem] text-brass tnum md:col-span-1">
+                <span className="text-meta text-on-navy tnum md:col-span-1">
                   {industry.index}
                 </span>
 

@@ -7,7 +7,6 @@ export const site = {
   region: "Zimbabwe & Africa",
 
   hero: {
-    eyebrow: "Corporate Finance & Advisory",
     headline: "Financial clarity for decisions that matter.",
     lede:
       "Envision Capital helps boards, investors, lenders and business leaders navigate complex financial decisions with the rigour, insight and strategic clarity required to move forward with confidence.",

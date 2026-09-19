@@ -16,7 +16,6 @@ export default function WhatWeDoPage() {
   return (
     <main id="main">
       <PageHeader
-        eyebrow="What we do"
         title={site.capabilities.heading}
         lede={site.capabilities.lede}
       />

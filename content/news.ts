@@ -13,49 +13,42 @@ export type NewsItem = {
 };
 
 /**
- * ⚠️  FABRICATED ANNOUNCEMENTS — NOT REAL ENVISION PRESS RELEASES.
+ * PLACEHOLDER ANNOUNCEMENTS — ILLUSTRATIVE CONTENT.
  *
- * Supplied as seed content to demonstrate the newsroom layout. Three of these
- * make specific, externally checkable claims that carry real exposure if they
- * ship:
- *
- *   1. A named transaction value (US$120m).
- *   2. An office/coverage footprint (Zambia and Botswana).
- *   3. An industry award ("Financial Advisor of the Year") — awards are the
- *      most easily disproved claim on this list, and the one most likely to
- *      draw a complaint from the awarding body.
- *
- * `author` values are named individuals. Confirm every name, date, figure and
- * award with Envision before this page is published.
+ * Titles, places, authors and dates are neutral slots, not claims: a firm
+ * cannot publish a transaction, an award or an office it has not confirmed.
+ * Earlier drafts of this file carried invented ones; they were removed.
+ * Envision supplies verified announcements before launch. Every entry is
+ * marked unverified, which renders a visible label wherever it appears.
  */
 export const news: NewsItem[] = [
   {
-    slug: "120m-recapitalisation",
+    slug: "announcement-01",
     date: "2026-07-29",
-    title: "Envision Capital advises on US$120m industrial recapitalisation",
-    location: "Harare, Zimbabwe",
-    author: "T. Moyo",
-    href: "/newsroom/120m-recapitalisation",
+    title: "[Announcement title]",
+    location: "[Place]",
+    author: "[Author]",
+    href: "/newsroom/announcement-01",
     image: { src: "/images/services/advisory-products.jpg", alt: "Advisers reviewing transaction documents across a table." },
     unverified: true,
   },
   {
-    slug: "regional-expansion",
+    slug: "announcement-02",
     date: "2026-06-14",
-    title: "Envision Capital expands regional coverage into Zambia and Botswana",
-    location: "Lusaka, Zambia",
-    author: "N. Chikwanha",
-    href: "/newsroom/regional-expansion",
+    title: "[Announcement title]",
+    location: "[Place]",
+    author: "[Author]",
+    href: "/newsroom/announcement-02",
     image: { src: "/images/gallery/energy-grid.jpg", alt: "Transmission lines crossing open country at sunset." },
     unverified: true,
   },
   {
-    slug: "advisor-of-the-year",
+    slug: "announcement-03",
     date: "2026-05-02",
-    title: "Envision Capital named Financial Advisor of the Year",
-    location: "Harare, Zimbabwe",
-    author: "T. Moyo",
-    href: "/newsroom/advisor-of-the-year",
+    title: "[Announcement title]",
+    location: "[Place]",
+    author: "[Author]",
+    href: "/newsroom/announcement-03",
     unverified: true,
   },
 ];

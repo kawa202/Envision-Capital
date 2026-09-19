@@ -40,7 +40,7 @@ export function FeaturedInsights() {
           ))}
         </RevealGroup>
 
-        <p className="mt-8 font-mono text-[0.68rem] leading-relaxed tracking-[0.04em] text-white/60">
+        <p className="mt-8 text-meta leading-relaxed text-white/70">
           [ARTICLE CONTENT REQUIRED] — Headlines and deks demonstrate editorial
           hierarchy. Article bodies require authorship and compliance review
           before publication.

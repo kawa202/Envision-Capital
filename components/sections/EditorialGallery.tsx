@@ -3,7 +3,6 @@
 import { motion, useReducedMotion } from "motion/react";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { EditorialImage } from "@/components/ui/EditorialImage";
-import { SectionLabel } from "@/components/ui/Bits";
 import { Reveal } from "@/components/ui/Reveal";
 import { galleryItems } from "@/content/gallery";
 import { EASE_EDITORIAL } from "@/lib/motion";
@@ -76,8 +75,7 @@ export function EditorialGallery() {
       <div className="shell">
         <Reveal className="flex flex-wrap items-end justify-between gap-8">
           <div className="max-w-2xl">
-            <SectionLabel>Envision / In context</SectionLabel>
-            <h2 id="context-heading" className="mt-6 font-display text-display-l text-navy">
+            <h2 id="context-heading" className="font-display text-display-l text-navy">
               The economies we advise within.
             </h2>
           </div>
@@ -161,7 +159,7 @@ export function EditorialGallery() {
                   <span className="font-mono text-[0.66rem] text-analytical tnum">
                     {item.index}
                   </span>
-                  <span className="eyebrow text-muted">{item.category}</span>
+                  <span className="text-meta text-muted">{item.category}</span>
                 </div>
                 <p className="mt-2.5 font-display text-[1.125rem] leading-snug text-navy">
                   {item.title}

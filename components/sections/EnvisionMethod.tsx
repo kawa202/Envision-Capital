@@ -2,7 +2,6 @@
 
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import { useRef } from "react";
-import { SectionLabel } from "@/components/ui/Bits";
 import { Reveal } from "@/components/ui/Reveal";
 import { methodSteps } from "@/content/method";
 import { EASE_EDITORIAL } from "@/lib/motion";
@@ -34,8 +33,7 @@ export function EnvisionMethod() {
       <div className="shell">
         <Reveal className="grid gap-8 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-6">
-            <SectionLabel invert>The Envision Method</SectionLabel>
-            <h2 id="method-heading" className="mt-6 font-display text-display-l text-white">
+            <h2 id="method-heading" className="font-display text-display-l text-white">
               Six stages, in sequence.
             </h2>
           </div>
@@ -79,7 +77,7 @@ export function EnvisionMethod() {
 
                 <div className="pb-1">
                   <h3 className="font-display text-[1.375rem] text-white md:text-[1.5rem]">
-                    <span className="mr-3 font-mono text-[0.7rem] text-brass tnum md:hidden">
+                    <span className="mr-3 text-meta text-on-navy tnum md:hidden">
                       {step.index}
                     </span>
                     {step.name}

@@ -7,9 +7,9 @@ import { keepCompoundsTogether } from "@/lib/typography";
  * Photograph-led card for the hub: image, optional label, headline, optional
  * standfirst, and a footer line. The whole card is one link.
  *
- * `dark` sits on navy — a brass rule caps the card and the body takes a
- * slightly lifted panel. `light` sits on warm white with no panel at all, so
- * the photograph and the headline carry it.
+ * `dark` sits on navy, `light` on warm white. Neither draws a border or a
+ * panel: the photograph and the headline carry the card, and hover moves the
+ * image and underlines the headline rather than lifting a box.
  */
 export function ImageCard({
   href,
@@ -37,14 +37,9 @@ export function ImageCard({
       <Link
         href={href}
         /* Hover and keyboard focus get the same treatment, and colour is
-           never the only signal: the dark card lifts and casts a shadow, and
-           on both tones the headline underlines. The brass cap is a border
-           on the card itself, so it travels with the lift. */
-        className={`group flex h-full flex-col ${
-          dark
-            ? "border-t-[3px] border-brass bg-navy-2 transition-[transform,box-shadow] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-1 hover:shadow-[0_10px_15px_rgba(0,0,0,0.3)] focus-visible:-translate-y-1 focus-visible:shadow-[0_10px_15px_rgba(0,0,0,0.3)]"
-            : ""
-        }`}
+           never the only signal: on both tones the photograph eases in and
+           the headline underlines. */
+        className="group flex h-full flex-col"
       >
         <div className="relative aspect-[3/2] w-full overflow-hidden bg-navy">
           {image && (
@@ -58,9 +53,9 @@ export function ImageCard({
           )}
         </div>
 
-        <div className={`flex flex-1 flex-col ${dark ? "p-6 md:p-7" : "pt-5"}`}>
+        <div className="flex flex-1 flex-col pt-5">
           {label && (
-            <span className={`eyebrow ${dark ? "text-brass-light" : "text-analytical"}`}>
+            <span className={`text-meta ${dark ? "text-brass-light" : "text-analytical"}`}>
               {label}
             </span>
           )}

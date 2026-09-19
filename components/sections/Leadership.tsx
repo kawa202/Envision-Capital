@@ -1,4 +1,4 @@
-import { SectionLabel, UnverifiedFlag } from "@/components/ui/Bits";
+import { UnverifiedFlag } from "@/components/ui/Bits";
 import { EditorialImage } from "@/components/ui/EditorialImage";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
 import { people } from "@/content/people";
@@ -19,10 +19,9 @@ export function Leadership() {
       <div className="shell">
         <Reveal className="grid gap-8 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-6">
-            <SectionLabel>Leadership</SectionLabel>
             <h2
               id="leadership-heading"
-              className="mt-6 font-display text-display-l text-navy"
+              className="font-display text-display-l text-navy"
             >
               Advice carries the name of whoever gives it.
             </h2>
@@ -81,7 +80,7 @@ export function Leadership() {
           ))}
         </RevealGroup>
 
-        <p className="mt-12 border-t border-line pt-5 font-mono text-[0.68rem] leading-relaxed tracking-[0.04em] text-muted">
+        <p className="mt-12 border-t border-line pt-5 text-meta leading-relaxed text-muted">
           [LEADERSHIP PROFILES REQUIRED] — Names, biographies, qualifications and
           contact details are withheld pending verified profiles from Envision
           Capital. The portraits are placeholders of people unconnected to the

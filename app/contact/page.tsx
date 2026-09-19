@@ -13,7 +13,6 @@ export default function ContactPage() {
   return (
     <main id="main">
       <PageHeader
-        eyebrow="Contact"
         title={site.finalCta.heading}
         lede={site.finalCta.body}
       />

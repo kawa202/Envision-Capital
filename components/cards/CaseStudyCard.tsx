@@ -22,18 +22,14 @@ export function CaseStudyCard({
     <article className={isLarge ? "h-full" : ""}>
       <Link
         href={caseStudy.href}
-        className={`group flex h-full flex-col border-t transition-colors duration-500 ${
-          isLarge
-            ? "border-brass/60 bg-white p-8 hover:bg-white lg:p-10"
-            : "border-line pt-5 hover:border-brass/60"
-        }`}
+        className="group flex h-full flex-col border-t border-line pt-5"
       >
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
-          <span className="eyebrow text-analytical">{caseStudy.client}</span>
+          <span className="text-meta text-muted">{caseStudy.client}</span>
           <span className="text-line" aria-hidden="true">
             /
           </span>
-          <span className="eyebrow text-muted">{caseStudy.mandate}</span>
+          <span className="text-meta text-muted">{caseStudy.mandate}</span>
         </div>
 
         <p

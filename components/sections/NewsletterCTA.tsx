@@ -76,7 +76,7 @@ export function NewsletterCTA() {
                 placeholder="you@company.com"
                 className={`w-full border-b bg-transparent py-3 text-[0.9375rem] text-graphite transition-colors duration-300 placeholder:text-muted/50 focus:outline-none ${
                   error
-                    ? "border-[#e06c6c]"
+                    ? "border-error-invert"
                     : "border-white/25 hover:border-white/45 focus:border-brass"
                 }`}
               />
@@ -94,12 +94,12 @@ export function NewsletterCTA() {
               className="mt-3 min-h-[1.25rem] text-[0.8rem]"
             >
               {error && (
-                <span id="newsletter-error" className="text-[#e5a3a3]">
+                <span id="newsletter-error" className="text-error-invert">
                   {error}
                 </span>
               )}
               {submitted && !error && (
-                <span className="font-mono text-[0.68rem] tracking-[0.04em] text-brass">
+                <span className="text-meta text-on-navy">
                   Prototype only — no subscription endpoint is connected.
                 </span>
               )}

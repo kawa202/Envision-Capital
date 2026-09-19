@@ -57,25 +57,12 @@ export function EditorialImage({
 function CommissionPanel({ image }: { image: ImageContent }) {
   return (
     <div className="absolute inset-0 flex flex-col justify-between bg-navy-2 p-5">
-      <div className="grid-lines absolute inset-0 opacity-60" aria-hidden="true" />
-
-      {/* Frame corners — reads as a reserved image slot, not a broken image. */}
-      <span
-        className="absolute top-4 left-4 h-5 w-5 border-t border-l border-brass/50"
-        aria-hidden="true"
-      />
-      <span
-        className="absolute right-4 bottom-4 h-5 w-5 border-r border-b border-brass/50"
-        aria-hidden="true"
-      />
-
-      <p className="relative font-mono text-[0.58rem] leading-tight tracking-[0.14em] text-brass uppercase">
+      <p className="relative text-meta text-on-navy">
         Photography to be commissioned
       </p>
 
       <div className="relative">
-        <span className="mb-3 block h-px w-10 bg-brass/60" aria-hidden="true" />
-        <p className="max-w-xs text-[0.8rem] leading-relaxed text-paper/60">
+        <p className="max-w-xs text-[0.8rem] leading-relaxed text-on-navy/70">
           {image.brief ?? image.alt}
         </p>
       </div>

@@ -125,11 +125,11 @@ export function SelectedWork() {
           </div>
         </Reveal>
 
-        <p className="mt-8 font-mono text-[0.68rem] leading-relaxed tracking-[0.04em] text-muted">
-          [CASE STUDY CONTENT REQUIRED] — Every mandate above is a fabricated
-          placeholder, figures included. No client, transaction or outcome shown
-          here represents work Envision Capital has performed. Replace with
-          verified, client-consented case studies before launch.
+        <p className="mt-8 text-meta leading-relaxed text-muted">
+          [CASE STUDY CONTENT REQUIRED] — Every entry above is an empty
+          placeholder. No client, mandate or outcome shown here represents work
+          Envision Capital has performed. Replace with verified,
+          client-consented case studies before launch.
         </p>
       </div>
     </section>

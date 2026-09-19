@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { ArrowIcon } from "@/components/ui/ArrowIcon";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
-import { SectionEyebrow } from "@/components/ui/SectionEyebrow";
 import { capabilityOverview } from "@/content/home";
 import { services } from "@/content/services";
 
@@ -24,8 +23,7 @@ export function CapabilityOverview() {
     <section className="section-y bg-paper" aria-labelledby="capabilities-heading">
       <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
         <Reveal className="lg:col-span-5 xl:col-span-4">
-          <SectionEyebrow>{capabilityOverview.eyebrow}</SectionEyebrow>
-          <h2 id="capabilities-heading" className="mt-6 font-display text-display-l text-navy">
+          <h2 id="capabilities-heading" className="font-display text-display-l text-navy">
             {capabilityOverview.heading}
           </h2>
           <p className="mt-6 max-w-md text-lede text-graphite">{capabilityOverview.lede}</p>

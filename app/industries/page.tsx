@@ -13,7 +13,6 @@ export default function IndustriesPage() {
   return (
     <main id="main">
       <PageHeader
-        eyebrow="Industries"
         title="Sector insight. Financial discipline."
         lede="Financial technique transfers between sectors. Judgement does not — it comes from knowing which constraint governs the decision in front of you."
       />

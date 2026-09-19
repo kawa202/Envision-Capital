@@ -13,7 +13,6 @@ export default function NewsroomIndexPage() {
   return (
     <main id="main">
       <PageHeader
-        eyebrow="Newsroom"
         title="Recent announcements."
         lede="Mandates, publications and firm news."
       />
@@ -32,13 +31,13 @@ export default function NewsroomIndexPage() {
             ))}
           </ul>
           {/* Closing rule so the last row is bounded like the others. */}
-          <div className="border-t border-brass/35" aria-hidden="true" />
+          <div className="border-t border-line" aria-hidden="true" />
 
-          <p className="mt-10 font-mono text-[0.68rem] leading-relaxed tracking-[0.04em] text-muted">
-            [ANNOUNCEMENT CONTENT REQUIRED] — Fabricated placeholders
-            demonstrating the newsroom layout. The transaction value, the
-            regional footprint, the award and the named partners are all
-            invented. Verify every one with Envision before publication.
+          <p className="mt-10 text-meta leading-relaxed text-muted">
+            [ANNOUNCEMENT CONTENT REQUIRED] — The rows above are empty slots
+            that demonstrate the newsroom layout. Titles, dates, places and
+            attribution come from Envision; nothing has been drafted on the
+            firm&rsquo;s behalf.
           </p>
         </div>
       </section>

@@ -29,7 +29,6 @@ export type Spotlight = {
  * are read from services.ts by id.
  */
 export const capabilityOverview = {
-  eyebrow: "What we do",
   heading: site.capabilities.heading,
   lede: site.capabilities.lede,
   serviceIds: ["corporate-finance", "capital-advisory", "mergers-acquisitions", "company-valuation"],
