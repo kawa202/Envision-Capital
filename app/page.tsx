@@ -2,6 +2,7 @@ import { CtaBand } from "@/components/home/CtaBand";
 import { InsightsGrid } from "@/components/home/InsightsGrid";
 import { KeyFigures } from "@/components/home/KeyFigures";
 import { HeroCarousel } from "@/components/home/HeroCarousel";
+import { Tombstones } from "@/components/home/Tombstones";
 import { AboutSplit } from "@/components/home/AboutSplit";
 import { PositioningStatement } from "@/components/home/PositioningStatement";
 import { Practices } from "@/components/home/Practices";
@@ -23,6 +24,7 @@ export default function Home() {
       <KeyFigures />
       <InsightsGrid />
       <AboutSplit />
+      <Tombstones />
       <CtaBand />
     </main>
   );
