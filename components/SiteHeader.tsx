@@ -6,8 +6,15 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { Logo } from "@/components/ui/Logo";
-import { featuredFor, navItems, utilityNav, type NavItem } from "@/content/navigation";
+import type { ResolvedNavItem } from "@/content/navigation";
 import { PRIMARY_CTA } from "@/lib/brand";
+
+/* Small enough to live here rather than reach into the content layer. */
+const utilityNav = {
+  searchLabel: "Search",
+  loginLabel: "Client login",
+  loginHref: "/portal",
+};
 
 /* The overlay carries the whole search index. It arrives the first time
    someone asks for it and never burdens a page that is only being read. */
@@ -57,7 +64,7 @@ function Chevron({ open }: { open: boolean }) {
   );
 }
 
-export function SiteHeader() {
+export function SiteHeader({ navItems }: { navItems: ResolvedNavItem[] }) {
   const pathname = usePathname();
   const baseId = useId();
 
@@ -167,12 +174,12 @@ export function SiteHeader() {
         <div
           className={`shell flex items-center justify-between gap-6 transition-[height] duration-200 ease-[var(--ec-ease)] ${barHeight}`}
         >
-          <Link
-            href="/"
-            aria-label="Envision Capital — home"
-            className="-mx-2 flex items-center px-2 py-2 text-white"
-          >
+          {/* The accessible name is built from the visible wordmark plus
+              one hidden word, rather than replacing it with an aria-label
+              that does not contain what is on screen. */}
+          <Link href="/" className="-mx-2 flex items-center px-2 py-2 text-white">
             <Logo />
+            <span className="sr-only">home</span>
           </Link>
 
           {/* ---------------- Desktop navigation ---------------- */}
@@ -392,11 +399,11 @@ function MegaPanel({
   onClose,
 }: {
   id: string;
-  item: NavItem;
+  item: ResolvedNavItem;
   onClose: () => void;
 }) {
   const panel = item.panel!;
-  const featured = featuredFor(panel);
+  const featured = panel.featured;
 
   return (
     <div id={id} className="hidden border-t border-line-invert bg-navy lg:block">

@@ -154,9 +154,59 @@ export const navItems: NavItem[] = [
   { label: "Contact", href: "/contact" },
 ];
 
-/** The article shown in a panel, resolved from the collection. */
-export function featuredFor(panel: NavPanel) {
-  return insights.find((insight) => insight.slug === panel.featuredSlug);
+/* ---------------------------------------------------------------------
+   What the header actually receives.
+
+   SiteHeader is a client component, so anything it imports is serialised
+   into the bundle every page downloads. Importing services.ts there sent
+   nine full service records — descriptions, deliverables, art-direction
+   notes — to the browser so the menu could print nine names: 30KB of prose
+   nobody reads. The layout resolves the menu on the server instead and
+   passes down only these fields.
+   --------------------------------------------------------------------- */
+
+export type ResolvedFeatured = {
+  href: string;
+  category: string;
+  title: string;
+  image?: { src: string; alt: string };
+};
+
+export type ResolvedNavItem = {
+  label: string;
+  href: string;
+  panel?: {
+    description: string;
+    exploreLabel: string;
+    exploreHref: string;
+    groups: NavGroup[];
+    featured?: ResolvedFeatured;
+  };
+};
+
+export function getNavData(): ResolvedNavItem[] {
+  return navItems.map((item) => {
+    if (!item.panel) return { label: item.label, href: item.href };
+    const found = insights.find((insight) => insight.slug === item.panel!.featuredSlug);
+    return {
+      label: item.label,
+      href: item.href,
+      panel: {
+        description: item.panel.description,
+        exploreLabel: item.panel.exploreLabel,
+        exploreHref: item.panel.exploreHref,
+        groups: item.panel.groups,
+        featured: found
+          ? {
+              href: found.href,
+              category: found.category,
+              title: found.title,
+              image: found.image,
+            }
+          : undefined,
+      },
+    };
+  });
 }
 
 /**

@@ -37,8 +37,11 @@ export function Logo({ className = "" }: { className?: string }) {
         <span className="font-serif text-[1.0625rem] font-medium md:text-[1.125rem]">
           Envision
         </span>
-        <span className="mt-[3px] font-sans text-[0.5rem] font-medium tracking-[0.5em] md:text-[0.5625rem]">
-          CAPITAL
+        {/* Set as "Capital" and uppercased in CSS, so the text a screen
+            reader announces matches the words a sighted reader sees — which
+            is what WCAG 2.5.3 asks of any control carrying this lockup. */}
+        <span className="mt-[3px] font-sans text-[0.5rem] font-medium tracking-[0.5em] uppercase md:text-[0.5625rem]">
+          Capital
         </span>
       </span>
     </span>

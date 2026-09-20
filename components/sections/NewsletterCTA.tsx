@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { Reveal } from "@/components/ui/Reveal";
 
 /**
  * Newsletter capture.
@@ -41,7 +40,7 @@ export function NewsletterCTA() {
   return (
     <section className="section-y bg-navy" aria-labelledby="newsletter-heading">
       <div className="shell">
-        <Reveal className="grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-16">
+        <div className="grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-16">
           <div className="lg:col-span-5">
             <h2
               id="newsletter-heading"
@@ -118,7 +117,7 @@ export function NewsletterCTA() {
               .
             </p>
           </form>
-        </Reveal>
+        </div>
       </div>
     </section>
   );
