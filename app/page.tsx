@@ -6,7 +6,7 @@ import { FeaturedInsights } from "@/components/home/FeaturedInsights";
 import { HeroCarousel } from "@/components/home/HeroCarousel";
 import { HowWeCanHelp } from "@/components/home/HowWeCanHelp";
 import { NewsroomAndAgenda } from "@/components/home/NewsroomAndAgenda";
-import { PositioningBand } from "@/components/home/PositioningBand";
+import { PositioningStatement } from "@/components/home/PositioningStatement";
 import { NewsletterCTA } from "@/components/sections/NewsletterCTA";
 
 /**
@@ -21,10 +21,9 @@ export default function Home() {
   return (
     <main id="main">
       <HeroCarousel />
+      <PositioningStatement />
       <HowWeCanHelp />
       <FeaturedInsights />
-      <PositioningBand />
-      <AudienceRouting />
       <CaseStudyRow />
       <NewsroomAndAgenda />
       <NewsletterCTA />
