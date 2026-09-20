@@ -4,6 +4,7 @@ import { CtaBand } from "@/components/home/CtaBand";
 import { FeaturedInsights } from "@/components/home/FeaturedInsights";
 import { HeroCarousel } from "@/components/home/HeroCarousel";
 import { HowWeCanHelp } from "@/components/home/HowWeCanHelp";
+import { NewsroomAndAgenda } from "@/components/home/NewsroomAndAgenda";
 import { PositioningBand } from "@/components/home/PositioningBand";
 
 /**
@@ -23,6 +24,7 @@ export default function Home() {
       <PositioningBand />
       <AudienceRouting />
       <CaseStudyRow />
+      <NewsroomAndAgenda />
       <CtaBand />
     </main>
   );
