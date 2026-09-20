@@ -68,7 +68,7 @@ export function InsightsHub({ insights }: { insights: Insight[] }) {
                   type="button"
                   aria-pressed={active}
                   onClick={() => choose(topic as Filter)}
-                  className={`inline-flex min-h-11 items-center text-body transition-colors duration-[var(--ec-dur)] ${
+                  className={`inline-flex min-h-11 min-w-11 items-center justify-center text-body transition-colors duration-[var(--ec-dur)] ${
                     active
                       ? "text-navy underline decoration-1 underline-offset-[0.4em]"
                       : "text-muted hover:text-navy"

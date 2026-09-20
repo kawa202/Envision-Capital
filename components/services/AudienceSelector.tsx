@@ -30,7 +30,7 @@ export function AudienceSelector() {
             <li key={audience.label}>
               <Link
                 href={`/services${audience.href}`}
-                className="link-draw inline-flex min-h-11 items-center text-body text-navy"
+                className="link-draw inline-flex min-h-11 min-w-11 items-center justify-center text-body text-navy"
               >
                 {audience.label}
               </Link>
