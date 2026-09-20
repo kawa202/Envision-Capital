@@ -55,7 +55,9 @@ export function NewsCarousel() {
     const track = trackRef.current;
     if (!track) return;
     const card = track.querySelector("li");
-    const step = card ? card.getBoundingClientRect().width + 40 : track.clientWidth * 0.8;
+    const step = card
+      ? card.getBoundingClientRect().width + 40
+      : track.clientWidth * 0.8;
     track.scrollBy({ left: step * direction, behavior: "smooth" });
   };
 
@@ -90,8 +92,18 @@ export function NewsCarousel() {
                 aria-controls="news-track"
                 className={arrow}
               >
-                <svg viewBox="0 0 16 16" className="h-4 w-4" aria-hidden="true" focusable="false">
-                  <path d="M10 3L5 8l5 5" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                <svg
+                  viewBox="0 0 16 16"
+                  className="h-4 w-4"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path
+                    d="M10 3L5 8l5 5"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                  />
                 </svg>
               </button>
               <button
@@ -102,8 +114,18 @@ export function NewsCarousel() {
                 aria-controls="news-track"
                 className={arrow}
               >
-                <svg viewBox="0 0 16 16" className="h-4 w-4" aria-hidden="true" focusable="false">
-                  <path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" strokeWidth="1.5" />
+                <svg
+                  viewBox="0 0 16 16"
+                  className="h-4 w-4"
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <path
+                    d="M6 3l5 5-5 5"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.5"
+                  />
                 </svg>
               </button>
             </div>
@@ -119,31 +141,40 @@ export function NewsCarousel() {
         {items.map((item, position) => (
           <li
             key={item.slug}
-            role="group"
-            aria-roledescription="slide"
-            aria-label={`${position + 1} of ${items.length}`}
             className="w-[76vw] shrink-0 snap-start sm:w-[42vw] lg:w-[27%]"
           >
-            <Link href={item.href} className="group block">
-              {item.image && (
-                <span className="relative mb-5 block aspect-[3/2] w-full overflow-hidden bg-navy">
-                  <Image
-                    src={item.image.src}
-                    alt=""
-                    fill
-                    sizes="(min-width: 1024px) 27vw, (min-width: 640px) 42vw, 76vw"
-                    className="object-cover"
-                  />
+            {/* The slide role goes on a wrapper, not the <li>. role="group"
+                on a list item is not an allowed role and strips the list of
+                its own semantics — the items stop counting as a list. */}
+            <div
+              role="group"
+              aria-roledescription="slide"
+              aria-label={`${position + 1} of ${items.length}`}
+            >
+              <Link href={item.href} className="group block">
+                {item.image && (
+                  <span className="relative mb-5 block aspect-[3/2] w-full overflow-hidden bg-navy">
+                    <Image
+                      src={item.image.src}
+                      alt=""
+                      fill
+                      sizes="(min-width: 1024px) 27vw, (min-width: 640px) 42vw, 76vw"
+                      className="object-cover"
+                    />
+                  </span>
+                )}
+                <span className="block text-meta text-muted">Announcement</span>
+                <span className="mt-2 block font-serif text-h4 text-navy decoration-1 underline-offset-[0.2em] group-hover:underline group-focus-visible:underline">
+                  {item.title}
                 </span>
-              )}
-              <span className="block text-meta text-muted">Announcement</span>
-              <span className="mt-2 block font-serif text-h4 text-navy decoration-1 underline-offset-[0.2em] group-hover:underline group-focus-visible:underline">
-                {item.title}
-              </span>
-              <time dateTime={item.date} className="mt-3 block text-meta tnum text-muted">
-                {formatDate(item.date)}
-              </time>
-            </Link>
+                <time
+                  dateTime={item.date}
+                  className="mt-3 block text-meta tnum text-muted"
+                >
+                  {formatDate(item.date)}
+                </time>
+              </Link>
+            </div>
           </li>
         ))}
       </ul>

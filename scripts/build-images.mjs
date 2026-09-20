@@ -17,6 +17,21 @@ const src = path.join(root, "public", "images");
 const out = path.join(root, "public", "_img");
 const widths = JSON.parse(readFileSync(path.join(root, "lib", "image-widths.json"), "utf8"));
 
+/**
+ * Quality is 78 unless a photograph is listed here.
+ *
+ * Dense cityscapes compress badly: every window is an edge, so WebP spends
+ * bits on detail nobody reads at 375px. These two were two and three times
+ * the weight of any other frame in the library at the same width. At 62 they
+ * are half the size and indistinguishable on a phone, which is the only
+ * place they are ever served full-bleed.
+ */
+const quality = new Map([
+  ["images/gallery/harare-city.webp", 62],
+  ["images/gallery/harare-cbd-towers.webp", 62],
+  ["images/gallery/trade-port.webp", 68],
+]);
+
 async function* photos(dir) {
   for (const entry of await readdir(dir, { withFileTypes: true })) {
     const full = path.join(dir, entry.name);
@@ -36,7 +51,7 @@ for await (const file of photos(src)) {
     await mkdir(path.dirname(target), { recursive: true });
     /* Never upscale: a copy requested wider than the original is the
        original size, so every URL the loader can produce exists. */
-    await sharp(file).resize({ width: Math.min(w, original), withoutEnlargement: true }).webp({ quality: 78 }).toFile(target);
+    await sharp(file).resize({ width: Math.min(w, original), withoutEnlargement: true }).webp({ quality: quality.get(rel.split(path.sep).join("/")) ?? 78 }).toFile(target);
   }
   count++;
 }
