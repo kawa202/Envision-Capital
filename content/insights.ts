@@ -46,4 +46,13 @@ export const insights: Insight[] = [
     href: "/insights/board-cross-border",
     image: { src: "/images/gallery/harare-city.jpg", alt: "Harare seen from above, the city centre under a clear sky." },
   },
+  {
+    slug: "close-the-books-faster",
+    category: "Finance transformation",
+    date: "2026-05-12",
+    title: "What a slow month-end is really telling you",
+    dek: "Reporting lag is rarely an accounting problem. It is usually a decision problem.",
+    href: "/insights/close-the-books-faster",
+    image: { src: "/images/gallery/technology.jpg", alt: "A finance workstation, screens showing management reporting." },
+  },
 ];
