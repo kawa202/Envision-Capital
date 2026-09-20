@@ -49,6 +49,17 @@ export const news: NewsItem[] = [
     location: "[Place]",
     author: "[Author]",
     href: "/newsroom/announcement-03",
+    image: { src: "/images/gallery/harare-cbd-towers.jpg", alt: "Office towers in the Harare central business district." },
+    unverified: true,
+  },
+  {
+    slug: "announcement-04",
+    date: "2026-03-24",
+    title: "[Announcement title]",
+    location: "[Place]",
+    author: "[Author]",
+    href: "/newsroom/announcement-04",
+    image: { src: "/images/gallery/trade-port.jpg", alt: "A container port seen from above." },
     unverified: true,
   },
 ];

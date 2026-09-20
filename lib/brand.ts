@@ -7,13 +7,11 @@
  */
 
 /**
- * TODO: confirm with Envision Capital before launch.
- *
- * The brand documents supplied to date carry "Earning Lasting Credibility".
- * The prototype brief asks for "Engineering Lasting Credibility". Only the
- * client can say which is the line, so it lives in one constant until they do.
+ * The line on the client's logo, so the site and the mark agree. It settles
+ * an earlier ambiguity between "Earning" and "Engineering Lasting
+ * Credibility", neither of which was ever on the logo.
  */
-export const TAGLINE = "Engineering Lasting Credibility";
+export const TAGLINE = "From Vision To Value";
 
 /**
  * The one call to action on the site. A single label, repeated, is how a

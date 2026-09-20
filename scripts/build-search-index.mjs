@@ -32,6 +32,7 @@ const pages = [
   { title: "Contact", kind: "Page", href: "/contact", summary: "Talk to Envision about a transaction, a valuation or a board view.", keywords: "enquiry email phone harare" },
   { title: "Book a session", kind: "Page", href: "/book", summary: "Choose a service and a time. Demonstration only.", keywords: "booking appointment consultation demo" },
   { title: "Client portal", kind: "Page", href: "/portal", summary: "Where a client sees their engagements. Demonstration only.", keywords: "login sign in account" },
+  { title: "Fraud awareness", kind: "Page", href: "/fraud-awareness", summary: "How to tell whether a message claiming to come from Envision Capital is genuine.", keywords: "scam phishing security banking details whatsapp" },
   { title: "Legal", kind: "Page", href: "/legal", summary: "Privacy, terms of use and regulatory position.", keywords: "privacy terms cookies disclaimer" },
 ];
 

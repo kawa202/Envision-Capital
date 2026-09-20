@@ -52,6 +52,7 @@ const columns = [
       { label: "Terms of use", href: "/legal#terms" },
       { label: "Regulatory", href: "/legal#regulatory" },
       { label: "Cookies", href: "/legal#cookies" },
+      { label: "Fraud awareness", href: "/fraud-awareness" },
       { label: "Client portal", href: "/portal" },
     ],
   },

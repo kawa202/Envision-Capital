@@ -28,6 +28,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/careers", priority: 0.5 },
     { path: "/contact", priority: 0.6 },
     { path: "/legal", priority: 0.3 },
+    { path: "/fraud-awareness", priority: 0.4 },
   ].map(({ path, priority }) => ({
     url: `${SITE_URL}${path}`,
     lastModified: now,

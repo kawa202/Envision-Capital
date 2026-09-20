@@ -1,7 +1,8 @@
 export const site = {
   name: "Envision Capital",
-  /** Brand philosophy. Deliberately no longer the hero headline. */
-  philosophy: "Earning Lasting Credibility",
+  /** Brand line. Single source is TAGLINE in lib/brand.ts; this mirrors it
+      for the structured data, which cannot import from lib. */
+  philosophy: "From Vision To Value",
   descriptor: "Corporate Finance & Advisory",
   location: "Harare, Zimbabwe",
   region: "Zimbabwe & Africa",
