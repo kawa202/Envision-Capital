@@ -1,18 +1,18 @@
+import { AudienceRouting } from "@/components/home/AudienceRouting";
 import { CaseStudyFeature } from "@/components/home/CaseStudyFeature";
 import { CtaBand } from "@/components/home/CtaBand";
 import { FeaturedInsights } from "@/components/home/FeaturedInsights";
 import { HeroCarousel } from "@/components/home/HeroCarousel";
-import { PartnerProof } from "@/components/home/PartnerProof";
 import { HowWeCanHelp } from "@/components/home/HowWeCanHelp";
+import { PositioningBand } from "@/components/home/PositioningBand";
 
 /**
- * The homepage. Six sections, then the footer from app/layout.tsx.
+ * The homepage.
  *
- * What it no longer carries: a rotating hero, a newsroom feed, "On the
- * agenda", "Discover more", "Where are you coming from?", an affiliations
- * strip and a case-study carousel. Eleven sections asked a reader to keep
- * choosing; six tell them what the firm does, how it thinks, who stands
- * behind it, what it has done, and what to do next.
+ * Three stories, what the firm does, what it is thinking, the argument, a
+ * way in by role, then proof and one action — with the footer coming from
+ * app/layout.tsx. Every section is a door into its own route; depth lives on
+ * the spokes.
  */
 export default function Home() {
   return (
@@ -20,7 +20,8 @@ export default function Home() {
       <HeroCarousel />
       <HowWeCanHelp />
       <FeaturedInsights />
-      <PartnerProof />
+      <PositioningBand />
+      <AudienceRouting />
       <CaseStudyFeature />
       <CtaBand />
     </main>
