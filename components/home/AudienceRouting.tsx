@@ -13,27 +13,27 @@ const audiences = [
   {
     label: "Boards",
     line: "An independent view you can put in the minutes.",
-    href: "/what-we-do#company-valuation",
+    href: "/services#company-valuation",
   },
   {
     label: "Investors",
     line: "Diligence that holds up on both sides of a deal.",
-    href: "/what-we-do#mergers-acquisitions",
+    href: "/services#mergers-acquisitions",
   },
   {
     label: "Lenders",
     line: "A funding case built the way credit reads one.",
-    href: "/what-we-do#corporate-finance",
+    href: "/services#corporate-finance",
   },
   {
     label: "Founders",
     line: "Capital structured on terms you can live with.",
-    href: "/what-we-do#capital-advisory",
+    href: "/services#capital-advisory",
   },
   {
     label: "CFOs",
     line: "Senior finance capacity without the permanent hire.",
-    href: "/what-we-do#virtual-cfo",
+    href: "/services#virtual-cfo",
   },
 ];
 

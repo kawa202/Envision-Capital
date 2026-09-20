@@ -7,12 +7,12 @@ import { PageHeader } from "@/components/sections/PageHeader";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "What we do",
+  title: "Services",
   description:
     "Corporate finance advisory, M&A, valuation, capital advisory, virtual CFO, financial reporting and finance transformation — capability across the decision, not one part of it.",
 };
 
-export default function WhatWeDoPage() {
+export default function ServicesPage() {
   return (
     <main id="main">
       <PageHeader

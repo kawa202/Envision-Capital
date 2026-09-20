@@ -25,7 +25,7 @@ export const featuredSlides: FeaturedSlide[] = [
     headline: "Financial clarity for decisions that matter.",
     standfirst:
       "We turn commercial intent into a financial case that holds when someone sets out to dismantle it.",
-    cta: { label: "How we can help", href: "/what-we-do" },
+    cta: { label: "How we can help", href: "/services" },
     image: {
       src: "/images/hero/positioning-boardroom.jpg",
       alt: "A board in session around a long table, papers open in front of them.",
@@ -37,7 +37,7 @@ export const featuredSlides: FeaturedSlide[] = [
     headline: "Diligence starts long before the data room opens.",
     standfirst:
       "The work that makes a business fundable is done in the months nobody is watching.",
-    cta: { label: "Corporate finance advisory", href: "/what-we-do#corporate-finance" },
+    cta: { label: "Corporate finance advisory", href: "/services#corporate-finance" },
     image: {
       src: "/images/hero/advisory-meeting.jpg",
       alt: "Two advisers working through a document together at a desk.",
@@ -49,7 +49,7 @@ export const featuredSlides: FeaturedSlide[] = [
     headline: "A valuation is only worth what it survives.",
     standfirst:
       "Independent work, built to stand up to a counterparty, an auditor and a board in the same week.",
-    cta: { label: "Company valuation", href: "/what-we-do#company-valuation" },
+    cta: { label: "Company valuation", href: "/services#company-valuation" },
     image: {
       src: "/images/hero/team-table.jpg",
       alt: "A working team around a table mid-discussion, screens and notes in view.",

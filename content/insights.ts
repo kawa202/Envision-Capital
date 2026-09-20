@@ -1,6 +1,13 @@
+/**
+ * The four topics /insights filters by. A fifth would need a fifth column in
+ * the filter row and a reason to exist; these cover what the firm publishes.
+ */
+export const TOPICS = ["Capital", "Transactions", "AI & Intelligence", "Reporting"] as const;
+export type Topic = (typeof TOPICS)[number];
+
 export type Insight = {
   slug: string;
-  category: string;
+  category: Topic;
   /** ISO 8601. Formatted for display at render time. */
   date: string;
   title: string;
@@ -21,7 +28,7 @@ export type Insight = {
 export const insights: Insight[] = [
   {
     slug: "cost-of-capital",
-    category: "Capital Markets",
+    category: "Capital",
     date: "2026-08-18",
     title: "The cost of capital in a higher-for-longer regime",
     dek: "Why boards should revisit hurdle rates before the next raise.",
@@ -30,7 +37,7 @@ export const insights: Insight[] = [
   },
   {
     slug: "mid-market-multiples",
-    category: "Valuation",
+    category: "Transactions",
     date: "2026-07-07",
     title: "Valuation multiples for mid-market African businesses",
     dek: "A practical framework for benchmarking private companies.",
@@ -39,7 +46,7 @@ export const insights: Insight[] = [
   },
   {
     slug: "board-cross-border",
-    category: "M&A",
+    category: "Transactions",
     date: "2026-06-02",
     title: "Preparing a board for a cross-border transaction",
     dek: "The five questions directors should ask before signing an NDA.",
@@ -48,11 +55,38 @@ export const insights: Insight[] = [
   },
   {
     slug: "close-the-books-faster",
-    category: "Finance transformation",
+    category: "Reporting",
     date: "2026-05-12",
     title: "What a slow month-end is really telling you",
     dek: "Reporting lag is rarely an accounting problem. It is usually a decision problem.",
     href: "/insights/close-the-books-faster",
     image: { src: "/images/gallery/technology.jpg", alt: "A finance workstation, screens showing management reporting." },
+  },
+  {
+    slug: "ai-in-the-finance-function",
+    category: "AI & Intelligence",
+    date: "2026-04-21",
+    title: "Where AI actually earns its place in a finance function",
+    dek: "Not in the forecast. In the reconciliation nobody wants to do twice.",
+    href: "/insights/ai-in-the-finance-function",
+    image: { src: "/images/services/ai-transformation.jpg", alt: "An analyst reviewing a reconciliation on screen." },
+  },
+  {
+    slug: "model-you-can-defend",
+    category: "AI & Intelligence",
+    date: "2026-03-17",
+    title: "A model you can defend beats a model that is merely right",
+    dek: "Investment committees do not approve conclusions. They approve reasoning.",
+    href: "/insights/model-you-can-defend",
+    image: { src: "/images/gallery/technology.jpg", alt: "A workstation showing a financial model under review." },
+  },
+  {
+    slug: "debt-before-equity",
+    category: "Capital",
+    date: "2026-02-09",
+    title: "When debt is the cheaper answer and nobody has asked",
+    dek: "Dilution is a decision, not a default. It deserves the same scrutiny as a covenant.",
+    href: "/insights/debt-before-equity",
+    image: { src: "/images/gallery/energy-grid.jpg", alt: "Transmission lines crossing open country at sunset." },
   },
 ];

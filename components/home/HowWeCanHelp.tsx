@@ -35,7 +35,7 @@ export function HowWeCanHelp() {
             How we can help
           </h2>
           <Link
-            href="/what-we-do"
+            href="/services"
             className="link-inline inline-flex min-h-11 items-center"
           >
             All services
@@ -46,7 +46,7 @@ export function HowWeCanHelp() {
           {shown.map((service) => (
             <li key={service.id} className="bg-white">
               <Link
-                href={`/what-we-do#${service.id}`}
+                href={`/services#${service.id}`}
                 className="group flex h-full flex-col px-1 py-8 sm:px-6"
               >
                 <h3 className="text-display-m text-navy decoration-1 underline-offset-[0.2em] group-hover:underline group-focus-visible:underline">
@@ -60,7 +60,7 @@ export function HowWeCanHelp() {
 
         <p className="mt-10">
           <Link
-            href="/what-we-do#advisory-products"
+            href="/services#advisory-products"
             className="link-inline inline-flex min-h-11 items-center"
           >
             Advisory Products

@@ -17,7 +17,7 @@ const columns = [
     heading: "What we do",
     links: services.map((service) => ({
       label: service.name,
-      href: `/what-we-do#${service.id}`,
+      href: `/services#${service.id}`,
     })),
   },
   {

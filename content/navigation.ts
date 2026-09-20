@@ -1,5 +1,4 @@
-import { insights } from "./insights";
-import { industries } from "./industries";
+import { insights, TOPICS } from "./insights";
 import { services } from "./services";
 
 export type NavLink = { label: string; href: string };
@@ -38,22 +37,17 @@ function serviceGroups(): NavGroup[] {
       .filter((service) => service.group === heading)
       .map((service) => ({
         label: service.name,
-        href: `/what-we-do#${service.id}`,
+        href: `/services#${service.id}`,
       })),
   }));
 }
 
-/** Eight sectors, split into two columns so the panel stays four across. */
-function industryGroups(): NavGroup[] {
-  const links = industries.map((industry) => ({
-    label: industry.name,
-    href: "/industries",
+/** The four insight topics, as /insights filters them. */
+function topicLinks(): NavLink[] {
+  return TOPICS.map((topic) => ({
+    label: topic,
+    href: `/insights?topic=${encodeURIComponent(topic)}`,
   }));
-  const half = Math.ceil(links.length / 2);
-  return [
-    { heading: "Sectors", links: links.slice(0, half) },
-    { heading: " ", links: links.slice(half) },
-  ];
 }
 
 /**
@@ -66,26 +60,24 @@ function industryGroups(): NavGroup[] {
 export const navItems: NavItem[] = [
   {
     label: "Services",
-    href: "/what-we-do",
+    href: "/services",
     panel: {
       description:
         "Financial expertise, strategic insight and execution — applied to the decisions that carry consequence.",
       exploreLabel: "All services",
-      exploreHref: "/what-we-do",
-      groups: serviceGroups(),
+      exploreHref: "/services",
+      groups: [
+        ...serviceGroups(),
+        {
+          heading: "By sector",
+          links: [
+            { label: "Industries we cover", href: "/industries" },
+            { label: "The Envision Method", href: "/method" },
+            { label: "Book a session", href: "/book" },
+          ],
+        },
+      ],
       featuredSlug: "cost-of-capital",
-    },
-  },
-  {
-    label: "Industries",
-    href: "/industries",
-    panel: {
-      description:
-        "Financial technique transfers between sectors. Judgement does not — it comes from knowing which constraint governs the decision in front of you.",
-      exploreLabel: "All industries",
-      exploreHref: "/industries",
-      groups: industryGroups(),
-      featuredSlug: "mid-market-multiples",
     },
   },
   {
@@ -97,21 +89,13 @@ export const navItems: NavItem[] = [
       exploreLabel: "All insights",
       exploreHref: "/insights",
       groups: [
-        {
-          heading: "By topic",
-          links: [
-            { label: "Capital Markets", href: "/insights" },
-            { label: "Valuation", href: "/insights" },
-            { label: "M&A", href: "/insights" },
-            { label: "Finance transformation", href: "/insights" },
-          ],
-        },
+        { heading: "By topic", links: topicLinks() },
         {
           heading: "More from Envision",
           links: [
             { label: "Newsroom", href: "/newsroom" },
+            { label: "On the agenda", href: "/events" },
             { label: "Selected work", href: "/work" },
-            { label: "The Envision Method", href: "/method" },
           ],
         },
       ],
@@ -131,9 +115,9 @@ export const navItems: NavItem[] = [
           heading: "The firm",
           links: [
             { label: "Our purpose", href: "/about" },
-            { label: "How we work", href: "/about" },
-            { label: "The Envision Method", href: "/method" },
             { label: "Leadership", href: "/about#leadership" },
+            { label: "The Envision Method", href: "/method" },
+            { label: "Careers", href: "/careers" },
           ],
         },
         {
@@ -141,16 +125,15 @@ export const navItems: NavItem[] = [
           links: [
             { label: "Selected work", href: "/work" },
             { label: "Newsroom", href: "/newsroom" },
-            { label: "Contact", href: "/contact" },
+            { label: "On the agenda", href: "/events" },
           ],
         },
       ],
-      featuredSlug: "cost-of-capital",
+      featuredSlug: "mid-market-multiples",
     },
   },
-  /* Careers and Contact are single destinations. A panel that held one link
-     would be a drawer with nothing in it. */
-  { label: "Careers", href: "/careers" },
+  /* Contact is a single destination. A panel holding one link would be a
+     drawer with nothing in it. */
   { label: "Contact", href: "/contact" },
 ];
 

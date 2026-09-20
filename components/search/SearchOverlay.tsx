@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useId, useMemo, useRef, useState } from "react";
-import { search } from "@/lib/search";
+import { loadSearchIndex, search, type SearchResult } from "@/lib/search";
 
 /**
  * Full-width search overlay.
@@ -20,11 +20,24 @@ const FOCUSABLE = 'a[href], button:not([disabled]), input, [tabindex]:not([tabin
 export function SearchOverlay({ onClose }: { onClose: () => void }) {
   const id = useId();
   const [query, setQuery] = useState("");
+  const [index, setIndex] = useState<SearchResult[] | null>(null);
   const panelRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const results = useMemo(() => search(query), [query]);
+  /* The index is a fetch, so the field is usable before it lands. */
+  useEffect(() => {
+    let live = true;
+    loadSearchIndex().then((data) => {
+      if (live) setIndex(data);
+    });
+    return () => {
+      live = false;
+    };
+  }, []);
+
+  const results = useMemo(() => (index ? search(index, query) : []), [index, query]);
   const trimmed = query.trim();
+  const loading = index === null;
 
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;
@@ -109,7 +122,9 @@ export function SearchOverlay({ onClose }: { onClose: () => void }) {
           <p aria-live="polite" className="mt-4 text-meta text-muted">
             {trimmed === ""
               ? "Type to search services, sectors, insights and pages."
-              : `${results.length} ${results.length === 1 ? "result" : "results"} for “${trimmed}”`}
+              : loading
+                ? "Searching…"
+                : `${results.length} ${results.length === 1 ? "result" : "results"} for “${trimmed}”`}
           </p>
 
           {results.length > 0 && (
@@ -133,7 +148,7 @@ export function SearchOverlay({ onClose }: { onClose: () => void }) {
             </ul>
           )}
 
-          {trimmed !== "" && results.length === 0 && (
+          {trimmed !== "" && !loading && results.length === 0 && (
             <p className="mt-6 text-body text-muted">
               Nothing matched. Try a service, a sector, or{" "}
               <Link href="/contact" onClick={onClose} className="link-inline">

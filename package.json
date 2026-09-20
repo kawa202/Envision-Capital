@@ -3,12 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "node scripts/build-search-index.mjs && next dev",
+    "build": "node scripts/build-search-index.mjs && next build",
     "start": "next start",
     "lint": "eslint",
     "build:images": "node scripts/build-images.mjs",
-    "build:pages": "node scripts/build-images.mjs && next build && node scripts/flatten-segment-prefetches.mjs"
+    "build:pages": "node scripts/build-images.mjs && node scripts/build-search-index.mjs && next build && node scripts/flatten-segment-prefetches.mjs",
+    "build:search": "node scripts/build-search-index.mjs"
   },
   "dependencies": {
     "motion": "^13.3.0",

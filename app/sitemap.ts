@@ -17,10 +17,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticRoutes = [
     { path: "", priority: 1 },
-    { path: "/what-we-do", priority: 0.9 },
+    { path: "/services", priority: 0.9 },
     { path: "/industries", priority: 0.8 },
     { path: "/insights", priority: 0.9 },
     { path: "/newsroom", priority: 0.7 },
+    { path: "/events", priority: 0.6 },
     { path: "/work", priority: 0.8 },
     { path: "/method", priority: 0.7 },
     { path: "/about", priority: 0.7 },

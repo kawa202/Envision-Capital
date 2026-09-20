@@ -10,7 +10,7 @@ export const site = {
     headline: "Financial clarity for decisions that matter.",
     lede:
       "Envision Capital helps boards, investors, lenders and business leaders navigate complex financial decisions with the rigour, insight and strategic clarity required to move forward with confidence.",
-    primaryCta: { label: "Explore our capabilities", href: "/what-we-do" },
+    primaryCta: { label: "Explore our capabilities", href: "/services" },
     secondaryCta: { label: "Talk to Envision", href: "/contact" },
     meta: "Zimbabwe · Africa",
   },
@@ -24,7 +24,7 @@ export const site = {
     ],
   },
 
-  /** Capability positioning — heads /what-we-do and the homepage overview. */
+  /** Capability positioning — heads /services and the homepage overview. */
   capabilities: {
     heading: "Capability across the decision, not one part of it.",
     lede:
@@ -99,7 +99,7 @@ export const site = {
 
 /** Primary navigation. Institutional labels, not product labels. */
 export const navigation = [
-  { label: "What we do", href: "/what-we-do", megaMenu: true },
+  { label: "What we do", href: "/services", megaMenu: true },
   { label: "Industries", href: "/industries", megaMenu: false },
   { label: "Insights", href: "/insights", megaMenu: false },
   { label: "Newsroom", href: "/newsroom", megaMenu: false },

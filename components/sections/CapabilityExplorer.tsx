@@ -15,7 +15,7 @@ import { EASE_EDITORIAL, EASE_IMAGE } from "@/lib/motion";
  * the detail view for whatever is selected. Hover, click and keyboard all
  * drive the same state, implemented as a real vertical tablist.
  */
-/* The URL hash is external state: /what-we-do#company-valuation opens that
+/* The URL hash is external state: /services#company-valuation opens that
    capability. Read through useSyncExternalStore so server and client agree on
    the first render and later hash changes are picked up without an effect. */
 const subscribeHash = (onChange: () => void) => {
@@ -70,15 +70,15 @@ export function CapabilityExplorer() {
   return (
     <section
       ref={sectionRef}
-      id="what-we-do"
+      id="services"
       className="section-y bg-paper-2"
-      aria-labelledby="what-we-do-heading"
+      aria-labelledby="services-heading"
     >
       <div className="shell">
         <Reveal className="grid gap-8 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
             <h2
-              id="what-we-do-heading"
+              id="services-heading"
               className="font-display text-display-l text-navy"
             >
               Capability across the decision, not one part of it.
