@@ -1,5 +1,7 @@
 import Link from "next/link";
+import { FooterSignup } from "@/components/sections/FooterSignup";
 import { Logo } from "@/components/ui/Logo";
+import { TOPICS } from "@/content/insights";
 import { services } from "@/content/services";
 import { site } from "@/content/site";
 import { TAGLINE } from "@/lib/brand";
@@ -14,11 +16,34 @@ import { TAGLINE } from "@/lib/brand";
  */
 const columns = [
   {
-    heading: "What we do",
+    heading: "Services",
     links: services.map((service) => ({
       label: service.name,
       href: `/services#${service.id}`,
     })),
+  },
+  {
+    heading: "Insights",
+    links: [
+      ...TOPICS.map((topic) => ({
+        label: topic,
+        href: `/insights?topic=${encodeURIComponent(topic)}`,
+      })),
+      { label: "Newsroom", href: "/newsroom" },
+      { label: "On the agenda", href: "/events" },
+    ],
+  },
+  {
+    heading: "Firm",
+    links: [
+      { label: "About us", href: "/about" },
+      { label: "Leadership", href: "/about#leadership" },
+      { label: "The Envision Method", href: "/method" },
+      { label: "Industries", href: "/industries" },
+      { label: "Selected work", href: "/work" },
+      { label: "Careers", href: "/careers" },
+      { label: "Contact", href: "/contact" },
+    ],
   },
   {
     heading: "Legal",
@@ -27,18 +52,7 @@ const columns = [
       { label: "Terms of use", href: "/legal#terms" },
       { label: "Regulatory", href: "/legal#regulatory" },
       { label: "Cookies", href: "/legal#cookies" },
-    ],
-  },
-  {
-    heading: "Firm",
-    links: [
-      { label: "About us", href: "/about" },
-      { label: "The Envision Method", href: "/method" },
-      { label: "Industries", href: "/industries" },
-      { label: "Selected work", href: "/work" },
-      { label: "Insights", href: "/insights" },
-      { label: "Newsroom", href: "/newsroom" },
-      { label: "Contact", href: "/contact" },
+      { label: "Client portal", href: "/portal" },
     ],
   },
 ];
@@ -47,8 +61,9 @@ export function Footer() {
   return (
     <footer className="bg-navy text-white">
       <div className="shell py-16 md:py-20">
-        <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
-          <div className="lg:col-span-4">
+        <div className="grid gap-x-10 gap-y-14 lg:grid-cols-12">
+          {/* ---------- Brand and contact ---------- */}
+          <div className="lg:col-span-3">
             <Logo className="text-white" />
             <p className="mt-6 max-w-[18rem] font-serif text-body leading-snug text-on-navy">
               {TAGLINE}
@@ -75,7 +90,8 @@ export function Footer() {
             </address>
           </div>
 
-          <div className="grid gap-10 sm:grid-cols-3 lg:col-span-8">
+          {/* ---------- Site map ---------- */}
+          <div className="grid gap-10 sm:grid-cols-2 lg:col-span-6 lg:grid-cols-4">
             {columns.map((column) => (
               <nav key={column.heading} aria-label={column.heading}>
                 <h2 className="text-meta text-on-navy">{column.heading}</h2>
@@ -85,11 +101,10 @@ export function Footer() {
                       <Link
                         href={link.href}
                         /* The footer is a site map, not the likely next
-                           click. Prefetching all sixteen of these cost more
-                           bandwidth on the homepage than every photograph
-                           on it put together. */
+                           click. Prefetching every one of these cost more
+                           bandwidth than every photograph on the homepage. */
                         prefetch={false}
-                        className="link-draw inline-flex min-h-11 items-center text-meta text-on-navy/80 transition-colors duration-200 hover:text-white"
+                        className="link-draw inline-flex min-h-11 items-center text-meta text-on-navy/80 transition-colors duration-[var(--ec-dur)] hover:text-white"
                       >
                         {link.label}
                       </Link>
@@ -100,10 +115,14 @@ export function Footer() {
             ))}
           </div>
 
+          {/* ---------- Sign-up ---------- */}
+          <div className="lg:col-span-3">
+            <FooterSignup />
+          </div>
         </div>
 
         {/* ---------- Legal ---------- */}
-        <div className="mt-14 border-t border-line-invert pt-8">
+        <div className="mt-16 border-t border-line-invert pt-8">
           <p className="max-w-3xl text-meta leading-relaxed text-on-navy/80">
             {site.disclaimer}
           </p>
