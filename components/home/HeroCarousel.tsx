@@ -95,11 +95,14 @@ export function HeroCarousel() {
             className={`absolute inset-0 -z-10 transition-opacity duration-400 ease-[var(--ec-ease)] ${
               active ? "opacity-100" : "opacity-0"
             }`}
+            /* The inactive photographs are hidden from assistive technology
+               as well as from view, so only the visible slide's alt text is
+               ever announced. */
             aria-hidden={!active}
           >
             <Image
               src={slide.image.src}
-              alt=""
+              alt={slide.image.alt}
               fill
               priority={position === 0}
               loading={position === 0 ? "eager" : "lazy"}
@@ -130,17 +133,15 @@ export function HeroCarousel() {
                   active ? "opacity-100" : "pointer-events-none opacity-0"
                 }`}
               >
-                <p className="text-meta text-white">{slide.category}</p>
-
                 {/* Slide one carries the page's h1. The others are the same
                     type at the same size, set as paragraphs, so the document
                     keeps exactly one heading at this level. */}
                 {position === 0 ? (
-                  <h1 className="mt-4 max-w-[18ch] text-hero font-normal text-white">
+                  <h1 className="max-w-[18ch] text-hero font-normal text-white">
                     {slide.headline}
                   </h1>
                 ) : (
-                  <p className="mt-4 max-w-[18ch] font-serif text-hero leading-[var(--ec-leading-display)] tracking-[var(--ec-tracking-display)] text-white">
+                  <p className="max-w-[18ch] font-serif text-hero leading-[var(--ec-leading-display)] tracking-[var(--ec-tracking-display)] text-white">
                     {slide.headline}
                   </p>
                 )}

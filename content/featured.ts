@@ -1,7 +1,5 @@
 export type FeaturedSlide = {
   slug: string;
-  /** Short label above the headline: "Our firm", "Insight". */
-  category: string;
   headline: string;
   /** One sentence. If it needs two, the headline is not doing its job. */
   standfirst: string;
@@ -12,6 +10,10 @@ export type FeaturedSlide = {
 /**
  * Hero stories. Three, and no more.
  *
+ * No label above the headline: the hero is a picture, a sentence and a way
+ * on. A small caption over a heading is the eyebrow pattern under another
+ * name, and it went from the rest of the site two passes ago.
+ *
  * Every line here is positioning, not fact: nothing claims a transaction, a
  * figure, a client or a date. The photographs are the three lightest frames
  * in the library that suit a full-bleed crop — the hero is the first thing
@@ -21,7 +23,6 @@ export type FeaturedSlide = {
 export const featuredSlides: FeaturedSlide[] = [
   {
     slug: "positioning",
-    category: "Our firm",
     headline: "Financial clarity for decisions that matter.",
     standfirst:
       "We turn commercial intent into a financial case that holds when someone sets out to dismantle it.",
@@ -33,7 +34,6 @@ export const featuredSlides: FeaturedSlide[] = [
   },
   {
     slug: "readiness",
-    category: "Capability",
     headline: "Diligence starts long before the data room opens.",
     standfirst:
       "The work that makes a business fundable is done in the months nobody is watching.",
@@ -45,7 +45,6 @@ export const featuredSlides: FeaturedSlide[] = [
   },
   {
     slug: "valuation",
-    category: "Capability",
     headline: "A valuation is only worth what it survives.",
     standfirst:
       "Independent work, built to stand up to a counterparty, an auditor and a board in the same week.",
