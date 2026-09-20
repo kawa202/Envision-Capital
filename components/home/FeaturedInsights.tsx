@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { insights } from "@/content/insights";
 
-/** "18 August 2026" — long form; there are only four of them. */
+/** "18 August 2026" — long form; there are only three of them. */
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString("en-GB", {
     day: "numeric",
@@ -12,18 +12,18 @@ function formatDate(iso: string) {
 }
 
 /**
- * One feature and three followers.
+ * One feature and two behind it.
  *
- * Four equal cards make a reader choose; a lead with three beneath it tells
- * them where to start. Only the feature carries a large photograph — the
- * three below take the 480px variant, which is where most of the budget
- * saving on this section comes from.
+ * Equal cards make a reader choose; a lead says where to start. Only the
+ * feature carries a large photograph — the two below take a narrow variant,
+ * which is where this section's weight saving comes from. No borders, no
+ * panels: the photograph and the headline carry each one.
  */
 export function FeaturedInsights() {
-  const [feature, ...rest] = insights.slice(0, 4);
+  const [feature, ...rest] = insights.slice(0, 3);
 
   return (
-    <section className="section-y bg-stone" aria-labelledby="insights-heading">
+    <section className="section-y bg-white" aria-labelledby="insights-heading">
       <div className="shell">
         <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-4">
           <h2 id="insights-heading" className="text-display-l text-navy">
@@ -62,25 +62,25 @@ export function FeaturedInsights() {
             </Link>
           </article>
 
-          {/* ---------------- The three ---------------- */}
-          <ul className="divide-y divide-line border-t border-line lg:col-span-5 lg:border-t-0">
+          {/* ---------------- The two ---------------- */}
+          <ul className="grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:col-span-5 lg:grid-cols-1">
             {rest.map((insight) => (
-              <li key={insight.slug} className="py-6 first:lg:pt-0">
-                <Link href={insight.href} className="group flex gap-5">
+              <li key={insight.slug}>
+                <Link href={insight.href} className="group block">
                   {insight.image && (
-                    <span className="relative block aspect-square w-24 shrink-0 overflow-hidden bg-navy sm:w-28">
+                    <span className="relative mb-5 block aspect-[3/2] w-full overflow-hidden bg-navy">
                       <Image
                         src={insight.image.src}
                         alt=""
                         fill
-                        sizes="112px"
+                        sizes="(min-width: 1024px) 30vw, 100vw"
                         className="object-cover"
                       />
                     </span>
                   )}
-                  <span className="min-w-0">
+                  <span className="block">
                     <span className="block text-meta text-muted">{insight.category}</span>
-                    <span className="mt-1.5 block text-display-m text-navy decoration-1 underline-offset-[0.2em] group-hover:underline group-focus-visible:underline">
+                    <span className="mt-1.5 block text-h4 font-serif text-navy decoration-1 underline-offset-[0.2em] group-hover:underline group-focus-visible:underline">
                       {insight.title}
                     </span>
                     <time
