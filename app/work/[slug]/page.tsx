@@ -21,7 +21,7 @@ export async function generateMetadata(
 
   return {
     title: `${item.client} — ${item.mandate}`,
-    description: item.outcome,
+    description: `${item.title} — ${item.outcome}`,
     alternates: { canonical: `/work/${item.slug}` },
   };
 }
@@ -34,7 +34,7 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
   return (
     <main id="main">
       <PageHeader
-        title={item.outcome}
+        title={item.title}
         lede={item.client}
         meta={item.mandate}
       />
@@ -46,6 +46,12 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
               <dt className="text-meta text-muted">Client</dt>
               <dd className="mt-2 text-[0.9375rem] text-graphite">
                 {item.client}
+              </dd>
+            </div>
+            <div>
+              <dt className="text-meta text-muted">Outcome</dt>
+              <dd className="mt-2 text-[0.9375rem] text-graphite">
+                {item.outcome}
               </dd>
             </div>
             <div>

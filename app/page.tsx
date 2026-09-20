@@ -1,5 +1,5 @@
 import { AudienceRouting } from "@/components/home/AudienceRouting";
-import { CaseStudyFeature } from "@/components/home/CaseStudyFeature";
+import { CaseStudyRow } from "@/components/home/CaseStudyRow";
 import { CtaBand } from "@/components/home/CtaBand";
 import { FeaturedInsights } from "@/components/home/FeaturedInsights";
 import { HeroCarousel } from "@/components/home/HeroCarousel";
@@ -22,7 +22,7 @@ export default function Home() {
       <FeaturedInsights />
       <PositioningBand />
       <AudienceRouting />
-      <CaseStudyFeature />
+      <CaseStudyRow />
       <CtaBand />
     </main>
   );

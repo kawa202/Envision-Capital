@@ -39,7 +39,7 @@ export function CaseStudyCard({
               : "mt-3.5 text-[1.125rem] leading-snug"
           }`}
         >
-          {caseStudy.outcome}
+          {caseStudy.title}
         </p>
 
         <div
