@@ -20,13 +20,13 @@ export function ArrowLink({
   return (
     <Link
       href={href}
-      className={`group inline-flex min-h-11 items-center gap-2.5 text-[0.8125rem] transition-colors duration-300 ${
+      className={`group inline-flex min-h-11 items-center gap-2.5 text-meta transition-colors duration-300 ${
         invert ? "text-white/85 hover:text-white" : "text-analytical hover:text-navy"
       } ${className}`}
     >
       <span className="link-draw">{children}</span>
       <span
-        className="transition-transform duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-1"
+        className="transition-opacity duration-[var(--ec-dur)] ease-[var(--ec-ease)] group-hover:opacity-70"
         aria-hidden="true"
       >
         →

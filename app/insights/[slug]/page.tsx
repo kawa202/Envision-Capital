@@ -53,7 +53,7 @@ export default async function InsightPage(
             <p className="text-meta text-ink">
               [ARTICLE BODY REQUIRED]
             </p>
-            <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted">
+            <p className="mt-3 text-meta leading-relaxed text-muted">
               This template is ready for the article. Supply the body copy,
               author attribution and publication date and this page renders
               them — nothing here has been drafted on Envision&rsquo;s behalf.
@@ -79,12 +79,12 @@ export default async function InsightPage(
               {others.map((item) => (
                 <li key={item.slug} className="border-t border-line pt-5">
                   <p className="text-meta text-analytical">{item.category}</p>
-                  <h3 className="mt-3 font-display text-[1.25rem] leading-snug text-navy">
+                  <h3 className="mt-3 font-display text-h4 leading-snug text-navy">
                     <Link href={item.href} className="link-draw">
                       {item.title}
                     </Link>
                   </h3>
-                  <p className="mt-2 text-[0.875rem] leading-relaxed text-muted">
+                  <p className="mt-2 text-meta leading-relaxed text-muted">
                     {item.dek}
                   </p>
                 </li>

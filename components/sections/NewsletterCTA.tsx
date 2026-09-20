@@ -91,7 +91,7 @@ export function NewsletterCTA() {
             <p
               role="status"
               aria-live="polite"
-              className="mt-3 min-h-[1.25rem] text-[0.8rem]"
+              className="mt-3 min-h-[1.25rem] text-meta"
             >
               {error && (
                 <span id="newsletter-error" className="text-error-invert">

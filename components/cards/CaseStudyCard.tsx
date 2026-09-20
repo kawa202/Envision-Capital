@@ -36,7 +36,7 @@ export function CaseStudyCard({
           className={`font-display text-navy ${
             isLarge
               ? "mt-6 text-display-m leading-[1.15]"
-              : "mt-3.5 text-[1.125rem] leading-snug"
+              : "mt-3.5 text-h4 leading-snug"
           }`}
         >
           {caseStudy.title}
@@ -47,10 +47,10 @@ export function CaseStudyCard({
             isLarge ? "mt-auto pt-10" : "mt-auto pt-5"
           }`}
         >
-          <span className="flex items-center gap-2.5 text-[0.8125rem] text-navy">
+          <span className="flex items-center gap-2.5 text-meta text-navy">
             <span className="link-draw">Read the case study</span>
             <span
-              className="transition-transform duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-1"
+              className="transition-opacity duration-[var(--ec-dur)] ease-[var(--ec-ease)] group-hover:opacity-70"
               aria-hidden="true"
             >
               →

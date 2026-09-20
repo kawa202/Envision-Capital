@@ -47,19 +47,19 @@ export default async function NewsPage(props: PageProps<"/newsroom/[slug]">) {
           <dl className="grid max-w-2xl gap-6 border-b border-line pb-8 sm:grid-cols-3">
             <div>
               <dt className="text-meta text-muted">Date</dt>
-              <dd className="mt-2 text-[0.9375rem] text-graphite">
+              <dd className="mt-2 text-meta text-graphite">
                 <time dateTime={item.date}>{formatted}</time>
               </dd>
             </div>
             <div>
               <dt className="text-meta text-muted">Location</dt>
-              <dd className="mt-2 text-[0.9375rem] text-graphite">
+              <dd className="mt-2 text-meta text-graphite">
                 {item.location}
               </dd>
             </div>
             <div>
               <dt className="text-meta text-muted">Contact</dt>
-              <dd className="mt-2 text-[0.9375rem] text-graphite">
+              <dd className="mt-2 text-meta text-graphite">
                 {item.author}
               </dd>
             </div>
@@ -69,7 +69,7 @@ export default async function NewsPage(props: PageProps<"/newsroom/[slug]">) {
             <p className="text-meta text-ink">
               [ANNOUNCEMENT BODY REQUIRED]
             </p>
-            <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted">
+            <p className="mt-3 text-meta leading-relaxed text-muted">
               The title, date, location and attribution above are empty
               placeholders. Supply the verified details and the release body
               before this page is published.

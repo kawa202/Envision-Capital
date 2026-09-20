@@ -76,18 +76,18 @@ export function EnvisionMethod() {
                 </span>
 
                 <div className="pb-1">
-                  <h3 className="font-display text-[1.375rem] text-white md:text-[1.5rem]">
+                  <h3 className="font-display text-h4 text-white md:text-h4">
                     <span className="mr-3 text-meta text-on-navy tnum md:hidden">
                       {step.index}
                     </span>
                     {step.name}
                   </h3>
 
-                  <p className="mt-2 text-[0.9375rem] leading-relaxed text-white/75">
+                  <p className="mt-2 text-meta leading-relaxed text-white/75">
                     {step.summary}
                   </p>
 
-                  <p className="mt-3 max-w-2xl text-[0.875rem] leading-relaxed text-white/50">
+                  <p className="mt-3 max-w-2xl text-meta leading-relaxed text-white/50">
                     {step.description}
                   </p>
 

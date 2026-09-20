@@ -18,18 +18,18 @@ export function InsightCard({ insight }: { insight: Insight }) {
       >
         <span className="text-meta text-muted">{insight.category}</span>
 
-        <h3 className="mt-4 font-display text-[1.25rem] leading-snug text-navy decoration-1 underline-offset-[0.2em] group-hover:underline group-focus-visible:underline">
+        <h3 className="mt-4 font-display text-h4 leading-snug text-navy decoration-1 underline-offset-[0.2em] group-hover:underline group-focus-visible:underline">
           {insight.title}
         </h3>
 
-        <p className="mt-3 text-[0.875rem] leading-relaxed text-muted">
+        <p className="mt-3 text-meta leading-relaxed text-muted">
           {insight.dek}
         </p>
 
-        <span className="mt-auto flex items-center gap-2.5 pt-6 text-[0.8125rem] text-navy">
+        <span className="mt-auto flex items-center gap-2.5 pt-6 text-meta text-navy">
           Read more
           <span
-            className="transition-transform duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-1"
+            className="transition-opacity duration-[var(--ec-dur)] ease-[var(--ec-ease)] group-hover:opacity-70"
             aria-hidden="true"
           >
             →

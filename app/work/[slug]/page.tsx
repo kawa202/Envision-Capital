@@ -44,19 +44,19 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
           <dl className="grid max-w-2xl gap-6 border-b border-line pb-8 sm:grid-cols-2">
             <div>
               <dt className="text-meta text-muted">Client</dt>
-              <dd className="mt-2 text-[0.9375rem] text-graphite">
+              <dd className="mt-2 text-meta text-graphite">
                 {item.client}
               </dd>
             </div>
             <div>
               <dt className="text-meta text-muted">Outcome</dt>
-              <dd className="mt-2 text-[0.9375rem] text-graphite">
+              <dd className="mt-2 text-meta text-graphite">
                 {item.outcome}
               </dd>
             </div>
             <div>
               <dt className="text-meta text-muted">Mandate</dt>
-              <dd className="mt-2 text-[0.9375rem] text-graphite">
+              <dd className="mt-2 text-meta text-graphite">
                 {item.mandate}
               </dd>
             </div>
@@ -66,7 +66,7 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
             <p className="text-meta text-ink">
               [CASE STUDY BODY REQUIRED]
             </p>
-            <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted">
+            <p className="mt-3 text-meta leading-relaxed text-muted">
               Challenge, approach, role and outcome require verified,
               client-consented content. The mandate summarised above is an
               empty placeholder.

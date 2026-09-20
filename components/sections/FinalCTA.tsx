@@ -8,7 +8,7 @@ import { site } from "@/content/site";
 type Errors = { name?: string; email?: string };
 
 const field =
-  "min-h-11 w-full border-b border-line bg-transparent py-2.5 text-[0.9375rem] text-graphite transition-colors duration-300 hover:border-navy/40 focus:border-brass focus:outline-none";
+  "min-h-11 w-full border-b border-line bg-transparent py-2.5 text-meta text-graphite transition-colors duration-300 hover:border-navy/40 focus:border-brass focus:outline-none";
 const fieldError = "border-error hover:border-error";
 
 export function FinalCTA() {
@@ -49,7 +49,7 @@ export function FinalCTA() {
               <h2 id="contact-heading" className="font-display text-display-l text-navy">
                 {site.finalCta.heading}
               </h2>
-              <p className="mt-6 max-w-md text-[0.9375rem] leading-relaxed text-muted">
+              <p className="mt-6 max-w-md text-meta leading-relaxed text-muted">
                 {site.finalCta.body}
               </p>
             </Reveal>
@@ -64,7 +64,7 @@ export function FinalCTA() {
               <dl className="grid gap-6 sm:grid-cols-2">
                 <div className="border-t border-line pt-4">
                   <dt className="text-meta text-muted">Email</dt>
-                  <dd className="mt-2 text-[0.9rem] text-graphite">
+                  <dd className="mt-2 text-meta text-graphite">
                     <a
                       href={`mailto:${site.contact.email}`}
                       className="link-draw inline-flex min-h-11 items-center text-analytical"
@@ -78,7 +78,7 @@ export function FinalCTA() {
                 </div>
                 <div className="border-t border-line pt-4">
                   <dt className="text-meta text-muted">Office</dt>
-                  <dd className="mt-2 text-[0.9rem] text-graphite">
+                  <dd className="mt-2 text-meta text-graphite">
                     {site.contact.address}
                     <span className="mt-1 block text-meta text-muted">
                       {site.contact.phoneNote}
@@ -96,7 +96,7 @@ export function FinalCTA() {
 
               <div className="mt-7 space-y-6">
                 <div>
-                  <label htmlFor="name" className="block text-[0.8125rem] text-muted">
+                  <label htmlFor="name" className="block text-meta text-muted">
                     Name
                   </label>
                   <input
@@ -117,7 +117,7 @@ export function FinalCTA() {
 
                 <div className="grid gap-6 sm:grid-cols-2">
                   <div>
-                    <label htmlFor="organisation" className="block text-[0.8125rem] text-muted">
+                    <label htmlFor="organisation" className="block text-meta text-muted">
                       Organisation
                     </label>
                     <input
@@ -129,7 +129,7 @@ export function FinalCTA() {
                     />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-[0.8125rem] text-muted">
+                    <label htmlFor="email" className="block text-meta text-muted">
                       Email
                     </label>
                     <input
@@ -150,7 +150,7 @@ export function FinalCTA() {
                 </div>
 
                 <div>
-                  <label htmlFor="interest" className="block text-[0.8125rem] text-muted">
+                  <label htmlFor="interest" className="block text-meta text-muted">
                     Area of interest
                   </label>
                   <select id="interest" name="interest" defaultValue="" className={`mt-1 cursor-pointer ${field}`}>
@@ -167,7 +167,7 @@ export function FinalCTA() {
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-[0.8125rem] text-muted">
+                  <label htmlFor="message" className="block text-meta text-muted">
                     What are you weighing up?
                   </label>
                   <textarea id="message" name="message" rows={3} className={`mt-1 resize-none ${field}`} />
@@ -176,11 +176,11 @@ export function FinalCTA() {
 
               <button
                 type="submit"
-                className="group mt-8 inline-flex cursor-pointer items-center gap-3 border border-navy px-7 py-3.5 text-[0.8125rem] tracking-[0.02em] text-navy transition-colors duration-400 hover:bg-navy hover:text-white"
+                className="group mt-8 inline-flex cursor-pointer items-center gap-3 border border-navy px-7 py-3.5 text-meta tracking-[0.02em] text-navy transition-colors duration-400 hover:bg-navy hover:text-white"
               >
                 Send enquiry
                 <span
-                  className="transition-transform duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:translate-x-1"
+                  className="transition-opacity duration-[var(--ec-dur)] ease-[var(--ec-ease)] group-hover:opacity-70"
                   aria-hidden="true"
                 >
                   →
@@ -190,12 +190,12 @@ export function FinalCTA() {
               <p
                 role="status"
                 aria-live="polite"
-                className="mt-4 min-h-[2.25rem] font-mono text-[0.68rem] leading-relaxed tracking-[0.04em] text-analytical"
+                className="mt-4 min-h-[2.25rem] font-mono text-meta leading-relaxed tracking-[0.04em] text-analytical"
               >
                 {notice}
               </p>
 
-              <p className="text-[0.78rem] leading-relaxed text-muted">
+              <p className="text-meta leading-relaxed text-muted">
                 Enquiries are treated in confidence. We will respond within two
                 business days.
               </p>

@@ -40,16 +40,16 @@ export function IndustryExplorer() {
         >
           {industries.map((industry) => (
             <RevealItem as="li" key={industry.index}>
-              <div className="group grid grid-cols-1 items-baseline gap-x-8 gap-y-2 border-b border-line-invert-soft py-6 transition-colors duration-500 hover:bg-white/3 md:grid-cols-12 md:py-7">
+              <div className="group grid grid-cols-1 items-baseline gap-x-8 gap-y-2 border-b border-line-invert-soft py-6 transition-colors duration-[var(--ec-dur)] hover:bg-white/3 md:grid-cols-12 md:py-7">
                 <span className="text-meta text-on-navy tnum md:col-span-1">
                   {industry.index}
                 </span>
 
-                <h3 className="font-display text-[1.25rem] leading-snug text-white transition-colors duration-300 group-hover:text-brass-light md:col-span-4 md:text-[1.375rem]">
+                <h3 className="font-display text-h4 leading-snug text-white transition-colors duration-300 group-hover:text-brass-light md:col-span-4 md:text-h4">
                   {industry.name}
                 </h3>
 
-                <p className="text-[0.875rem] leading-relaxed text-white/60 md:col-span-5">
+                <p className="text-meta leading-relaxed text-white/60 md:col-span-5">
                   {industry.focus}
                 </p>
 

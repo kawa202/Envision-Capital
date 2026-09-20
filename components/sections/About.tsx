@@ -20,14 +20,14 @@ export function About() {
                 that the quality of financial advice should not be rationed by
                 the size of the organisation receiving it.
               </RevealItem>
-              <RevealItem as="p" className="text-[0.9375rem] leading-relaxed text-muted">
+              <RevealItem as="p" className="text-meta leading-relaxed text-muted">
                 We pair technical capability with contextual judgement — the
                 regulatory environment, the market dynamics and the
                 institutional expectations that shape every mandate we accept in
                 Zimbabwe and across the region. That context is not a footnote
                 to the analysis. Frequently, it is the analysis.
               </RevealItem>
-              <RevealItem as="p" className="text-[0.9375rem] leading-relaxed text-muted">
+              <RevealItem as="p" className="text-meta leading-relaxed text-muted">
                 Our independence matters. We advise. We do not take principal
                 positions, manage funds or broker products. Nothing we recommend
                 is shaped by what we stand to earn from the outcome — which is
@@ -46,7 +46,7 @@ export function About() {
                 sizes="(max-width: 1024px) 100vw, 38vw"
               />
             </div>
-            <p className="mt-4 font-mono text-[0.66rem] leading-relaxed tracking-[0.04em] text-muted">
+            <p className="mt-4 font-mono text-meta leading-relaxed tracking-[0.04em] text-muted">
               {site.location} — advising across {site.region}.
             </p>
           </Reveal>
@@ -55,7 +55,7 @@ export function About() {
         {/* ---------- Pull quote ---------- */}
         <Reveal className="mt-16 lg:mt-24">
           <blockquote className="grid gap-6 border-t border-line pt-10 lg:grid-cols-12 lg:gap-16">
-            <p className="font-display text-display-m text-navy italic lg:col-span-8">
+            <p className="font-display text-display-m text-navy lg:col-span-8">
               &ldquo;{site.pullQuote}&rdquo;
             </p>
             <footer className="text-meta text-muted lg:col-span-3 lg:col-start-10 lg:pt-3">
@@ -75,10 +75,10 @@ export function About() {
           >
             {site.commitments.map((commitment) => (
               <RevealItem key={commitment.name} className="border-t border-line-soft pt-4">
-                <h3 className="font-display text-[1.125rem] text-navy">
+                <h3 className="font-display text-h4 text-navy">
                   {commitment.name}
                 </h3>
-                <p className="mt-1.5 text-[0.84rem] leading-relaxed text-muted">
+                <p className="mt-1.5 text-meta leading-relaxed text-muted">
                   {commitment.detail}
                 </p>
               </RevealItem>

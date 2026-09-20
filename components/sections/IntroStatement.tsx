@@ -30,7 +30,7 @@ export function IntroStatement() {
                 className={
                   index === 0
                     ? "text-lede text-graphite"
-                    : "text-[0.9375rem] leading-relaxed text-muted"
+                    : "text-meta leading-relaxed text-muted"
                 }
               >
                 {paragraph}
@@ -54,7 +54,7 @@ export function IntroStatement() {
               <RevealItem
                 as="li"
                 key={question}
-                className="font-display text-[1.0625rem] leading-snug text-navy"
+                className="font-display text-body leading-snug text-navy"
               >
                 {question}
               </RevealItem>

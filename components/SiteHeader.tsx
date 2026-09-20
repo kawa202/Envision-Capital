@@ -156,7 +156,7 @@ export function SiteHeader({ navItems }: { navItems: ResolvedNavItem[] }) {
 
   const barHeight = scrolled ? "h-16" : "h-16 lg:h-20";
   const navLink =
-    "flex items-center gap-1.5 text-[0.9375rem] text-on-navy transition-colors duration-200 hover:text-white";
+    "flex items-center gap-1.5 text-meta text-on-navy transition-colors duration-200 hover:text-white";
 
   return (
     <>
@@ -245,7 +245,7 @@ export function SiteHeader({ navItems }: { navItems: ResolvedNavItem[] }) {
 
             <Link
               href={utilityNav.loginHref}
-              className="hidden min-h-11 items-center text-[0.9375rem] text-on-navy transition-colors duration-200 hover:text-white lg:inline-flex"
+              className="hidden min-h-11 items-center text-meta text-on-navy transition-colors duration-200 hover:text-white lg:inline-flex"
             >
               {utilityNav.loginLabel}
             </Link>
@@ -308,7 +308,7 @@ export function SiteHeader({ navItems }: { navItems: ResolvedNavItem[] }) {
                       <li key={item.label} className="border-b border-line-invert">
                         <Link
                           href={item.href}
-                          className="flex min-h-14 items-center text-[1.125rem] text-on-navy"
+                          className="flex min-h-14 items-center text-h4 text-on-navy"
                         >
                           {item.label}
                         </Link>
@@ -323,7 +323,7 @@ export function SiteHeader({ navItems }: { navItems: ResolvedNavItem[] }) {
                         aria-expanded={expanded}
                         aria-controls={groupId}
                         onClick={() => setMobileGroup(expanded ? null : item.label)}
-                        className="flex min-h-14 w-full items-center justify-between gap-4 text-left text-[1.125rem] text-on-navy"
+                        className="flex min-h-14 w-full items-center justify-between gap-4 text-left text-h4 text-on-navy"
                       >
                         {item.label}
                         <Chevron open={expanded} />
@@ -333,7 +333,7 @@ export function SiteHeader({ navItems }: { navItems: ResolvedNavItem[] }) {
                         <div id={groupId} className="pb-5">
                           <Link
                             href={item.href}
-                            className="flex min-h-11 items-center text-[0.9375rem] text-white underline underline-offset-[0.3em]"
+                            className="flex min-h-11 items-center text-meta text-white underline underline-offset-[0.3em]"
                           >
                             {item.panel.exploreLabel}
                           </Link>
@@ -345,7 +345,7 @@ export function SiteHeader({ navItems }: { navItems: ResolvedNavItem[] }) {
                                   <li key={`${group.heading}-${link.label}`}>
                                     <Link
                                       href={link.href}
-                                      className="flex min-h-11 items-center text-[0.9375rem] text-on-navy"
+                                      className="flex min-h-11 items-center text-meta text-on-navy"
                                     >
                                       {link.label}
                                     </Link>
@@ -363,7 +363,7 @@ export function SiteHeader({ navItems }: { navItems: ResolvedNavItem[] }) {
 
               <Link
                 href={utilityNav.loginHref}
-                className="mt-6 flex min-h-11 items-center text-[0.9375rem] text-on-navy"
+                className="mt-6 flex min-h-11 items-center text-meta text-on-navy"
               >
                 {utilityNav.loginLabel}
               </Link>
@@ -413,7 +413,7 @@ function MegaPanel({
           <Link
             href={panel.exploreHref}
             onClick={onClose}
-            className="link-draw mt-5 inline-flex min-h-11 items-center text-[0.9375rem] text-white"
+            className="link-draw mt-5 inline-flex min-h-11 items-center text-meta text-white"
           >
             {panel.exploreLabel}
           </Link>
@@ -430,7 +430,7 @@ function MegaPanel({
                       href={link.href}
                       onClick={onClose}
                       prefetch={false}
-                      className="link-draw flex min-h-11 items-center text-[0.9375rem] text-on-navy transition-colors duration-200 hover:text-white"
+                      className="link-draw flex min-h-11 items-center text-meta text-on-navy transition-colors duration-200 hover:text-white"
                     >
                       {link.label}
                     </Link>
@@ -464,7 +464,7 @@ function MegaPanel({
               <span className="mt-3 block text-meta text-on-navy/70">
                 {featured.category}
               </span>
-              <span className="mt-1 block text-[0.9375rem] leading-snug text-white decoration-1 underline-offset-[0.2em] group-hover:underline group-focus-visible:underline">
+              <span className="mt-1 block text-meta leading-snug text-white decoration-1 underline-offset-[0.2em] group-hover:underline group-focus-visible:underline">
                 {featured.title}
               </span>
             </Link>

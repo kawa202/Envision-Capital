@@ -81,7 +81,7 @@ export function EditorialGallery() {
           </div>
 
           <div className="flex items-center gap-6">
-            <span className="font-mono text-[0.7rem] text-muted tnum">
+            <span className="font-mono text-meta text-muted tnum">
               <span className="text-navy">{galleryItems[active].index}</span>
               {" / "}
               {galleryItems.length.toString().padStart(2, "0")}
@@ -150,21 +150,20 @@ export function EditorialGallery() {
                      should be teasing the next photograph. */
                   priority={index < 2}
                   sizes="(max-width: 640px) 76vw, (max-width: 1024px) 52vw, 30rem"
-                  className="transition-transform duration-[1.2s] ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.03]"
                 />
               </div>
 
               <figcaption className="mt-5">
                 <div className="flex items-baseline gap-3">
-                  <span className="font-mono text-[0.66rem] text-analytical tnum">
+                  <span className="font-mono text-meta text-analytical tnum">
                     {item.index}
                   </span>
                   <span className="text-meta text-muted">{item.category}</span>
                 </div>
-                <p className="mt-2.5 font-display text-[1.125rem] leading-snug text-navy">
+                <p className="mt-2.5 font-display text-h4 leading-snug text-navy">
                   {item.title}
                 </p>
-                <p className="mt-1.5 max-w-md text-[0.84rem] leading-relaxed text-muted">
+                <p className="mt-1.5 max-w-md text-meta leading-relaxed text-muted">
                   {item.caption}
                 </p>
               </figcaption>

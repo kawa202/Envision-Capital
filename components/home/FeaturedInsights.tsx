@@ -45,7 +45,7 @@ export function FeaturedInsights() {
                     alt={feature.image.alt}
                     fill
                     sizes="(min-width: 1024px) 55vw, 100vw"
-                    className="object-cover transition-transform duration-700 ease-[var(--ec-ease)] group-hover:scale-[1.03]"
+                    className="object-cover"
                   />
                 </span>
               )}

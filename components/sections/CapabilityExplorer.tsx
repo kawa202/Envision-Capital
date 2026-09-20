@@ -132,7 +132,7 @@ export function CapabilityExplorer() {
                   <h3 className="mt-3 font-display text-display-s text-navy">
                     {service.name}
                   </h3>
-                  <p className="mt-3 text-[0.9375rem] leading-relaxed text-muted">
+                  <p className="mt-3 text-meta leading-relaxed text-muted">
                     {service.description}
                   </p>
 
@@ -140,7 +140,7 @@ export function CapabilityExplorer() {
                     {service.deliverables.map((item) => (
                       <li
                         key={item}
-                        className="flex gap-3 text-[0.84rem] leading-snug text-graphite"
+                        className="flex gap-3 text-meta leading-snug text-graphite"
                       >
                         <span className="text-muted" aria-hidden="true">
                           ·
@@ -173,10 +173,10 @@ export function CapabilityExplorer() {
             {servicesByGroup.map(({ group, summary, items }) => (
               <div key={group} className="mb-10 last:mb-0">
                 <div className="border-b border-line pb-3">
-                  <h3 className="font-display text-[1.0625rem] text-navy">
+                  <h3 className="font-display text-body text-navy">
                     {group}
                   </h3>
-                  <p className="mt-1 text-[0.8125rem] text-muted">{summary}</p>
+                  <p className="mt-1 text-meta text-muted">{summary}</p>
                 </div>
 
                 {items.map((item) => {
@@ -203,21 +203,21 @@ export function CapabilityExplorer() {
                       <span className="flex items-baseline justify-between gap-6">
                         <span>
                           <span
-                            className={`block text-[1.0625rem] leading-snug transition-colors duration-300 ${
+                            className={`block text-body leading-snug transition-colors duration-300 ${
                               isActive ? "text-analytical" : "text-navy group-hover:text-analytical"
                             }`}
                           >
                             {item.name}
                           </span>
-                          <span className="mt-1 block text-[0.84rem] leading-relaxed text-muted">
+                          <span className="mt-1 block text-meta leading-relaxed text-muted">
                             {item.summary}
                           </span>
                         </span>
                         <span
-                          className={`shrink-0 text-[0.9rem] transition-all duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+                          className={`shrink-0 text-meta transition-opacity duration-[var(--ec-dur)] ease-[cubic-bezier(0.22,1,0.36,1)] ${
                             isActive
-                              ? "translate-x-0 text-analytical opacity-100"
-                              : "-translate-x-1 text-navy/40 opacity-0 group-hover:translate-x-0 group-hover:opacity-100"
+                              ? "text-analytical opacity-100"
+                              : "text-navy/40 opacity-0 group-hover:opacity-100"
                           }`}
                           aria-hidden="true"
                         >

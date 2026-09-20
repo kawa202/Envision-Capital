@@ -42,6 +42,9 @@
   --ec-h1: clamp(2.75rem, 6vw, 4.75rem);
   --ec-h2: clamp(2.125rem, 4vw, 3.25rem);
   --ec-h3: clamp(1.625rem, 2.5vw, 2rem);
+  /* One step between h3 and body, for the headings inside a list or a card.
+     Six sizes is the ceiling; everything ad-hoc resolves to one of them. */
+  --ec-h4: 1.25rem;
   --ec-body: 1.0625rem;
   --ec-small: 0.875rem;
   --ec-leading: 1.6;
@@ -123,6 +126,9 @@
   --text-display-m--letter-spacing: -0.01em;
   --text-display-s: var(--ec-h3);
   --text-display-s--line-height: 1.2;
+  --text-h4: var(--ec-h4);
+  --text-h4--line-height: 1.3;
+  --text-h4--letter-spacing: -0.005em;
   --text-lede: var(--ec-body);
   --text-lede--line-height: var(--ec-leading);
   --text-body: var(--ec-body);

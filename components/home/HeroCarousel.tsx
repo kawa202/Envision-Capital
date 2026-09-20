@@ -92,7 +92,7 @@ export function HeroCarousel() {
         return (
           <div
             key={slide.slug}
-            className={`absolute inset-0 -z-10 transition-opacity duration-700 ease-[var(--ec-ease)] ${
+            className={`absolute inset-0 -z-10 transition-opacity duration-400 ease-[var(--ec-ease)] ${
               active ? "opacity-100" : "opacity-0"
             }`}
             aria-hidden={!active}
@@ -126,7 +126,7 @@ export function HeroCarousel() {
                 aria-roledescription="slide"
                 aria-label={`${position + 1} of ${featuredSlides.length}`}
                 inert={!active}
-                className={`col-start-1 row-start-1 transition-opacity duration-500 ease-[var(--ec-ease)] ${
+                className={`col-start-1 row-start-1 transition-opacity duration-300 ease-[var(--ec-ease)] ${
                   active ? "opacity-100" : "pointer-events-none opacity-0"
                 }`}
               >
@@ -193,7 +193,7 @@ export function HeroCarousel() {
                   className="flex h-11 w-11 items-center justify-center"
                 >
                   <span
-                    className={`block h-0.5 transition-all duration-300 ${
+                    className={`block h-0.5 transition-[width,background-color] duration-300 ${
                       position === index ? "w-8 bg-white" : "w-4 bg-white/45"
                     }`}
                     aria-hidden="true"

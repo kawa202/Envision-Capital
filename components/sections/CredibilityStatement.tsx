@@ -9,7 +9,7 @@ import { site } from "@/content/site";
 export function CredibilityStatement() {
   return (
     <section
-      className="bg-navy py-20 md:py-28"
+      className="section-y bg-navy"
       aria-labelledby="credibility-heading"
     >
       <div className="shell">

@@ -110,7 +110,7 @@ export function CaseStudyRow() {
                     alt=""
                     fill
                     sizes="(min-width: 1280px) 340px, (min-width: 640px) 44vw, 78vw"
-                    className="object-cover transition-transform duration-700 ease-[var(--ec-ease)] group-hover:scale-[1.03]"
+                    className="object-cover"
                   />
                 </span>
               )}

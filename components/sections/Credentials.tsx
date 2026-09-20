@@ -61,7 +61,7 @@ export function Credentials() {
             >
               Experience that informs decisions.
             </h2>
-            <p className="mt-6 max-w-md text-[0.9375rem] leading-relaxed text-muted">
+            <p className="mt-6 max-w-md text-meta leading-relaxed text-muted">
               Advisory judgement is cumulative. What follows is the shape of the
               work behind it — the transactions, mandates and sectors that
               inform how we approach a new one.
@@ -91,8 +91,8 @@ export function Credentials() {
                   <Figure value={item.value} />
                   {item.suffix && <span className="text-analytical">{item.suffix}</span>}
                 </dd>
-                <dt className="mt-4 text-[0.875rem] text-graphite">{item.label}</dt>
-                <p className="mt-1 text-[0.8125rem] leading-relaxed text-muted">
+                <dt className="mt-4 text-meta text-graphite">{item.label}</dt>
+                <p className="mt-1 text-meta leading-relaxed text-muted">
                   {item.note}
                 </p>
               </motion.div>
@@ -103,7 +103,7 @@ export function Credentials() {
         {hasUnverified && (
           <p className="mt-12 flex flex-wrap items-center gap-3 border-t border-line pt-5">
             <UnverifiedFlag>Prototype placeholder</UnverifiedFlag>
-            <span className="font-mono text-[0.68rem] tracking-[0.04em] text-muted">
+            <span className="font-mono text-meta tracking-[0.04em] text-muted">
               {CREDENTIALS_WARNING}
             </span>
           </p>

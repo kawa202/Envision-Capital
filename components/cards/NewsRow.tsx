@@ -27,11 +27,11 @@ export function NewsRow({ item }: { item: NewsItem }) {
           {formatDate(item.date)}
         </time>
 
-        <h3 className="font-display text-[1.1875rem] leading-snug text-navy decoration-1 underline-offset-[0.2em] group-hover:underline group-focus-visible:underline md:col-span-7 md:text-[1.25rem]">
+        <h3 className="font-display text-h4 leading-snug text-navy decoration-1 underline-offset-[0.2em] group-hover:underline group-focus-visible:underline md:col-span-7 md:text-h4">
           {item.title}
         </h3>
 
-        <p className="text-[0.8125rem] leading-snug text-muted md:col-span-3 md:text-right">
+        <p className="text-meta leading-snug text-muted md:col-span-3 md:text-right">
           {item.location} — {item.author}
         </p>
       </Link>

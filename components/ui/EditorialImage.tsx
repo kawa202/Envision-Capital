@@ -62,7 +62,7 @@ function CommissionPanel({ image }: { image: ImageContent }) {
       </p>
 
       <div className="relative">
-        <p className="max-w-xs text-[0.8rem] leading-relaxed text-on-navy/70">
+        <p className="max-w-xs text-meta leading-relaxed text-on-navy/70">
           {image.brief ?? image.alt}
         </p>
       </div>

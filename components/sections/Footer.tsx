@@ -50,7 +50,7 @@ export function Footer() {
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-4">
             <Logo className="text-white" />
-            <p className="mt-6 max-w-[18rem] font-serif text-[1.0625rem] leading-snug text-on-navy">
+            <p className="mt-6 max-w-[18rem] font-serif text-body leading-snug text-on-navy">
               {TAGLINE}
             </p>
 
@@ -89,7 +89,7 @@ export function Footer() {
                            bandwidth on the homepage than every photograph
                            on it put together. */
                         prefetch={false}
-                        className="link-draw inline-flex min-h-11 items-center text-[0.9375rem] text-on-navy/80 transition-colors duration-200 hover:text-white"
+                        className="link-draw inline-flex min-h-11 items-center text-meta text-on-navy/80 transition-colors duration-200 hover:text-white"
                       >
                         {link.label}
                       </Link>

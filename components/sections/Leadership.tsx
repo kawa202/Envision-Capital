@@ -43,12 +43,12 @@ export function Leadership() {
                   <EditorialImage
                     image={person.image}
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 46vw, 22vw"
-                    className="grayscale transition-all duration-[1.1s] ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.02] group-hover:grayscale-0"
+                    className="grayscale"
                   />
                 </div>
 
                 <div className="mt-5">
-                  <h3 className="font-display text-[1.125rem] leading-snug text-navy">
+                  <h3 className="font-display text-h4 leading-snug text-navy">
                     {person.role}
                   </h3>
 
@@ -57,10 +57,10 @@ export function Leadership() {
                       <UnverifiedFlag>Profile required</UnverifiedFlag>
                     </p>
                   ) : (
-                    <p className="mt-1 text-[0.875rem] text-muted">{person.name}</p>
+                    <p className="mt-1 text-meta text-muted">{person.name}</p>
                   )}
 
-                  <dl className="mt-4 space-y-2.5 text-[0.8125rem] leading-relaxed">
+                  <dl className="mt-4 space-y-2.5 text-meta leading-relaxed">
                     <div>
                       <dt className="text-muted">Expertise</dt>
                       <dd className="mt-0.5 text-graphite">

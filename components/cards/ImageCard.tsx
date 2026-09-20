@@ -48,7 +48,7 @@ export function ImageCard({
               alt={image.alt}
               fill
               sizes={sizes}
-              className="object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.04]"
+              className="object-cover"
             />
           )}
         </div>
@@ -61,7 +61,7 @@ export function ImageCard({
           )}
 
           <h3
-            className={`font-display text-[1.25rem] leading-snug transition-colors duration-300 md:text-[1.3125rem] underline-offset-[0.2em] decoration-1 group-hover:underline group-focus-visible:underline ${
+            className={`font-display text-h4 leading-snug transition-colors duration-300 md:text-h4 underline-offset-[0.2em] decoration-1 group-hover:underline group-focus-visible:underline ${
               label ? "mt-4" : ""
             } ${
               dark
