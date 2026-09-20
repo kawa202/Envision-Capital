@@ -1,21 +1,17 @@
-import { AudienceRouting } from "@/components/home/AudienceRouting";
-import { CaseStudyRow } from "@/components/home/CaseStudyRow";
 import { CtaBand } from "@/components/home/CtaBand";
-import { DiscoverMore } from "@/components/home/DiscoverMore";
 import { FeaturedInsights } from "@/components/home/FeaturedInsights";
 import { HeroCarousel } from "@/components/home/HeroCarousel";
-import { ServicesList } from "@/components/home/ServicesList";
-import { NewsroomAndAgenda } from "@/components/home/NewsroomAndAgenda";
+import { PartnerProof } from "@/components/home/PartnerProof";
 import { PositioningStatement } from "@/components/home/PositioningStatement";
-import { NewsletterCTA } from "@/components/sections/NewsletterCTA";
+import { ServicesList } from "@/components/home/ServicesList";
 
 /**
- * The homepage.
+ * The homepage. Six sections, then the footer from app/layout.tsx.
  *
- * Three stories, what the firm does, what it is thinking, the argument, a
- * way in by role, then proof and one action — with the footer coming from
- * app/layout.tsx. Every section is a door into its own route; depth lives on
- * the spokes.
+ * Three stories, the firm's position, what it does, what it is thinking,
+ * who stands behind it, one action. Case studies, the newsroom, the agenda
+ * and the audience router have pages of their own and are reached from the
+ * mega menu — a landing page that carries everything carries nothing.
  */
 export default function Home() {
   return (
@@ -24,10 +20,7 @@ export default function Home() {
       <PositioningStatement />
       <ServicesList />
       <FeaturedInsights />
-      <CaseStudyRow />
-      <NewsroomAndAgenda />
-      <NewsletterCTA />
-      <DiscoverMore />
+      <PartnerProof />
       <CtaBand />
     </main>
   );
