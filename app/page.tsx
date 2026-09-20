@@ -1,5 +1,6 @@
 import { CtaBand } from "@/components/home/CtaBand";
 import { FeaturedInsights } from "@/components/home/FeaturedInsights";
+import { KeyFigures } from "@/components/home/KeyFigures";
 import { HeroCarousel } from "@/components/home/HeroCarousel";
 import { PartnerProof } from "@/components/home/PartnerProof";
 import { PositioningStatement } from "@/components/home/PositioningStatement";
@@ -19,6 +20,7 @@ export default function Home() {
       <HeroCarousel />
       <PositioningStatement />
       <Practices />
+      <KeyFigures />
       <FeaturedInsights />
       <PartnerProof />
       <CtaBand />
