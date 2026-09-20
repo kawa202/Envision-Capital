@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { FooterSignup } from "@/components/sections/FooterSignup";
 import { Logo } from "@/components/ui/Logo";
 import { services } from "@/content/services";
 import { site } from "@/content/site";
@@ -20,6 +19,15 @@ const columns = [
       label: service.name,
       href: `/what-we-do#${service.id}`,
     })),
+  },
+  {
+    heading: "Legal",
+    links: [
+      { label: "Privacy", href: "/legal#privacy" },
+      { label: "Terms of use", href: "/legal#terms" },
+      { label: "Regulatory", href: "/legal#regulatory" },
+      { label: "Cookies", href: "/legal#cookies" },
+    ],
   },
   {
     heading: "Firm",
@@ -67,7 +75,7 @@ export function Footer() {
             </address>
           </div>
 
-          <div className="grid gap-10 sm:grid-cols-2 lg:col-span-5">
+          <div className="grid gap-10 sm:grid-cols-3 lg:col-span-8">
             {columns.map((column) => (
               <nav key={column.heading} aria-label={column.heading}>
                 <h2 className="text-meta text-on-navy">{column.heading}</h2>
@@ -92,9 +100,6 @@ export function Footer() {
             ))}
           </div>
 
-          <div className="lg:col-span-3">
-            <FooterSignup />
-          </div>
         </div>
 
         {/* ---------- Legal ---------- */}

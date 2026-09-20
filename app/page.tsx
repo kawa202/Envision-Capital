@@ -1,11 +1,13 @@
 import { AudienceRouting } from "@/components/home/AudienceRouting";
 import { CaseStudyRow } from "@/components/home/CaseStudyRow";
 import { CtaBand } from "@/components/home/CtaBand";
+import { DiscoverMore } from "@/components/home/DiscoverMore";
 import { FeaturedInsights } from "@/components/home/FeaturedInsights";
 import { HeroCarousel } from "@/components/home/HeroCarousel";
 import { HowWeCanHelp } from "@/components/home/HowWeCanHelp";
 import { NewsroomAndAgenda } from "@/components/home/NewsroomAndAgenda";
 import { PositioningBand } from "@/components/home/PositioningBand";
+import { NewsletterCTA } from "@/components/sections/NewsletterCTA";
 
 /**
  * The homepage.
@@ -25,6 +27,8 @@ export default function Home() {
       <AudienceRouting />
       <CaseStudyRow />
       <NewsroomAndAgenda />
+      <NewsletterCTA />
+      <DiscoverMore />
       <CtaBand />
     </main>
   );
