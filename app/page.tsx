@@ -3,7 +3,7 @@ import { FeaturedInsights } from "@/components/home/FeaturedInsights";
 import { HeroCarousel } from "@/components/home/HeroCarousel";
 import { PartnerProof } from "@/components/home/PartnerProof";
 import { PositioningStatement } from "@/components/home/PositioningStatement";
-import { ServicesList } from "@/components/home/ServicesList";
+import { Practices } from "@/components/home/Practices";
 
 /**
  * The homepage. Six sections, then the footer from app/layout.tsx.
@@ -18,7 +18,7 @@ export default function Home() {
     <main id="main">
       <HeroCarousel />
       <PositioningStatement />
-      <ServicesList />
+      <Practices />
       <FeaturedInsights />
       <PartnerProof />
       <CtaBand />
