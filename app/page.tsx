@@ -1,5 +1,5 @@
 import { CtaBand } from "@/components/home/CtaBand";
-import { FeaturedInsights } from "@/components/home/FeaturedInsights";
+import { InsightsGrid } from "@/components/home/InsightsGrid";
 import { KeyFigures } from "@/components/home/KeyFigures";
 import { HeroCarousel } from "@/components/home/HeroCarousel";
 import { PartnerProof } from "@/components/home/PartnerProof";
@@ -21,7 +21,7 @@ export default function Home() {
       <PositioningStatement />
       <Practices />
       <KeyFigures />
-      <FeaturedInsights />
+      <InsightsGrid />
       <PartnerProof />
       <CtaBand />
     </main>
