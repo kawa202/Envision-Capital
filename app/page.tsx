@@ -1,7 +1,7 @@
 import { CaseStudyFeature } from "@/components/home/CaseStudyFeature";
 import { CtaBand } from "@/components/home/CtaBand";
 import { FeaturedInsights } from "@/components/home/FeaturedInsights";
-import { Hero } from "@/components/home/Hero";
+import { HeroCarousel } from "@/components/home/HeroCarousel";
 import { PartnerProof } from "@/components/home/PartnerProof";
 import { PracticeSnapshot } from "@/components/home/PracticeSnapshot";
 
@@ -17,7 +17,7 @@ import { PracticeSnapshot } from "@/components/home/PracticeSnapshot";
 export default function Home() {
   return (
     <main id="main">
-      <Hero />
+      <HeroCarousel />
       <PracticeSnapshot />
       <FeaturedInsights />
       <PartnerProof />
