@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AudienceSelector } from "@/components/services/AudienceSelector";
 import { CapabilityExplorer } from "@/components/sections/CapabilityExplorer";
 import { Credentials } from "@/components/sections/Credentials";
 import { FinalCTA } from "@/components/sections/FinalCTA";
@@ -19,6 +20,7 @@ export default function ServicesPage() {
         title={site.capabilities.heading}
         lede={site.capabilities.lede}
       />
+      <AudienceSelector />
       <IntroStatement />
       <CapabilityExplorer />
       <Credentials />

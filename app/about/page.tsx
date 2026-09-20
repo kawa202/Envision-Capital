@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { About } from "@/components/sections/About";
+import { AboutHub } from "@/components/sections/AboutHub";
 import { CredibilityStatement } from "@/components/sections/CredibilityStatement";
 import { EditorialGallery } from "@/components/sections/EditorialGallery";
 import { FinalCTA } from "@/components/sections/FinalCTA";
@@ -21,6 +22,7 @@ export default function AboutPage() {
       />
       <About />
       <Leadership />
+      <AboutHub />
       <EditorialGallery />
       <CredibilityStatement />
       <FinalCTA />
