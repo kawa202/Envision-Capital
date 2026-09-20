@@ -2,7 +2,7 @@ import { CtaBand } from "@/components/home/CtaBand";
 import { InsightsGrid } from "@/components/home/InsightsGrid";
 import { KeyFigures } from "@/components/home/KeyFigures";
 import { HeroCarousel } from "@/components/home/HeroCarousel";
-import { PartnerProof } from "@/components/home/PartnerProof";
+import { AboutSplit } from "@/components/home/AboutSplit";
 import { PositioningStatement } from "@/components/home/PositioningStatement";
 import { Practices } from "@/components/home/Practices";
 
@@ -22,7 +22,7 @@ export default function Home() {
       <Practices />
       <KeyFigures />
       <InsightsGrid />
-      <PartnerProof />
+      <AboutSplit />
       <CtaBand />
     </main>
   );
