@@ -1,141 +1,98 @@
 import Link from "next/link";
-import { FooterSignup } from "@/components/sections/FooterSignup";
 import { Logo } from "@/components/ui/Logo";
-import { TOPICS } from "@/content/insights";
-import { services } from "@/content/services";
+import { FOOTER_BLURB } from "@/content/home";
 import { site } from "@/content/site";
-import { TAGLINE } from "@/lib/brand";
 
 /**
- * The footer carries the routes the four-item header does not, so the shorter
- * bar costs nothing: every page on the site is one click away from here.
- *
- * Text on navy is set in --ec-on-navy rather than a white opacity. A white at
- * 45% over navy measures 4.3:1, which fails; the tint measures 11.8:1 and the
- * 80% step 8:1, so nothing in here is below AA.
+ * Footer from the design reference: the name and one line on the left, three
+ * columns of links, and a bar with copyright and legal links. The reference's
+ * in-page anchors are pointed at the real pages instead.
  */
 const columns = [
   {
     heading: "Services",
-    links: services.map((service) => ({
-      label: service.name,
-      href: `/services#${service.id}`,
-    })),
-  },
-  {
-    heading: "Insights",
     links: [
-      ...TOPICS.map((topic) => ({
-        label: topic,
-        href: `/insights?topic=${encodeURIComponent(topic)}`,
-      })),
-      { label: "Newsroom", href: "/newsroom" },
-      { label: "On the agenda", href: "/events" },
+      { label: "Mergers & Acquisitions", href: "/services#mergers-acquisitions" },
+      { label: "Capital Raising", href: "/services#capital-advisory" },
+      { label: "Strategic Advisory", href: "/services#corporate-finance" },
+      { label: "Restructuring", href: "/services#corporate-finance" },
     ],
   },
   {
     heading: "Firm",
     links: [
-      { label: "About us", href: "/about" },
+      { label: "About Us", href: "/about" },
       { label: "Leadership", href: "/about#leadership" },
-      { label: "The Envision Method", href: "/method" },
-      { label: "Industries", href: "/industries" },
-      { label: "Selected work", href: "/work" },
       { label: "Careers", href: "/careers" },
       { label: "Contact", href: "/contact" },
     ],
   },
   {
-    heading: "Legal",
+    heading: "Insights",
     links: [
-      { label: "Privacy", href: "/legal#privacy" },
-      { label: "Terms of use", href: "/legal#terms" },
-      { label: "Regulatory", href: "/legal#regulatory" },
-      { label: "Cookies", href: "/legal#cookies" },
-      { label: "Fraud awareness", href: "/fraud-awareness" },
-      { label: "Client portal", href: "/portal" },
+      { label: "Market Outlook", href: "/insights?topic=Capital" },
+      { label: "Transaction Advisory", href: "/insights?topic=Transactions" },
+      { label: "Infrastructure", href: "/insights/financing-infrastructure" },
+      { label: "All Insights", href: "/insights" },
     ],
   },
 ];
 
+const legal = [
+  { label: "Privacy Policy", href: "/legal#privacy" },
+  { label: "Terms of Use", href: "/legal#terms" },
+  { label: "Disclaimer", href: "/legal#regulatory" },
+  { label: "Fraud Awareness", href: "/fraud-awareness" },
+];
+
+const linkClass =
+  "inline-flex min-h-8 items-center text-on-navy transition-colors duration-300 hover:text-brass";
+
 export function Footer() {
   return (
-    <footer className="bg-navy text-white">
-      <div className="shell py-16 md:py-20">
-        <div className="grid gap-x-10 gap-y-14 lg:grid-cols-12">
-          {/* ---------- Brand and contact ---------- */}
-          <div className="lg:col-span-3">
-            <Logo className="text-white" />
-            <p className="mt-6 max-w-[18rem] font-serif text-body leading-snug text-on-navy">
-              {TAGLINE}
-            </p>
-
-            <address className="mt-6 text-body not-italic text-on-navy/80">
-              <p>
-                <a
-                  href={`mailto:${site.contact.email}`}
-                  className="link-draw inline-flex min-h-11 items-center"
-                >
-                  {site.contact.email}
-                </a>
-              </p>
-              <p>
-                <a
-                  href={`tel:${site.contact.phone.replace(/[^+\d]/g, "")}`}
-                  className="link-draw inline-flex min-h-11 items-center"
-                >
-                  {site.contact.phone}
-                </a>
-              </p>
-              <p>{site.contact.address}</p>
-            </address>
-          </div>
-
-          {/* ---------- Site map ---------- */}
-          <div className="grid gap-10 sm:grid-cols-2 lg:col-span-6 lg:grid-cols-4">
-            {columns.map((column) => (
-              <nav key={column.heading} aria-label={column.heading}>
-                <h2 className="text-meta text-on-navy">{column.heading}</h2>
-                <ul className="mt-2">
-                  {column.links.map((link) => (
-                    <li key={link.label}>
-                      <Link
-                        href={link.href}
-                        /* The footer is a site map, not the likely next
-                           click. Prefetching every one of these cost more
-                           bandwidth than every photograph on the homepage. */
-                        prefetch={false}
-                        className="link-draw inline-flex min-h-11 items-center text-meta text-on-navy/80 transition-colors duration-[var(--ec-dur)] hover:text-white"
-                      >
-                        {link.label}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
-            ))}
-          </div>
-
-          {/* ---------- Sign-up ---------- */}
-          <div className="lg:col-span-3">
-            <FooterSignup />
-          </div>
+    <footer className="bg-navy px-[6%] pt-16 pb-8 text-[0.85rem] text-on-navy">
+      <div className="mb-16 grid gap-8 md:grid-cols-2 md:gap-16 lg:grid-cols-[2fr_1fr_1fr_1fr]">
+        <div>
+          <Logo showMark={false} className="mb-4" />
+          <p className="max-w-[300px] leading-[1.7]">{FOOTER_BLURB}</p>
         </div>
 
-        {/* ---------- Legal ---------- */}
-        <div className="mt-16 border-t border-line-invert pt-8">
-          <p className="max-w-3xl text-meta leading-relaxed text-on-navy/80">
-            {site.disclaimer}
-          </p>
-          <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
-            <p className="text-meta text-on-navy/80">
-              © {new Date().getFullYear()} {site.name}
-            </p>
-            <p className="text-meta text-on-navy/80">
-              PROTOTYPE — CONTENT PENDING VERIFICATION
-            </p>
-          </div>
-        </div>
+        {columns.map((column) => (
+          <nav key={column.heading} aria-label={column.heading}>
+            <h2 className="mb-6 font-sans text-[0.9rem] font-semibold tracking-[0.5px] text-white">
+              {column.heading}
+            </h2>
+            <ul className="space-y-1.5">
+              {column.links.map((link) => (
+                <li key={link.label}>
+                  {/* A site map, not the likely next click: no prefetch. */}
+                  <Link href={link.href} prefetch={false} className={linkClass}>
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        ))}
+      </div>
+
+      <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-center text-[0.75rem] md:flex-row md:text-left">
+        <p>
+          &copy; {new Date().getFullYear()} {site.name}. All rights reserved.
+        </p>
+        <ul className="flex flex-wrap justify-center gap-x-6">
+          {legal.map((link) => (
+            <li key={link.label}>
+              <Link
+                href={link.href}
+                prefetch={false}
+                className="inline-flex min-h-8 items-center text-on-navy transition-colors duration-300 hover:text-white"
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
     </footer>
   );

@@ -12,7 +12,7 @@ import { PRIMARY_CTA } from "@/lib/brand";
 /* Small enough to live here rather than reach into the content layer. */
 const utilityNav = {
   searchLabel: "Search",
-  loginLabel: "Client login",
+  loginLabel: "Client Login",
   loginHref: "/portal",
 };
 
@@ -44,9 +44,8 @@ function isCurrentSection(pathname: string, href: string) {
 
 function SearchIcon() {
   return (
-    <svg viewBox="0 0 20 20" className="h-5 w-5" aria-hidden="true" focusable="false">
-      <circle cx="9" cy="9" r="6" fill="none" stroke="currentColor" strokeWidth="1.5" />
-      <path d="M13.5 13.5L18 18" stroke="currentColor" strokeWidth="1.5" />
+    <svg viewBox="0 0 24 24" className="h-4 w-4 fill-current" aria-hidden="true" focusable="false">
+      <path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
     </svg>
   );
 }
@@ -155,8 +154,10 @@ export function SiteHeader({ navItems }: { navItems: ResolvedNavItem[] }) {
   }, []);
 
   const barHeight = scrolled ? "h-16" : "h-16 lg:h-20";
+  /* Nav type and colour from the design reference: 0.9rem Inter, warm
+     white, brass on hover. */
   const navLink =
-    "flex items-center gap-1.5 text-meta text-on-navy transition-colors duration-200 hover:text-white";
+    "flex items-center gap-1.5 text-[0.9rem] tracking-[0.5px] text-white transition-colors duration-300 hover:text-brass";
 
   return (
     <>
@@ -166,13 +167,13 @@ export function SiteHeader({ navItems }: { navItems: ResolvedNavItem[] }) {
 
       <header
         ref={headerRef}
-        className="fixed inset-x-0 top-0 z-50 bg-navy text-white"
+        className="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-navy/95 text-white"
         onMouseLeave={() => {
           if (hoverCapable.current) setOpenPanel(null);
         }}
       >
         <div
-          className={`shell flex items-center justify-between gap-6 transition-[height] duration-200 ease-[var(--ec-ease)] ${barHeight}`}
+          className={`flex items-center justify-between gap-6 px-[4%] transition-[height] duration-200 ease-[var(--ec-ease)] ${barHeight}`}
         >
           {/* The accessible name is built from the visible wordmark plus
               one hidden word, rather than replacing it with an aria-label
@@ -184,7 +185,7 @@ export function SiteHeader({ navItems }: { navItems: ResolvedNavItem[] }) {
 
           {/* ---------------- Desktop navigation ---------------- */}
           <nav aria-label="Primary" className="hidden lg:block">
-            <ul className="flex items-center gap-7">
+            <ul className="flex items-center gap-10">
               {navItems.map((item) => {
                 const panelId = `${baseId}-${item.label}`;
                 const open = openPanel === item.label;
@@ -196,7 +197,7 @@ export function SiteHeader({ navItems }: { navItems: ResolvedNavItem[] }) {
                       <Link
                         href={item.href}
                         aria-current={current ? "page" : undefined}
-                        className={`${navLink} aria-[current=page]:text-white`}
+                        className={`${navLink} aria-[current=page]:text-brass`}
                       >
                         {item.label}
                       </Link>
@@ -219,7 +220,7 @@ export function SiteHeader({ navItems }: { navItems: ResolvedNavItem[] }) {
                       aria-expanded={open}
                       aria-controls={panelId}
                       onClick={() => setOpenPanel(open ? null : item.label)}
-                      className={`${navLink} min-h-11 ${current || open ? "text-white" : ""}`}
+                      className={`${navLink} min-h-11 ${open ? "text-brass" : ""}`}
                     >
                       {item.label}
                       <Chevron open={open} />
@@ -231,21 +232,23 @@ export function SiteHeader({ navItems }: { navItems: ResolvedNavItem[] }) {
           </nav>
 
           {/* ---------------- Utilities ---------------- */}
-          <div className="flex items-center gap-2 lg:gap-5">
+          <div className="flex items-center gap-2 lg:gap-8">
             <button
               type="button"
               ref={searchButtonRef}
               onClick={() => setSearchOpen(true)}
-              aria-label={utilityNav.searchLabel}
               aria-haspopup="dialog"
-              className="flex h-11 w-11 items-center justify-center text-on-navy transition-colors duration-200 hover:text-white"
+              className="flex h-11 min-w-11 items-center justify-center gap-2 text-[0.9rem] text-white transition-colors duration-300 hover:text-brass"
             >
               <SearchIcon />
+              {/* Visible label on desktop, as in the design reference; on a
+                  phone the icon stands alone and this becomes its name. */}
+              <span className="sr-only lg:not-sr-only">{utilityNav.searchLabel}</span>
             </button>
 
             <Link
               href={utilityNav.loginHref}
-              className="hidden min-h-11 items-center text-meta text-on-navy transition-colors duration-200 hover:text-white lg:inline-flex"
+              className="hidden min-h-11 items-center text-[0.9rem] text-white transition-colors duration-300 hover:text-brass lg:inline-flex"
             >
               {utilityNav.loginLabel}
             </Link>

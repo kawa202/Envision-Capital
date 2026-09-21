@@ -3,45 +3,31 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { SLIDES, SLIDE_INTERVAL_MS } from "@/content/featured";
+import { HERO_INTERVAL_MS, HERO_SLIDES } from "@/content/home";
+import { Arrow } from "@/components/ui/Arrow";
 
 /**
- * The hero: three stories, crossfaded, with a labelled tab per story.
+ * Full-height hero carousel, as in the design reference: three photographs
+ * crossfading over 1.5s, a navy gradient behind the text, the story
+ * bottom-left and brass dots bottom-right.
  *
- * The tabs replace anonymous dots. A dot tells you there is another slide; a
- * label tells you whether it is worth waiting for, which is the whole reason
- * a reader would use the control at all.
- *
- * WCAG 2.2.2 requires a visible way to stop anything that starts by itself
- * and runs past five seconds, so the pause button is part of the component
- * rather than a nicety. Three separate things also stop the timer, and they
- * are not the same thing:
- *
- *   held       — hover or focus inside the hero. Temporary. The reader is
- *                busy, not finished; leaving resumes it.
- *   userPaused — the pause button, or picking a tab. Deliberate. Nothing
- *                resumes it except pressing play.
- *   reduced    — prefers-reduced-motion. Read before the first tick, so a
- *                reduced-motion reader never sees a frame of movement.
- *
- * Conflating the first two is the common bug: a carousel that restarts the
- * moment your cursor leaves, having already thrown away the slide you
- * deliberately chose.
+ * Added to the reference because they are requirements rather than style:
+ * - a pause control beside the dots (WCAG 2.2.2 — anything that moves on its
+ *   own for more than five seconds must be stoppable);
+ * - dots as real buttons with names and 44px targets;
+ * - rotation holds while the pointer or keyboard focus is in the hero, and
+ *   never starts under prefers-reduced-motion;
+ * - all three texts share one grid cell, so changing slide moves nothing.
  */
-const FADE_MS = 600;
-
 export function HeroCarousel() {
   const [index, setIndex] = useState(0);
   const [userPaused, setUserPaused] = useState(false);
   const [reduced, setReduced] = useState(true);
   const [held, setHeld] = useState(false);
   const [mountRest, setMountRest] = useState(false);
-
   const regionRef = useRef<HTMLElement>(null);
-  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   const playing = !reduced && !userPaused;
-  const rotating = playing && !held;
 
   useEffect(() => {
     const query = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -51,9 +37,8 @@ export function HeroCarousel() {
     return () => query.removeEventListener("change", apply);
   }, []);
 
-  /* Slides two and three are not rendered until the browser goes idle, so
-     their photographs never compete with the first paint. By the first
-     advance they are decoded and ready to fade in. */
+  /* Slides two and three load once the browser is idle, so they never
+     compete with the first photograph. */
   useEffect(() => {
     const idle = window.requestIdleCallback?.bind(window);
     if (idle) {
@@ -64,48 +49,28 @@ export function HeroCarousel() {
     return () => window.clearTimeout(timer);
   }, []);
 
+  /* `index` is a dependency so that choosing a slide restarts the six-second
+     count, as the reference's resetTimer does. */
   useEffect(() => {
-    if (!rotating) return;
-    const timer = window.setInterval(
-      () => setIndex((current) => (current + 1) % SLIDES.length),
-      SLIDE_INTERVAL_MS,
+    if (!playing || held) return;
+    const timer = window.setTimeout(
+      () => setIndex((current) => (current + 1) % HERO_SLIDES.length),
+      HERO_INTERVAL_MS,
     );
-    return () => window.clearInterval(timer);
-  }, [rotating]);
+    return () => window.clearTimeout(timer);
+  }, [playing, held, index]);
 
-  /** Choosing a slide is a deliberate act, so it stops the rotation. */
-  const choose = useCallback((next: number) => {
+  const goTo = useCallback((next: number) => {
     setMountRest(true);
     setIndex(next);
-    setUserPaused(true);
   }, []);
-
-  /* Arrow keys move between tabs and select as they go — the automatic
-     activation pattern, which suits a tablist whose panels are already
-     loaded. Home and End jump to the ends. */
-  const onTabKeyDown = (event: React.KeyboardEvent) => {
-    const last = SLIDES.length - 1;
-    let next: number | null = null;
-
-    if (event.key === "ArrowRight") next = index === last ? 0 : index + 1;
-    else if (event.key === "ArrowLeft") next = index === 0 ? last : index - 1;
-    else if (event.key === "Home") next = 0;
-    else if (event.key === "End") next = last;
-    if (next === null) return;
-
-    event.preventDefault();
-    choose(next);
-    tabRefs.current[next]?.focus();
-  };
 
   return (
     <section
       ref={regionRef}
       aria-roledescription="carousel"
-      aria-label="Featured stories"
-      /* A fixed height, not a content-driven one: every slide occupies the
-         same box, so advancing cannot move the page. */
-      className="relative isolate flex min-h-[34rem] items-end lg:min-h-[42rem]"
+      aria-label="Featured"
+      className="relative flex h-[calc(100svh-4rem)] min-h-[34rem] w-full items-center overflow-hidden pb-16 md:items-end md:pb-24 lg:h-[calc(100svh-5rem)]"
       onMouseEnter={() => setHeld(true)}
       onMouseLeave={() => setHeld(false)}
       onFocusCapture={() => setHeld(true)}
@@ -114,157 +79,128 @@ export function HeroCarousel() {
       }}
     >
       {/* ---------------- Photographs ---------------- */}
-      {SLIDES.map((slide, position) => {
-        const active = position === index;
-        if (position > 0 && !mountRest && !active) return null;
-
-        return (
-          <div
-            key={slide.id}
-            className={`absolute inset-0 -z-10 transition-opacity ease-[var(--ec-ease)] ${
-              active ? "opacity-100" : "opacity-0"
-            }`}
-            style={{ transitionDuration: `${FADE_MS}ms` }}
-            /* Hidden from assistive technology as well as from view, so only
-               the visible slide's alt text is ever announced. */
-            aria-hidden={!active}
-          >
-            <Image
-              src={slide.image.src}
-              alt={slide.image.alt}
-              fill
-              priority={position === 0}
-              loading={position === 0 ? "eager" : "lazy"}
-              quality={position === 0 ? 85 : 75}
-              sizes="100vw"
-              className="object-cover"
-              style={{ objectPosition: slide.image.focus ?? "50% 50%" }}
-            />
-            <div className="hero-scrim absolute inset-0" aria-hidden="true" />
-          </div>
-        );
-      })}
+      <div className="absolute inset-0 z-0">
+        {HERO_SLIDES.map((slide, position) => {
+          const active = position === index;
+          if (position > 0 && !mountRest && !active) return null;
+          return (
+            <div
+              key={slide.id}
+              aria-hidden={!active}
+              className={`absolute inset-0 transition-opacity duration-[1500ms] ease-in-out ${
+                active ? "opacity-100" : "opacity-0"
+              }`}
+            >
+              <Image
+                src={slide.image.src}
+                alt={slide.image.alt}
+                fill
+                priority={position === 0}
+                loading={position === 0 ? "eager" : "lazy"}
+                quality={80}
+                sizes="100vw"
+                className="object-cover"
+              />
+            </div>
+          );
+        })}
+      </div>
+      <div
+        className="absolute inset-0 z-[1] [background:var(--ec-hero-overlay)]"
+        aria-hidden="true"
+      />
 
       {/* ---------------- Text ---------------- */}
-      <div className="shell w-full pt-28 pb-[clamp(2.5rem,6vw,4rem)]">
-        {/* All three panels share one grid cell, so the hero is as tall as
-            its longest story and switching shifts nothing. */}
-        <div className="grid">
-          {SLIDES.map((slide, position) => {
-            const active = position === index;
-            return (
-              <div
-                key={slide.id}
-                id={`hero-panel-${slide.id}`}
-                role="tabpanel"
-                aria-labelledby={`hero-tab-${slide.id}`}
-                /* Inert rather than merely faded: a link you cannot see must
-                   not be reachable by Tab or read out. */
-                inert={!active}
-                className={`col-start-1 row-start-1 transition-opacity ease-[var(--ec-ease)] ${
-                  active ? "opacity-100" : "pointer-events-none opacity-0"
-                }`}
-                style={{ transitionDuration: `${FADE_MS}ms` }}
+      <div className="relative z-[2] grid w-full max-w-[900px] px-[6%] text-white">
+        {HERO_SLIDES.map((slide, position) => {
+          const active = position === index;
+          return (
+            <div
+              key={slide.id}
+              role="group"
+              aria-roledescription="slide"
+              aria-label={`${position + 1} of ${HERO_SLIDES.length}`}
+              inert={!active}
+              className={`col-start-1 row-start-1 transition-opacity duration-[400ms] ease-in-out ${
+                active ? "opacity-100" : "pointer-events-none opacity-0"
+              }`}
+            >
+              <span className="mb-4 block font-sans text-[0.8rem] font-semibold tracking-[2px] text-brass uppercase">
+                {slide.tag}
+              </span>
+              {/* Slide one carries the page's h1. The others are set the same
+                  way as paragraphs, so the page keeps one top-level heading. */}
+              {position === 0 ? (
+                <h1 className="mb-6 font-serif text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.1] font-semibold text-white">
+                  {slide.headline}
+                </h1>
+              ) : (
+                <p className="mb-6 font-serif text-[clamp(2.5rem,5vw,4.5rem)] leading-[1.1] font-semibold text-white">
+                  {slide.headline}
+                </p>
+              )}
+              <p className="mb-8 max-w-[650px] text-[clamp(1rem,1.2vw,1.25rem)] leading-[1.6] font-light text-hero-sub">
+                {slide.subheadline}
+              </p>
+              <Link
+                href={slide.cta.href}
+                className="inline-flex min-h-11 items-center gap-2 border-b border-brass pb-1 text-base font-medium text-brass transition-opacity duration-300 hover:opacity-80"
               >
-                {/* Slide one carries the page's h1 — and it is a statement,
-                    not a link. The others are the same type set as
-                    paragraphs, so the document keeps one heading here. */}
-                {position === 0 ? (
-                  <h1 className="max-w-[16ch] text-hero font-normal text-balance text-white">
-                    {slide.headline}
-                  </h1>
-                ) : (
-                  <p className="max-w-[16ch] font-serif text-hero leading-[var(--ec-leading-display)] font-normal tracking-[var(--ec-tracking-display)] text-balance text-white">
-                    {slide.headline}
-                  </p>
-                )}
+                {slide.cta.text}
+                <span className="sr-only">: {slide.headline}</span>
+                <Arrow size={16} />
+              </Link>
+            </div>
+          );
+        })}
+      </div>
 
-                <p className="mt-6 max-w-[52ch] text-[1rem] leading-[var(--ec-leading)] text-on-navy md:text-[1.125rem]">
-                  {slide.body}
-                </p>
-
-                <p className="mt-8">
-                  <Link href={slide.cta.href} className="btn-on-image">
-                    {slide.cta.text}
-                  </Link>
-                </p>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* ---------------- Controls ---------------- */}
-        <div className="mt-[var(--ec-s8)] flex items-center gap-[var(--ec-s4)]">
-          <button
-            type="button"
-            onClick={() => setUserPaused((value) => !value)}
-            aria-label={playing ? "Pause slideshow" : "Play slideshow"}
-            className="flex h-11 w-11 shrink-0 items-center justify-center border border-white/70 text-white transition-colors duration-[var(--ec-dur)] hover:bg-white/10"
-          >
+      {/* ---------------- Controls ---------------- */}
+      <div className="absolute right-1/2 bottom-3 z-[3] flex translate-x-1/2 items-center md:right-[6%] md:bottom-7 md:translate-x-0">
+        <button
+          type="button"
+          onClick={() => setUserPaused((value) => !value)}
+          aria-label={playing ? "Pause slideshow" : "Play slideshow"}
+          className="group flex h-11 w-11 items-center justify-center"
+        >
+          <span className="flex h-7 w-7 items-center justify-center rounded-full border border-brass text-brass transition-colors duration-300 group-hover:bg-brass group-hover:text-navy">
             {playing ? (
-              <svg viewBox="0 0 16 16" className="h-4 w-4" aria-hidden="true" focusable="false">
+              <svg viewBox="0 0 16 16" className="h-3 w-3" aria-hidden="true" focusable="false">
                 <rect x="4" y="3" width="3" height="10" fill="currentColor" />
                 <rect x="9" y="3" width="3" height="10" fill="currentColor" />
               </svg>
             ) : (
-              <svg viewBox="0 0 16 16" className="h-4 w-4" aria-hidden="true" focusable="false">
+              <svg viewBox="0 0 16 16" className="h-3 w-3" aria-hidden="true" focusable="false">
                 <path d="M5 3l8 5-8 5z" fill="currentColor" />
               </svg>
             )}
-          </button>
-
-          {/* Scrolls sideways on a narrow phone rather than wrapping under
-              the pause button. */}
-          <div
-            role="tablist"
-            aria-label="Featured stories"
-            onKeyDown={onTabKeyDown}
-            className="flex min-w-0 gap-6 overflow-x-auto [scrollbar-width:none] sm:gap-9"
-          >
-            {SLIDES.map((slide, position) => {
-              const active = position === index;
-              return (
-                <button
-                  key={slide.id}
-                  ref={(node) => {
-                    tabRefs.current[position] = node;
-                  }}
-                  id={`hero-tab-${slide.id}`}
-                  type="button"
-                  role="tab"
-                  aria-selected={active}
-                  aria-controls={`hero-panel-${slide.id}`}
-                  /* One tab stop for the whole list; arrows move within it. */
-                  tabIndex={active ? 0 : -1}
-                  onClick={() => choose(position)}
-                  className="flex min-h-11 shrink-0 cursor-pointer flex-col justify-end whitespace-nowrap"
-                >
-                  {/* The rule sits above the label and only on the active
-                      tab. It is the one piece of brass outside the header. */}
-                  <span
-                    className={`mb-2 block h-[2px] w-full ${active ? "bg-brass" : "bg-transparent"}`}
-                    aria-hidden="true"
-                  />
-                  <span
-                    className={`text-meta ${active ? "font-semibold text-white" : "text-white/70"}`}
-                  >
-                    {slide.label}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        <p className="sr-only" aria-live="polite">
-          {`Slide ${index + 1} of ${SLIDES.length}: ${SLIDES[index].label}`}
-        </p>
-        {reduced && (
-          <span className="sr-only">
-            Autoplay is off because your system asks for reduced motion.
           </span>
-        )}
+        </button>
+
+        {HERO_SLIDES.map((slide, position) => {
+          const active = position === index;
+          return (
+            <button
+              key={slide.id}
+              type="button"
+              onClick={() => goTo(position)}
+              aria-label={`Show slide ${position + 1}: ${slide.tag}`}
+              aria-current={active ? "true" : undefined}
+              className="group flex h-11 w-7 items-center justify-center"
+            >
+              <span
+                className={`block h-3 w-3 rounded-full border border-brass transition-[background-color,transform] duration-300 group-hover:scale-125 ${
+                  active ? "bg-brass" : ""
+                }`}
+              />
+            </button>
+          );
+        })}
       </div>
+
+      <p className="sr-only" aria-live="polite">
+        {`Slide ${index + 1} of ${HERO_SLIDES.length}: ${HERO_SLIDES[index].tag}`}
+      </p>
     </section>
   );
 }

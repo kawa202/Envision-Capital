@@ -44,7 +44,13 @@ const nextConfig: NextConfig = {
     /* 75 is the default for editorial imagery, 85 is reserved for the hero,
        and 60 is for photographs used as texture behind a scrim, where
        detail is never seen. Next 16 refuses any quality not listed here. */
-    qualities: [60, 75, 85],
+    qualities: [60, 75, 80, 85],
+    /* The approved design's photography comes from Unsplash. Only bare photo
+       paths are allowed — no query string — so nothing else on that host can
+       be pushed through the optimiser. */
+    remotePatterns: [
+      { protocol: "https", hostname: "images.unsplash.com", pathname: "/photo-**", search: "" },
+    ],
     /* Breakpoints matched to the layout's actual image widths, so we never
        ship a 1920px file to fill a 32rem column. */
     deviceSizes: [480, 640, 750, 828, 1080, 1200, 1440, 1920],
@@ -52,9 +58,11 @@ const nextConfig: NextConfig = {
     /* Rather than images.unoptimized, which would ship the full-size JPEGs:
        scripts/build-images.mjs pre-renders WebP at four widths and this
        loader picks the smallest one that covers the request. */
-    ...(isPages
-      ? { loader: "custom" as const, loaderFile: "./lib/image-loader.ts" }
-      : {}),
+    /* Used in every environment, not just the Pages export: the Unsplash
+       photographs have to be resized on Unsplash's CDN. Sent through the dev
+       optimiser they are fetched as multi-megabyte originals and time out. */
+    loader: "custom" as const,
+    loaderFile: "./lib/image-loader.ts",
   },
 };
 

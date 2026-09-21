@@ -26,6 +26,44 @@ export type Insight = {
  * before launch.
  */
 export const insights: Insight[] = [
+  /* The three pieces featured on the homepage, from the approved design
+     direction. Photography is its Unsplash set. */
+  {
+    slug: "african-capital-markets-volatility",
+    category: "Capital",
+    date: "2026-09-08",
+    title: "Navigating volatility in African capital markets.",
+    dek: "How institutional investors are repositioning their portfolios for a new era of macroeconomic uncertainty.",
+    href: "/insights/african-capital-markets-volatility",
+    image: {
+      src: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40",
+      alt: "Two people working through hand-drawn figures on paper between open laptops.",
+    },
+  },
+  {
+    slug: "cross-border-ma-rules",
+    category: "Transactions",
+    date: "2026-08-25",
+    title: "The new rules of cross-border M&A.",
+    dek: "Regulatory shifts and geopolitical tensions are rewriting the playbook for successful cross-border deals.",
+    href: "/insights/cross-border-ma-rules",
+    image: {
+      src: "https://images.unsplash.com/photo-1507679799987-c73779587ccf",
+      alt: "A man in a navy suit buttoning his jacket at the foot of a staircase.",
+    },
+  },
+  {
+    slug: "financing-infrastructure",
+    category: "Capital",
+    date: "2026-08-11",
+    title: "Financing the next wave of infrastructure.",
+    dek: "Bridging the gap between public sector ambition and private capital deployment in emerging economies.",
+    href: "/insights/financing-infrastructure",
+    image: {
+      src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
+      alt: "A laptop screen showing analytics charts beside a plant.",
+    },
+  },
   {
     slug: "cost-of-capital",
     category: "Capital",

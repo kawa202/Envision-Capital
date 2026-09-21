@@ -1,44 +1,26 @@
-import { Inter, Newsreader } from "next/font/google";
-// import localFont from "next/font/local";
+import { Inter, Playfair_Display } from "next/font/google";
 
 /**
- * The two typefaces of the system. Loaded by next/font, which downloads them
- * at build time and serves them from this domain as WOFF2 with
- * `font-display: swap` and a size-adjusted fallback, so swapping causes no
- * layout shift.
+ * The two typefaces of the approved design direction (Envision_Prototype.html):
+ * Playfair Display for headings, Inter for everything else.
  *
- * Headings are set at weight 400 — an editorial serif carries authority
- * through scale and spacing, not through weight.
+ * Loaded by next/font, which downloads them at build time and serves them
+ * from this domain as WOFF2 with a size-adjusted fallback, so the swap causes
+ * no layout shift and no request goes to Google at runtime.
  */
-
-/** Headings. Stand-in for GT Sectra Display until the licence is supplied. */
-export const serif = Newsreader({
+export const serif = Playfair_Display({
   variable: "--font-serif",
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["400", "600", "700"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
-/** Body and UI. */
 export const sans = Inter({
   variable: "--font-sans",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
-
-/* ---------------------------------------------------------------------------
-   GT Sectra Display — drop the licensed WOFF2 files into app/fonts/ and swap
-   the export above for this block. Nothing else in the codebase changes: every
-   heading resolves through --font-serif.
-
-export const serif = localFont({
-  variable: "--font-serif",
-  display: "swap",
-  src: [
-    { path: "./fonts/GTSectraDisplay-Regular.woff2", weight: "400", style: "normal" },
-    { path: "./fonts/GTSectraDisplay-Medium.woff2", weight: "500", style: "normal" },
-  ],
-});
---------------------------------------------------------------------------- */
 
 export const fontVariables = `${serif.variable} ${sans.variable}`;

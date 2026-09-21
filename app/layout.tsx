@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { fontVariables } from "./fonts";
+import { ChatWidget } from "@/components/ChatWidget";
 import { SiteHeader } from "@/components/SiteHeader";
 import { getNavData } from "@/content/navigation";
 import { Footer } from "@/components/sections/Footer";
@@ -121,6 +122,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <SiteHeader navItems={getNavData()} />
         {children}
         <Footer />
+        <ChatWidget />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

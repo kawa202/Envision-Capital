@@ -7,22 +7,39 @@
    below; the Tailwind theme underneath is only a mapping onto them,
    so a utility class and a raw CSS rule can never drift apart.
 
-   Register: institutional, editorial, restrained. 60% warm white,
-   30% navy, 10% brass — and brass only on the primary action.
+   Values follow the approved design direction, Envision_Prototype.html:
+   deep navy, brass, warm white and graphite; Playfair Display over
+   Inter; 8rem sections with 6% side gutters.
    ============================================================= */
 
 :root {
   /* --- Colour --------------------------------------------------
      Three backgrounds exist: warm white, stone, navy. Nothing else. */
-  --ec-navy: #0b1f3a;
-  --ec-brass: #b88a3a;
-  --ec-brass-hover: #a67b31;
-  --ec-blue: #1f5aa0;
-  --ec-white: #fafaf7;
+  --ec-navy: #0a1c2e;
+  --ec-navy-light: #142c45;
+  --ec-brass: #c5a059;
+  --ec-brass-hover: #d4b06a;
+  /* Brass as small text on a light ground. The prototype's #C5A059 measures
+     2.3:1 on warm white, which fails AA for 12-14px labels; this darker step
+     of the same hue measures 4.7:1. On navy the full brass is used, at 7.8:1. */
+  --ec-brass-ink: #8c6b2e;
+  --ec-blue: #3a6ea5;
+  --ec-white: #f9f9f8;
   --ec-stone: #f0efea;
-  --ec-ink: #2e2e2e;
-  --ec-muted: #444b57;
-  --ec-on-navy: #d5dbe3;
+  /* Pure white, for cards that sit on the warm-white page. */
+  --ec-card: #ffffff;
+  /* Hero standfirst, light grey over the navy overlay. */
+  --ec-hero-sub: #e0e0e0;
+  /* Hero overlay. From 1280px up this is the design reference's gradient,
+     unchanged. Below that the 900px text block reaches 70-95% of the screen,
+     past where the reference's gradient has lightened, and white type over
+     the brighter photographs measured 1.6-2.9:1. The narrow-screen version
+     keeps the same direction but holds the navy across the width: 5.3:1 at
+     worst on all three photographs. */
+  --ec-hero-overlay: linear-gradient(90deg, rgb(10 28 46 / 0.95) 0%, rgb(10 28 46 / 0.88) 50%, rgb(10 28 46 / 0.8) 100%);
+  --ec-ink: #333333;
+  --ec-muted: #555555;
+  --ec-on-navy: #a0aab5;
 
   /* Form validation. Not a brand colour — the one hue reserved for
      error states, in a light and a dark-ground variant, both of which
@@ -31,25 +48,24 @@
   --ec-error-on-navy: #e5a3a3;
 
   /* Hairlines, derived from the palette rather than new greys. */
-  --ec-rule: rgb(11 31 58 / 0.16);
-  --ec-rule-invert: rgb(250 250 247 / 0.22);
+  --ec-rule: #eaeaea;
+  --ec-rule-invert: rgb(255 255 255 / 0.15);
 
   /* --- Type ---------------------------------------------------- */
   --ec-serif: var(--font-serif), Georgia, serif;
   --ec-sans: var(--font-sans), "Helvetica Neue", Arial, sans-serif;
 
-  /* Five sizes, and no more: h1, h2, h3, body, small. */
-  --ec-h1: clamp(2.75rem, 6vw, 4.75rem);
-  --ec-h2: clamp(2.125rem, 4vw, 3.25rem);
-  --ec-h3: clamp(1.625rem, 2.5vw, 2rem);
+  --ec-h1: clamp(3rem, 5vw, 4.5rem);
+  --ec-h2: clamp(2rem, 3vw, 3rem);
+  --ec-h3: 1.5rem;
   /* One step between h3 and body, for the headings inside a list or a card.
      Six sizes is the ceiling; everything ad-hoc resolves to one of them. */
   --ec-h4: 1.25rem;
-  --ec-body: 1.0625rem;
+  --ec-body: 1rem;
   --ec-small: 0.875rem;
-  --ec-leading: 1.6;
-  --ec-leading-display: 1.08;
-  --ec-tracking-display: -0.015em;
+  --ec-leading: 1.7;
+  --ec-leading-display: 1.15;
+  --ec-tracking-display: 0;
   --ec-measure: 62ch;
 
   /* --- Space ---------------------------------------------------- */
@@ -59,13 +75,27 @@
   --ec-s4: 32px;
   --ec-s6: 48px;
   --ec-s8: 64px;
-  --ec-section: clamp(64px, 10vw, 120px);
-  --ec-gutter: clamp(20px, 5vw, 80px);
-  --ec-max: 1280px;
+  /* 8rem sections, 6% side gutters; 5rem and 5% below 768px. */
+  --ec-section: 8rem;
+  --ec-gutter: 6%;
+  --ec-max: none;
 
   /* --- Motion --------------------------------------------------- */
-  --ec-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
-  --ec-dur: 240ms;
+  --ec-ease: ease;
+  --ec-dur: 300ms;
+}
+
+@media (max-width: 48rem) {
+  :root {
+    --ec-section: 5rem;
+    --ec-gutter: 5%;
+  }
+}
+
+@media (min-width: 80rem) {
+  :root {
+    --ec-hero-overlay: linear-gradient(90deg, rgb(10 28 46 / 0.95) 0%, rgb(10 28 46 / 0.6) 50%, rgb(10 28 46 / 0.2) 100%);
+  }
 }
 
 /* -------------------------------------------------------------
@@ -86,6 +116,8 @@
   --color-navy-3: var(--ec-navy);
   --color-brass: var(--ec-brass);
   --color-brass-hover: var(--ec-brass-hover);
+  --color-brass-ink: var(--ec-brass-ink);
+  --color-navy-light: var(--ec-navy-light);
   /* Gold is not a text colour: former brass-light text resolves to the
      light tint used on navy. */
   --color-brass-light: var(--ec-on-navy);
@@ -95,6 +127,8 @@
   --color-white-warm: var(--ec-white);
   --color-paper-2: var(--ec-stone);
   --color-stone: var(--ec-stone);
+  --color-card: var(--ec-card);
+  --color-hero-sub: var(--ec-hero-sub);
   --color-graphite: var(--ec-ink);
   --color-ink: var(--ec-ink);
   --color-muted: var(--ec-muted);
@@ -172,19 +206,17 @@
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--ec-serif);
-    font-weight: 400;
+    font-weight: 700;
+    color: var(--ec-navy);
     line-height: var(--ec-leading-display);
     letter-spacing: var(--ec-tracking-display);
     text-wrap: balance;
   }
   h1 { font-size: var(--ec-h1); }
   h2 { font-size: var(--ec-h2); }
-  h3 { font-size: var(--ec-h3); line-height: 1.2; }
+  h3 { font-size: var(--ec-h3); line-height: 1.3; }
 
   p { text-wrap: pretty; }
-
-  /* Square corners everywhere. */
-  *, *::before, *::after { border-radius: 0; }
 
   ::selection {
     background-color: var(--ec-navy);
@@ -208,15 +240,13 @@
    full-bleed layouts that still need to align with it. */
 :root {
   --shell-gutter: var(--ec-gutter);
-  --shell-edge: max(var(--ec-gutter), calc((100vw - var(--ec-max)) / 2 + var(--ec-gutter)));
+  --shell-edge: var(--ec-gutter);
 }
 
 @layer components {
   /* ---- Layout -------------------------------------------------- */
   .shell {
     width: 100%;
-    max-width: var(--ec-max);
-    margin-inline: auto;
     padding-inline: var(--ec-gutter);
   }
 
@@ -236,32 +266,89 @@
   .btn-secondary,
   .btn-secondary-invert {
     display: inline-flex;
-    min-height: 48px;
+    min-height: 44px;
     align-items: center;
     justify-content: center;
-    gap: var(--ec-s2);
-    padding-inline: var(--ec-s3);
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 2px;
     font-family: var(--ec-sans);
-    font-size: var(--ec-small);
+    font-size: 0.9rem;
     font-weight: 600;
-    letter-spacing: 0.01em;
     white-space: nowrap;
+    text-decoration: none;
     transition:
       background-color var(--ec-dur) var(--ec-ease),
       border-color var(--ec-dur) var(--ec-ease),
-      color var(--ec-dur) var(--ec-ease);
+      color var(--ec-dur) var(--ec-ease),
+      transform 0.2s var(--ec-ease);
   }
-  /* Navy on brass: 5.3:1. */
+  /* Navy on brass: 7.1:1. */
   .btn-primary {
     background-color: var(--ec-brass);
     color: var(--ec-navy);
   }
-  /* Navy on the hover brass too: warm white over #A67B31 measures 3.7:1
-     and fails at this size. The hover is the darker ground, not new text. */
   .btn-primary:hover {
     background-color: var(--ec-brass-hover);
     color: var(--ec-navy);
+    transform: translateY(-1px);
   }
+
+  /* The large navy action from the prototype's closing section. Its hover
+     turns brass, so the text turns navy with it: warm white on brass is
+     2.3:1. */
+  .btn-large {
+    display: inline-block;
+    padding: 1.2rem 2.5rem;
+    border-radius: 2px;
+    background-color: var(--ec-navy);
+    color: var(--ec-white);
+    font-family: var(--ec-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition:
+      background-color var(--ec-dur) var(--ec-ease),
+      color var(--ec-dur) var(--ec-ease);
+  }
+  .btn-large:hover {
+    background-color: var(--ec-brass);
+    color: var(--ec-navy);
+  }
+
+  /* Small uppercase label above a heading. */
+  .eyebrow {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    font-family: var(--ec-sans);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: normal;
+    text-transform: uppercase;
+    color: var(--ec-brass-ink);
+  }
+  .eyebrow-invert { color: var(--ec-brass); }
+
+  /* Underlined text link with a trailing arrow. */
+  .text-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 0.25rem;
+    font-family: var(--ec-sans);
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: normal;
+    color: var(--ec-navy);
+    text-decoration: none;
+    transition: color var(--ec-dur) var(--ec-ease);
+  }
+  .text-link:hover { color: var(--ec-brass-ink); }
+  .text-link-invert { color: var(--ec-brass); }
+  .text-link-invert:hover { color: var(--ec-brass-hover); }
   .btn-secondary {
     border: 1px solid var(--ec-navy);
     color: var(--ec-navy);
