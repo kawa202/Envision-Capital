@@ -1,21 +1,23 @@
-import { Capabilities } from "@/components/home/Capabilities";
 import { ClosingCta } from "@/components/home/ClosingCta";
+import { Heritage } from "@/components/home/Heritage";
 import { HeroCarousel } from "@/components/home/HeroCarousel";
 import { InsightCards } from "@/components/home/InsightCards";
-import { Intro } from "@/components/home/Intro";
+import { Pillars } from "@/components/home/Pillars";
+import { Transactions } from "@/components/home/Transactions";
 
 /**
- * The homepage, built to the approved design direction
- * (Envision_Prototype.html): hero carousel, who we are, capabilities,
- * insights, and a closing call to action. Header, footer and the concierge
- * come from app/layout.tsx.
+ * The homepage. The hero is from the first design reference
+ * (Envision_Prototype.html); every section after it follows the second
+ * (deepseek_html_20260921_ccfe53.html). Header, footer and the concierge come
+ * from app/layout.tsx.
  */
 export default function Home() {
   return (
     <main id="main">
       <HeroCarousel />
-      <Intro />
-      <Capabilities />
+      <Pillars />
+      <Heritage />
+      <Transactions />
       <InsightCards />
       <ClosingCta />
     </main>

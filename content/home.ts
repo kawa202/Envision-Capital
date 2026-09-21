@@ -61,39 +61,78 @@ export const HERO_SLIDES: HeroSlide[] = [
 /** Milliseconds between automatic advances, as in the reference. */
 export const HERO_INTERVAL_MS = 6000;
 
-export const INTRO = {
-  eyebrow: "Who We Are",
-  heading: "We bring clarity to complexity.",
-  paragraphs: [
-    "Envision Capital is an independent advisory firm. We partner with boards, management teams, and investors to navigate their most critical financial decisions.",
-    "Our approach is rigorous and evidence-based. We don't just provide advice; we build the financial architecture that supports your strategic ambitions.",
-  ],
-  link: { text: "About the firm", href: "/about" },
-};
-
-export const CAPABILITIES = {
-  eyebrow: "Our Capabilities",
-  heading: "How we help you move forward.",
+/**
+ * The sections below follow the second design reference
+ * (deepseek_html_20260921_ccfe53.html): its layout, order and photography,
+ * copied as given. Its words are not all copied, and on purpose:
+ *
+ * - The three pillars in the reference are Rothschild & Co's businesses,
+ *   partly in Rothschild's own wording ("Five Arrows" became "Envision
+ *   Arrows"). Envision does not manage wealth or invest its own capital —
+ *   the firm states that it advises only. The cards carry Envision's own
+ *   three practice families instead, in the copy from its live site.
+ * - The reference's figures (US$2.5bn advised, 12 countries, six named
+ *   transactions with US$ values) are invented. They are bracketed slots
+ *   until Envision supplies real, consented numbers. The one figure the
+ *   client has stated — 20+ years of experience — is used.
+ */
+export const PILLARS = {
+  eyebrow: "What We Do",
+  heading: "Three complementary capabilities.",
   items: [
     {
-      number: "01",
-      title: "Mergers & Acquisitions",
-      body: "End-to-end transaction support, from target identification and valuation to negotiation and post-merger integration.",
-      href: "/services#mergers-acquisitions",
+      title: "Transactions & Capital",
+      body: "Capital raising, M&A and valuation – prepared for the scrutiny that decides them.",
+      link: { text: "Explore Transactions & Capital", href: "/services#corporate-finance" },
     },
     {
-      number: "02",
-      title: "Capital Raising",
-      body: "Structuring and executing debt and equity raises. We connect you with the right capital partners to fuel your growth.",
-      href: "/services#capital-advisory",
+      title: "Finance & Performance",
+      body: "Reporting, CFO-grade oversight and restructuring that leadership can act on.",
+      link: { text: "Explore Finance & Performance", href: "/services#virtual-cfo" },
     },
     {
-      number: "03",
-      title: "Strategic Advisory",
-      body: "Board-level counsel on capital allocation, restructuring, and long-term financial strategy in complex environments.",
-      href: "/services#corporate-finance",
+      title: "Intelligence & Transformation",
+      body: "AI applied to the finance function where it pays – and the capability to run it.",
+      link: { text: "Explore Intelligence & Transformation", href: "/services#ai-transformation" },
     },
   ],
+};
+
+export const HERITAGE = {
+  eyebrow: "Our Heritage & Scale",
+  heading: "Built on more than two decades of experience in African finance.",
+  body: "Envision Capital is an independent financial advisory firm, built on the experience of its founders and a shared commitment to rigorous, conflict-free advice. We advise — we do not take principal positions, manage funds or broker products — and that independence is what makes the counsel worth having.",
+  metrics: [
+    { value: "[US$ X]", label: "Transactions Advised" },
+    { value: "[X]", label: "Countries Covered" },
+    /* Client-stated. The reference's "25+ combined" was not. */
+    { value: "20+", label: "Years of Experience" },
+  ],
+  link: { text: "Learn more about us", href: "/about" },
+  image: {
+    src: unsplash("1444723121867-7a241cacace9"),
+    alt: "A city at dusk seen from the hills, its downtown towers lit against a deep blue sky.",
+  },
+};
+
+export const TRANSACTIONS = {
+  eyebrow: "Highlight Transactions",
+  heading: "Selected mandates.",
+  /* Mandate types Envision actually undertakes, with every fact left open. */
+  items: [
+    "Capital raise",
+    "Acquisition",
+    "Debt restructuring",
+    "Growth equity placement",
+    "Company valuation",
+    "Sell-side M&A",
+  ].map((type) => ({
+    value: "[US$ value]",
+    title: `${type} — [Client or sector]`,
+    body: "[One line on the mandate and its outcome, as the client has agreed it may be described.]",
+    href: "/work",
+  })),
+  note: "Selected mandates shown with client consent. [MANDATES REQUIRED] — clients, values and outcomes to be supplied by Envision.",
 };
 
 export const INSIGHTS_SECTION = {

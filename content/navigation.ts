@@ -80,6 +80,8 @@ export const navItems: NavItem[] = [
       featuredSlug: "cost-of-capital",
     },
   },
+  /* A single destination, as in the design reference's header. */
+  { label: "Industries", href: "/industries" },
   {
     label: "Insights",
     href: "/insights",

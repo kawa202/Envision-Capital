@@ -53,7 +53,7 @@ export function Footer() {
     <footer className="bg-navy px-[6%] pt-16 pb-8 text-[0.85rem] text-on-navy">
       <div className="mb-16 grid gap-8 md:grid-cols-2 md:gap-16 lg:grid-cols-[2fr_1fr_1fr_1fr]">
         <div>
-          <Logo showMark={false} className="mb-4" />
+          <Logo className="mb-4 text-white" />
           <p className="max-w-[300px] leading-[1.7]">{FOOTER_BLURB}</p>
         </div>
 

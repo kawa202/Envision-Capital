@@ -11,8 +11,7 @@ import { Inter, Playfair_Display } from "next/font/google";
 export const serif = Playfair_Display({
   variable: "--font-serif",
   subsets: ["latin"],
-  weight: ["400", "600", "700"],
-  style: ["normal", "italic"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
