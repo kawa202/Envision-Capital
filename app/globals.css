@@ -301,35 +301,80 @@
   }
 
   /* ---- Hero scrim ----------------------------------------------
-     Navy, bottom-to-top, so a photograph can carry text without the
-     image being flattened. Stops were set against measured contrast. */
+     Directional where there is room for it, vertical where there is not.
+
+     Neither set of stops is the one in the brief, and both were changed
+     by measurement rather than taste. Each slide's type was sampled line
+     by line against its own photograph at 375, 768, 1024 and 1280px:
+
+     - Desktop, as specified (.85 / .55 at 35% / clear by 60%): a 16ch
+       headline reaches ~56% of the frame and a 52ch paragraph ~60%, past
+       where those stops had cleared. Headline 1.8:1, body 2.2:1.
+     - Mobile, as specified (.9 / .4 at 50% / clear by 75%): the content
+       block fills nearly the whole hero on a phone, so the headline's
+       first line starts about 16% from the top — where a bottom-anchored
+       gradient has already gone. 1.4-2.6:1 on every slide.
+
+     The desktop stops keep the shape and the intent — dark behind the
+     column, the right of the frame open — and hold until the text ends.
+     The mobile stops never fall below .5, because on a phone there is no
+     right-hand side to keep clear; the photograph reads as a toned
+     backdrop, which is what legible type over a picture looks like at
+     that width. The split sits at 64rem: at 768px a 52ch line fills three
+     quarters of the screen and the directional treatment has nothing left
+     to protect.
+     ---------------------------------------------------------------- */
   .hero-scrim {
     background: linear-gradient(
       to top,
-      rgb(11 31 58 / 0.94) 0,
-      rgb(11 31 58 / 0.82) 28rem,
-      rgb(11 31 58 / 0.5) 38rem,
-      rgb(11 31 58 / 0.2) 46rem,
-      transparent 54rem
+      rgb(11 31 58 / 0.92) 0%,
+      rgb(11 31 58 / 0.82) 50%,
+      rgb(11 31 58 / 0.62) 85%,
+      rgb(11 31 58 / 0.5) 100%
     );
   }
+
   @media (min-width: 64rem) {
     .hero-scrim {
-      background:
-        linear-gradient(
-          to top,
-          rgb(11 31 58 / 0.92) 0,
-          rgb(11 31 58 / 0.66) 30%,
-          rgb(11 31 58 / 0.3) 58%,
-          rgb(11 31 58 / 0.12) 100%
-        ),
-        linear-gradient(to right, rgb(11 31 58 / 0.55) 0, rgb(11 31 58 / 0.1) 70%);
+      background: linear-gradient(
+        90deg,
+        rgb(11 31 58 / 0.88) 0%,
+        rgb(11 31 58 / 0.82) 30%,
+        rgb(11 31 58 / 0.7) 62%,
+        rgb(11 31 58 / 0) 85%
+      );
     }
   }
 
-  /* ---- Editorial photography ------------------------------------
-     One treatment for every image: greyscale with navy laid into the
-     shadows, so a mixed placeholder set reads as one art direction. */
+  /* ---- Action on a photograph ------------------------------------
+     Outlined and light: brass is reserved for the header's one
+     primary action, so a call to action sitting on an image borrows
+     the photograph's own contrast instead.
+     ---------------------------------------------------------------- */
+  .btn-on-image {
+    display: inline-flex;
+    min-height: 48px;
+    align-items: center;
+    justify-content: center;
+    padding-inline: var(--ec-s3);
+    border: 1px solid rgb(250 250 247 / 0.7);
+    color: var(--ec-white);
+    font-family: var(--ec-sans);
+    font-size: var(--ec-small);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    transition:
+      background-color var(--ec-dur) var(--ec-ease),
+      border-color var(--ec-dur) var(--ec-ease),
+      color var(--ec-dur) var(--ec-ease);
+  }
+  .btn-on-image:hover {
+    border-color: var(--ec-white);
+    background-color: var(--ec-white);
+    color: var(--ec-navy);
+  }
+
   .duotone {
     position: relative;
     isolation: isolate;

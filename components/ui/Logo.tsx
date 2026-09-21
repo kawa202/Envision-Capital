@@ -1,6 +1,15 @@
 /**
  * The Envision Capital lockup: a drawn mark beside a typographic wordmark.
  *
+ * TODO — REPLACE WITH THE CLIENT'S OWN LOGO.
+ * The brief calls for the supplied artwork from public/brand/. That folder
+ * does not exist in this repository and no client SVG has been provided, so
+ * this concept mark stands in. When the file arrives, drop it at
+ * public/brand/envision-capital.svg and render it here with next/image (or
+ * inline it, if it needs to follow currentColor the way this one does);
+ * nothing else has to change, because every surface calls <Logo /> rather
+ * than drawing its own.
+ *
  * The mark is inline SVG rather than a file so it inherits `currentColor` and
  * stays crisp at any size — on navy it is white, on warm white it is navy,
  * and only the top bar carries brass. Three bars rising inside a ring: the

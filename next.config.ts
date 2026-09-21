@@ -41,8 +41,10 @@ const nextConfig: NextConfig = {
   images: {
     /* Modern formats first; Next falls back automatically. */
     formats: ["image/avif", "image/webp"],
-    /* 75 is the default for editorial imagery; 85 is reserved for the hero. */
-    qualities: [75, 85],
+    /* 75 is the default for editorial imagery, 85 is reserved for the hero,
+       and 60 is for photographs used as texture behind a scrim, where
+       detail is never seen. Next 16 refuses any quality not listed here. */
+    qualities: [60, 75, 85],
     /* Breakpoints matched to the layout's actual image widths, so we never
        ship a 1920px file to fill a 32rem column. */
     deviceSizes: [480, 640, 750, 828, 1080, 1200, 1440, 1920],
