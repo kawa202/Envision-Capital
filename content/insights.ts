@@ -36,7 +36,7 @@ export const insights: Insight[] = [
     dek: "How institutional investors are repositioning their portfolios for a new era of macroeconomic uncertainty.",
     href: "/insights/african-capital-markets-volatility",
     image: {
-      src: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40",
+      src: "/images/unsplash/1454165804606-c3d57bc86b40.jpg",
       alt: "Two people working through hand-drawn figures on paper between open laptops.",
     },
   },
@@ -48,7 +48,7 @@ export const insights: Insight[] = [
     dek: "Regulatory shifts and geopolitical tensions are rewriting the playbook for successful cross-border deals.",
     href: "/insights/cross-border-ma-rules",
     image: {
-      src: "https://images.unsplash.com/photo-1507679799987-c73779587ccf",
+      src: "/images/unsplash/1507679799987-c73779587ccf.jpg",
       alt: "A man in a navy suit buttoning his jacket at the foot of a staircase.",
     },
   },
@@ -60,7 +60,7 @@ export const insights: Insight[] = [
     dek: "Bridging the gap between public sector ambition and private capital deployment in emerging economies.",
     href: "/insights/financing-infrastructure",
     image: {
-      src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
+      src: "/images/unsplash/1551288049-bebda4e38f71.jpg",
       alt: "A laptop screen showing analytics charts beside a plant.",
     },
   },

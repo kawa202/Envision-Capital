@@ -12,19 +12,11 @@ import widths from "./image-widths.json";
 export default function pagesImageLoader({
   src,
   width,
-  quality,
 }: {
   src: string;
   width: number;
   quality?: number;
 }): string {
-  /* Unsplash resizes on its own CDN, so a remote photograph is asked for at
-     exactly the width the browser wants rather than one pre-rendered copy.
-     Quality 80 matches the design reference these images came from. */
-  if (src.startsWith("https://images.unsplash.com/")) {
-    return `${src}?auto=format&fit=crop&w=${width}&q=${quality ?? 80}`;
-  }
-
   const base = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
   if (!/^\/images\/.+\.(jpe?g|png)$/i.test(src)) return `${base}${src}`;
   const size = widths.find((w) => w >= width) ?? widths[widths.length - 1];

@@ -30,7 +30,7 @@ export function InsightCards() {
                     src={card.image.src}
                     alt={card.image.alt}
                     fill
-                    quality={80}
+                    fetchPriority="low"
                     sizes="(min-width: 1024px) 30vw, 90vw"
                     className="object-cover"
                   />

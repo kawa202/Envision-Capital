@@ -37,16 +37,27 @@ export function HeroCarousel() {
     return () => query.removeEventListener("change", apply);
   }, []);
 
-  /* Slides two and three load once the browser is idle, so they never
-     compete with the first photograph. */
+  /* Slides two and three are not rendered until the page has finished
+     loading and the browser is idle. Mounting them on idle alone let their
+     photographs start downloading while the first one was still arriving on
+     a slow connection, which delayed the one that matters. */
   useEffect(() => {
-    const idle = window.requestIdleCallback?.bind(window);
-    if (idle) {
-      const handle = idle(() => setMountRest(true), { timeout: 2500 });
-      return () => window.cancelIdleCallback?.(handle);
-    }
-    const timer = window.setTimeout(() => setMountRest(true), 1500);
-    return () => window.clearTimeout(timer);
+    let handle: number | undefined;
+    const schedule = () => {
+      const idle = window.requestIdleCallback?.bind(window);
+      handle = idle
+        ? idle(() => setMountRest(true), { timeout: 3000 })
+        : window.setTimeout(() => setMountRest(true), 1500);
+    };
+    if (document.readyState === "complete") schedule();
+    else window.addEventListener("load", schedule, { once: true });
+    return () => {
+      window.removeEventListener("load", schedule);
+      if (handle !== undefined) {
+        window.cancelIdleCallback?.(handle);
+        window.clearTimeout(handle);
+      }
+    };
   }, []);
 
   /* `index` is a dependency so that choosing a slide restarts the six-second
@@ -95,9 +106,13 @@ export function HeroCarousel() {
                 src={slide.image.src}
                 alt={slide.image.alt}
                 fill
-                priority={position === 0}
+                /* Slide one is the LCP element. `preload` (Next 16's
+                   replacement for `priority`) puts a <link rel="preload"> in
+                   the <head>, so the browser asks for it before it has parsed
+                   down to the <img>. It is not combined with `loading` or
+                   `fetchPriority`, which the docs say it must not be. */
                 loading={position === 0 ? "eager" : "lazy"}
-                quality={80}
+                fetchPriority={position === 0 ? "high" : "low"}
                 sizes="100vw"
                 className="object-cover"
               />

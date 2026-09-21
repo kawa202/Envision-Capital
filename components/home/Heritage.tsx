@@ -12,7 +12,7 @@ export function Heritage() {
           src={HERITAGE.image.src}
           alt={HERITAGE.image.alt}
           fill
-          quality={80}
+          fetchPriority="low"
           sizes="(min-width: 1024px) 50vw, 100vw"
           className="object-cover"
         />
@@ -35,6 +35,7 @@ export function Heritage() {
             </div>
           ))}
         </dl>
+        <p className="-mt-4 mb-8 text-[0.75rem] text-on-navy">{HERITAGE.metricsNote}</p>
 
         <p>
           <Link href={HERITAGE.link.href} className="text-link text-link-invert">

@@ -3,12 +3,13 @@
  * (Envision_Prototype.html) and kept word for word, with each link pointed at
  * the real page it belongs to rather than an in-page anchor.
  *
- * Photography is the reference's Unsplash set, used as supplied. Images are
- * stored as bare photo URLs; lib/image-loader.ts and next/image ask Unsplash
- * for the width each screen needs. Alt text describes what is actually in
- * each frame.
+ * Photography is the reference's Unsplash set (Unsplash License), downloaded
+ * at 2400px and served from this site through the same WebP pipeline as
+ * every other photograph. Loading them from Unsplash's CDN meant a second
+ * connection on the critical path of the hero image. Alt text describes what
+ * is actually in each frame.
  */
-const unsplash = (id: string) => `https://images.unsplash.com/photo-${id}`;
+const unsplash = (id: string) => `/images/unsplash/${id}.jpg`;
 
 export type HeroSlide = {
   id: string;
@@ -71,10 +72,11 @@ export const HERO_INTERVAL_MS = 6000;
  *   Arrows"). Envision does not manage wealth or invest its own capital —
  *   the firm states that it advises only. The cards carry Envision's own
  *   three practice families instead, in the copy from its live site.
- * - The reference's figures (US$2.5bn advised, 12 countries, six named
- *   transactions with US$ values) are invented. They are bracketed slots
- *   until Envision supplies real, consented numbers. The one figure the
- *   client has stated — 20+ years of experience — is used.
+ * - Figures and mandates below are ILLUSTRATIVE, written for design review
+ *   at the scale of a Harare advisory boutique. They name no client and
+ *   describe no real transaction, and the page labels them as examples.
+ *   Replace with Envision's own, client-consented figures before launch.
+ *   The one figure the client has stated — 20+ years — is real.
  */
 export const PILLARS = {
   eyebrow: "What We Do",
@@ -103,36 +105,57 @@ export const HERITAGE = {
   heading: "Built on more than two decades of experience in African finance.",
   body: "Envision Capital is an independent financial advisory firm, built on the experience of its founders and a shared commitment to rigorous, conflict-free advice. We advise — we do not take principal positions, manage funds or broker products — and that independence is what makes the counsel worth having.",
   metrics: [
-    { value: "[US$ X]", label: "Transactions Advised" },
-    { value: "[X]", label: "Countries Covered" },
-    /* Client-stated. The reference's "25+ combined" was not. */
+    { value: "US$500m+", label: "Transactions Advised" },
+    { value: "6", label: "Countries Covered" },
+    /* Client-stated. */
     { value: "20+", label: "Years of Experience" },
   ],
+  metricsNote: "Illustrative figures for review.",
   link: { text: "Learn more about us", href: "/about" },
   image: {
-    src: unsplash("1444723121867-7a241cacace9"),
-    alt: "A city at dusk seen from the hills, its downtown towers lit against a deep blue sky.",
+    src: "/images/hero/harare-day.jpg",
+    alt: "Central Harare on a bright day: the city-centre skyline and red-roofed buildings under white cloud.",
   },
 };
 
 export const TRANSACTIONS = {
   eyebrow: "Highlight Transactions",
   heading: "Selected mandates.",
-  /* Mandate types Envision actually undertakes, with every fact left open. */
+  /* Illustrative: sector descriptors only, no client names, values at the
+     scale of the mandates a Harare advisory boutique takes on. */
   items: [
-    "Capital raise",
-    "Acquisition",
-    "Debt restructuring",
-    "Growth equity placement",
-    "Company valuation",
-    "Sell-side M&A",
-  ].map((type) => ({
-    value: "[US$ value]",
-    title: `${type} — [Client or sector]`,
-    body: "[One line on the mandate and its outcome, as the client has agreed it may be described.]",
-    href: "/work",
-  })),
-  note: "Selected mandates shown with client consent. [MANDATES REQUIRED] — clients, values and outcomes to be supplied by Envision.",
+    {
+      value: "US$18m",
+      title: "Capital raise for a regional agro-processor",
+      body: "Structured a senior debt facility funding plant expansion and working capital.",
+    },
+    {
+      value: "US$32m",
+      title: "Acquisition in financial services",
+      body: "Buy-side advice and valuation on a controlling stake in a microfinance lender.",
+    },
+    {
+      value: "US$12m",
+      title: "Debt restructuring for a manufacturer",
+      body: "Reset bank facilities and supplier arrears into a repayment profile the business can carry.",
+    },
+    {
+      value: "US$9m",
+      title: "Growth equity for a healthcare provider",
+      body: "Built the investment case and ran the process for a minority equity raise.",
+    },
+    {
+      value: "US$45m",
+      title: "Independent valuation for a mining services group",
+      body: "Valuation supporting a shareholder restructuring and the board's decision on it.",
+    },
+    {
+      value: "US$24m",
+      title: "Sale of a logistics business",
+      body: "Ran a competitive sale process to a strategic acquirer.",
+    },
+  ].map((item) => ({ ...item, href: "/work" })),
+  note: "Illustrative examples for review. Envision's own mandates, shown with client consent, replace these before launch.",
 };
 
 export const INSIGHTS_SECTION = {
