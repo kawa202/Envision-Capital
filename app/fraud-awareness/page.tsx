@@ -86,11 +86,6 @@ export default function FraudAwarenessPage() {
             </p>
           </div>
 
-          <p className="mt-14 text-meta leading-relaxed text-muted">
-            [REPORTING ROUTE REQUIRED] — Envision to confirm the internal
-            contact for suspected fraud and any regulator or police reference
-            that should appear here before launch.
-          </p>
         </div>
       </section>
     </main>

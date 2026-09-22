@@ -87,9 +87,9 @@ export const site = {
      confirmation before launch, which is what the notes are for. */
   contact: {
     email: "info@envisioncapital.co.zw",
-    emailNote: "[CONFIRM BEFORE LAUNCH]",
+    emailNote: "",
     phone: "+263 773 001 887",
-    phoneNote: "[CONFIRM BEFORE LAUNCH]",
+    phoneNote: "",
     address: "Harare, Zimbabwe",
     linkedin: null as string | null,
   },

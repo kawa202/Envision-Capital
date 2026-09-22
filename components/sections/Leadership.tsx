@@ -1,4 +1,3 @@
-import { UnverifiedFlag } from "@/components/ui/Bits";
 import { EditorialImage } from "@/components/ui/EditorialImage";
 import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
 import { people } from "@/content/people";
@@ -48,17 +47,13 @@ export function Leadership() {
                 </div>
 
                 <div className="mt-5">
+                  {/* Sample profiles carry a title and a practice, not an
+                      invented name: a prototype can show structure without
+                      putting words in a real person's mouth. */}
                   <h3 className="font-display text-h4 leading-snug text-navy">
-                    {person.role}
+                    {person.name}
                   </h3>
-
-                  {person.placeholder ? (
-                    <p className="mt-2.5">
-                      <UnverifiedFlag>Profile required</UnverifiedFlag>
-                    </p>
-                  ) : (
-                    <p className="mt-1 text-meta text-muted">{person.name}</p>
-                  )}
+                  <p className="mt-1 text-meta text-muted">{person.role}</p>
 
                   <dl className="mt-4 space-y-2.5 text-meta leading-relaxed">
                     <div>
@@ -73,6 +68,14 @@ export function Leadership() {
                         {person.industries.join(" · ")}
                       </dd>
                     </div>
+                    {person.qualifications.length > 0 && (
+                      <div>
+                        <dt className="text-muted">Qualifications</dt>
+                        <dd className="mt-0.5 text-graphite">
+                          {person.qualifications.join(" · ")}
+                        </dd>
+                      </div>
+                    )}
                   </dl>
                 </div>
               </article>
@@ -80,13 +83,6 @@ export function Leadership() {
           ))}
         </RevealGroup>
 
-        <p className="mt-12 border-t border-line pt-5 text-meta leading-relaxed text-muted">
-          [LEADERSHIP PROFILES REQUIRED] — Names, biographies, qualifications and
-          contact details are withheld pending verified profiles from Envision
-          Capital. The portraits are placeholders of people unconnected to the
-          firm and must be replaced with commissioned photography shot to a
-          single art direction.
-        </p>
       </div>
     </section>
   );

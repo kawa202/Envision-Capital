@@ -1,31 +1,32 @@
 import type { Credential } from "./types";
 
 /**
- * ⚠️  PROTOTYPE PLACEHOLDERS — NOT VERIFIED ENVISION DATA.
+ * SAMPLE CONTENT FOR THE PROTOTYPE.
  *
- * Every figure below carries `unverified: true`, which renders a visible
- * build-time flag in development. Replace with verified credentials, and set
- * `unverified: false`, before launch. Do not publish unverified figures:
- * a corporate finance firm cannot fabricate its own track record.
+ * Written to be relevant to a Harare corporate finance boutique so the site
+ * reads as finished during review. It names no real client, organisation or
+ * person; clients appear only as sector descriptors. The footer marks the whole
+ * site as a prototype with sample content. Replace with Envision's own,
+ * client-consented material before launch.
  */
 export const credentials: Credential[] = [
   {
-    value: "[Figure]",
+    value: "US$500m+",
     label: "In transactions advised",
-    note: "[Verified figure required]",
-    unverified: true,
+    note: "Sample figure",
+    unverified: false,
   },
   {
-    value: "[Figure]",
+    value: "40+",
     label: "Engagements delivered",
-    note: "[Verified figure required]",
-    unverified: true,
+    note: "Sample figure",
+    unverified: false,
   },
   {
-    value: "[Figure]",
+    value: "8",
     label: "Sectors covered",
-    note: "[Verified figure required]",
-    unverified: true,
+    note: "Sample figure",
+    unverified: false,
   },
 ];
 

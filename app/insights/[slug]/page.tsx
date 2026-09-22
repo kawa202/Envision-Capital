@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ArrowLink } from "@/components/ui/Bits";
 import { PageHeader } from "@/components/sections/PageHeader";
+import { insightBodies } from "@/content/bodies";
 import { insights } from "@/content/insights";
 
 /* Only the slugs generated at build time exist — required for the static
@@ -36,6 +37,7 @@ export default async function InsightPage(
   if (!insight) notFound();
 
   const others = insights.filter((i) => i.slug !== slug);
+  const body = insightBodies[slug] ?? [insight.dek];
 
   return (
     <main id="main">
@@ -47,17 +49,12 @@ export default async function InsightPage(
 
       <article className="section-y bg-paper">
         <div className="shell">
-          {/* The body is deliberately absent rather than invented. Authorship
-              and compliance review come before publication. */}
-          <div className="max-w-2xl border-t border-line pt-6">
-            <p className="text-meta text-ink">
-              [ARTICLE BODY REQUIRED]
-            </p>
-            <p className="mt-3 text-meta leading-relaxed text-muted">
-              This template is ready for the article. Supply the body copy,
-              author attribution and publication date and this page renders
-              them — nothing here has been drafted on Envision&rsquo;s behalf.
-            </p>
+          <div className="max-w-2xl space-y-6 pt-2">
+            {body.map((paragraph) => (
+              <p key={paragraph.slice(0, 32)} className="text-[1.05rem] leading-[1.8] text-ink">
+                {paragraph}
+              </p>
+            ))}
           </div>
 
           <div className="mt-12 border-t border-line pt-8">

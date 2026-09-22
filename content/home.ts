@@ -111,7 +111,7 @@ export const HERITAGE = {
     /* Client-stated. */
     { value: "20+", label: "Years of Experience" },
   ],
-  metricsNote: "Illustrative figures for review.",
+  metricsNote: "Illustrative figures.",
   link: { text: "Learn more about us", href: "/about" },
   image: {
     src: "/images/hero/harare-day.jpg",
@@ -156,7 +156,7 @@ export const TRANSACTIONS = {
       body: "Ran a competitive sale process to a strategic acquirer.",
     },
   ].map((item) => ({ ...item, href: "/work" })),
-  note: "Illustrative examples for review. Envision's own mandates, shown with client consent, replace these before launch.",
+  note: "Illustrative examples.",
 };
 
 export const INSIGHTS_SECTION = {

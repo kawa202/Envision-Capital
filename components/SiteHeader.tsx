@@ -157,7 +157,7 @@ export function SiteHeader({ navItems }: { navItems: ResolvedNavItem[] }) {
   /* Nav type and colour from the design reference: 0.9rem Inter, warm
      white, brass on hover. */
   const navLink =
-    "flex items-center gap-1.5 text-[0.9rem] tracking-[0.5px] text-white transition-colors duration-300 hover:text-brass";
+    "flex items-center gap-1.5 whitespace-nowrap text-[0.9rem] tracking-[0.5px] text-white transition-colors duration-300 hover:text-brass";
 
   return (
     <>
@@ -178,14 +178,17 @@ export function SiteHeader({ navItems }: { navItems: ResolvedNavItem[] }) {
           {/* The accessible name is built from the visible wordmark plus
               one hidden word, rather than replacing it with an aria-label
               that does not contain what is on screen. */}
-          <Link href="/" className="-mx-2 flex items-center px-2 py-2 text-white">
+          <Link href="/" className="-mx-2 flex shrink-0 items-center px-2 py-2 text-white">
             <Logo />
             <span className="sr-only">home</span>
           </Link>
 
           {/* ---------------- Desktop navigation ---------------- */}
           <nav aria-label="Primary" className="hidden lg:block">
-            <ul className="flex items-center gap-10">
+            {/* Five items, search, login and the button have to share the
+                bar from 1024px: the gaps widen to the reference's 2.5rem only
+                once there is room, so nothing wraps or runs off the edge. */}
+            <ul className="flex items-center gap-6 xl:gap-10">
               {navItems.map((item) => {
                 const panelId = `${baseId}-${item.label}`;
                 const open = openPanel === item.label;
@@ -232,7 +235,7 @@ export function SiteHeader({ navItems }: { navItems: ResolvedNavItem[] }) {
           </nav>
 
           {/* ---------------- Utilities ---------------- */}
-          <div className="flex items-center gap-2 lg:gap-8">
+          <div className="flex items-center gap-2 lg:gap-5 xl:gap-8">
             <button
               type="button"
               ref={searchButtonRef}
@@ -243,12 +246,12 @@ export function SiteHeader({ navItems }: { navItems: ResolvedNavItem[] }) {
               <SearchIcon />
               {/* Visible label on desktop, as in the design reference; on a
                   phone the icon stands alone and this becomes its name. */}
-              <span className="sr-only lg:not-sr-only">{utilityNav.searchLabel}</span>
+              <span className="sr-only xl:not-sr-only">{utilityNav.searchLabel}</span>
             </button>
 
             <Link
               href={utilityNav.loginHref}
-              className="hidden min-h-11 items-center text-[0.9rem] text-white transition-colors duration-300 hover:text-brass lg:inline-flex"
+              className="hidden min-h-11 items-center whitespace-nowrap text-[0.9rem] text-white transition-colors duration-300 hover:text-brass lg:inline-flex"
             >
               {utilityNav.loginLabel}
             </Link>

@@ -21,12 +21,12 @@ const sections = [
   {
     id: "privacy",
     heading: "Privacy",
-    body: "[PRIVACY NOTICE REQUIRED] — What Envision Capital collects, why, how long it is kept, who it is shared with, and how to ask for it to be removed. This prototype collects nothing: the contact and subscription forms do not submit anywhere, and the booking and portal demonstrations keep their records in your own browser.",
+    body: "Envision Capital collects only the information you choose to give us — typically your name, organisation and contact details when you enquire about a mandate or subscribe to our insights. We use it to respond to you and to provide the services you ask for, keep it only for as long as that purpose requires, and do not sell or share it with third parties for marketing. You may ask us at any time what we hold about you, or ask for it to be corrected or deleted. (In this prototype, forms do not submit anywhere, and the booking and portal demonstrations keep their records only in your own browser.)",
   },
   {
     id: "terms",
     heading: "Terms of use",
-    body: "[TERMS OF USE REQUIRED] — The basis on which this site is offered, limits of liability, and the treatment of material published on it.",
+    body: "This website is provided for general information. Nothing on it constitutes financial, investment, legal or tax advice, or an offer to provide any service; advice is given only under a signed engagement letter. While we take care over what we publish, we make no warranty that the content is complete or current, and accept no liability for decisions taken in reliance on it. Material on this site may not be reproduced without our permission.",
   },
   {
     id: "regulatory",
@@ -36,7 +36,7 @@ const sections = [
   {
     id: "cookies",
     heading: "Cookies",
-    body: "[COOKIE POSITION REQUIRED] — This prototype sets no cookies and runs no analytics. If either changes before launch, this section states what is set and a consent mechanism is added.",
+    body: "This site sets no cookies and runs no analytics. If that changes, this section will list every cookie set and why, and a consent choice will be added before any non-essential cookie is used.",
   },
 ];
 
@@ -57,10 +57,11 @@ export default function LegalPage() {
             </div>
           ))}
 
+          {/* Legal wording is the one place sample text could be relied on,
+              so this page keeps its own note on top of the site-wide one. */}
           <p className="mt-16 text-meta leading-relaxed text-muted">
-            [LEGAL REVIEW REQUIRED] — Nothing on this page has been through
-            legal or compliance review. Every section is replaced with wording
-            supplied by Envision Capital and its advisers before launch.
+            Sample wording for the prototype. To be replaced with text approved
+            by Envision Capital&rsquo;s legal advisers before launch.
           </p>
         </div>
       </section>

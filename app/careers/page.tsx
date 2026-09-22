@@ -28,11 +28,26 @@ export default function CareersPage() {
       <section className="section-y bg-white">
         <div className="shell measure">
           <h2 className="text-display-m text-navy">Open roles</h2>
-          <p className="mt-6 text-body text-muted">
-            [OPEN ROLES REQUIRED] — This page is ready for live vacancies.
-            Supply the role, the practice, the location and the closing date,
-            and each one renders here with its own detail page.
-          </p>
+          <ul className="mt-6 border-t border-line">
+            {[
+              {
+                title: "Analyst, Corporate Finance",
+                meta: "Transactions & Capital · Harare",
+                body: "Build financial models, prepare information memoranda and support capital raises and valuations from first draft to close.",
+              },
+              {
+                title: "Associate, Finance & Performance",
+                meta: "Finance & Performance · Harare",
+                body: "Lead reporting and virtual CFO engagements, working directly with client finance teams and boards.",
+              },
+            ].map((role) => (
+              <li key={role.title} className="border-b border-line py-6">
+                <h3 className="text-[1.25rem] leading-normal">{role.title}</h3>
+                <p className="mt-1 text-meta text-muted">{role.meta}</p>
+                <p className="mt-3 text-body text-muted">{role.body}</p>
+              </li>
+            ))}
+          </ul>
 
           <h2 className="mt-16 text-display-m text-navy">
             Speculative applications
@@ -49,12 +64,6 @@ export default function CareersPage() {
             >
               {site.contact.email}
             </a>
-          </p>
-
-          <p className="mt-16 text-meta leading-relaxed text-muted">
-            [CAREERS CONTENT REQUIRED] — Nothing on this page describes
-            Envision&rsquo;s hiring process, benefits or team size. Those are
-            facts about the firm and come from the firm.
           </p>
 
           <p className="mt-10">

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { ArrowLink, UnverifiedFlag } from "@/components/ui/Bits";
+import { ArrowLink } from "@/components/ui/Bits";
 import { PageHeader } from "@/components/sections/PageHeader";
+import { caseStudyBodies } from "@/content/bodies";
 import { caseStudies } from "@/content/caseStudies";
 
 /* Only the slugs generated at build time exist — required for the static
@@ -62,21 +63,21 @@ export default async function CaseStudyPage(props: PageProps<"/work/[slug]">) {
             </div>
           </dl>
 
-          <div className="mt-10 max-w-2xl border-t border-line pt-6">
-            <p className="text-meta text-ink">
-              [CASE STUDY BODY REQUIRED]
-            </p>
-            <p className="mt-3 text-meta leading-relaxed text-muted">
-              Challenge, approach, role and outcome require verified,
-              client-consented content. The mandate summarised above is an
-              empty placeholder.
-            </p>
-          </div>
-
-          {item.unverified && (
-            <p className="mt-8">
-              <UnverifiedFlag>Placeholder mandate</UnverifiedFlag>
-            </p>
+          {caseStudyBodies[item.slug] && (
+            <div className="mt-10 max-w-2xl space-y-8">
+              {(
+                [
+                  ["The situation", caseStudyBodies[item.slug].situation],
+                  ["Our approach", caseStudyBodies[item.slug].approach],
+                  ["The result", caseStudyBodies[item.slug].result],
+                ] as const
+              ).map(([heading, text]) => (
+                <div key={heading}>
+                  <h2 className="text-[1.25rem] leading-normal">{heading}</h2>
+                  <p className="mt-3 text-[1.05rem] leading-[1.8] text-ink">{text}</p>
+                </div>
+              ))}
+            </div>
           )}
 
           <div className="mt-12 border-t border-line pt-8">

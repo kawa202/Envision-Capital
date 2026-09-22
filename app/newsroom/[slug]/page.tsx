@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ArrowLink } from "@/components/ui/Bits";
 import { PageHeader } from "@/components/sections/PageHeader";
+import { newsBodies } from "@/content/bodies";
 import { news } from "@/content/news";
 
 /* Only the slugs generated at build time exist — required for the static
@@ -65,15 +66,12 @@ export default async function NewsPage(props: PageProps<"/newsroom/[slug]">) {
             </div>
           </dl>
 
-          <div className="mt-10 max-w-2xl border-t border-line pt-6">
-            <p className="text-meta text-ink">
-              [ANNOUNCEMENT BODY REQUIRED]
-            </p>
-            <p className="mt-3 text-meta leading-relaxed text-muted">
-              The title, date, location and attribution above are empty
-              placeholders. Supply the verified details and the release body
-              before this page is published.
-            </p>
+          <div className="mt-10 max-w-2xl space-y-6">
+            {(newsBodies[item.slug] ?? []).map((paragraph) => (
+              <p key={paragraph.slice(0, 32)} className="text-[1.05rem] leading-[1.8] text-ink">
+                {paragraph}
+              </p>
+            ))}
           </div>
 
           <div className="mt-12 border-t border-line pt-8">

@@ -61,13 +61,6 @@ export function IndustryExplorer() {
           ))}
         </RevealGroup>
 
-        <Reveal className="mt-8">
-          <p className="text-meta leading-relaxed text-on-navy">
-            [SECTOR COVERAGE REQUIRES CONFIRMATION] — Sectors above reflect those
-            named in Envision&rsquo;s existing positioning. Confirm against real
-            engagement history before launch.
-          </p>
-        </Reveal>
       </div>
     </section>
   );

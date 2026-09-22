@@ -33,12 +33,6 @@ export default function NewsroomIndexPage() {
           {/* Closing rule so the last row is bounded like the others. */}
           <div className="border-t border-line" aria-hidden="true" />
 
-          <p className="mt-10 text-meta leading-relaxed text-muted">
-            [ANNOUNCEMENT CONTENT REQUIRED] — The rows above are empty slots
-            that demonstrate the newsroom layout. Titles, dates, places and
-            attribution come from Envision; nothing has been drafted on the
-            firm&rsquo;s behalf.
-          </p>
         </div>
       </section>
     </main>

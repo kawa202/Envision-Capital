@@ -27,12 +27,6 @@ export default function WorkIndexPage() {
             ))}
           </ul>
 
-          <p className="mt-14 border-t border-line pt-5 text-meta leading-relaxed text-muted">
-            [CASE STUDY CONTENT REQUIRED] — Every entry above is an empty
-            placeholder. No client, mandate or outcome shown here represents
-            work Envision Capital has performed. Replace with verified,
-            client-consented case studies before launch.
-          </p>
         </div>
       </section>
     </main>

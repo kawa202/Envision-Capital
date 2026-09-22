@@ -42,11 +42,6 @@ export default function EventsPage() {
             ))}
           </ul>
 
-          <p className="measure mt-12 text-meta leading-relaxed text-muted">
-            [EVENTS REQUIRED] — Nothing here is scheduled and no date has been
-            filled in. Supply the events and each becomes a live entry with its
-            own registration route.
-          </p>
 
           <p className="mt-10">
             <Link

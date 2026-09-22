@@ -143,11 +143,6 @@ export function InsightsHub({ insights }: { insights: Insight[] }) {
             </ul>
           )}
 
-          <p className="mt-16 text-meta leading-relaxed text-muted">
-            [ARTICLE CONTENT REQUIRED] — Titles, deks and dates demonstrate the
-            editorial hierarchy. No article body exists behind these links;
-            each requires authorship and compliance review before publication.
-          </p>
         </div>
       </section>
     </>

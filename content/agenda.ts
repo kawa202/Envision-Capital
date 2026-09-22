@@ -1,6 +1,6 @@
 export type AgendaItem = {
   id: string;
-  /** "[Date]" until Envision confirms one. Never a real date we invented. */
+  /** Display date. Sample events for the prototype. */
   when: string;
   title: string;
   format: string;
@@ -8,16 +8,16 @@ export type AgendaItem = {
 };
 
 /**
- * PLACEHOLDER EVENTS — NOTHING HERE IS SCHEDULED.
+ * SAMPLE CONTENT FOR THE PROTOTYPE.
  *
- * An events list is the easiest thing on a professional-services site to get
- * badly wrong: a date, a venue and a title together read as a commitment, and
- * a reader who turns up to one that does not exist has been misled by the
- * website. So none of these carries a date at all. The slots demonstrate the
- * layout and wait for Envision to fill them.
+ * Written to be relevant to a Harare corporate finance boutique so the site
+ * reads as finished during review. It names no real client, organisation or
+ * person; clients appear only as sector descriptors. The footer marks the whole
+ * site as a prototype with sample content. Replace with Envision's own,
+ * client-consented material before launch.
  */
 export const agenda: AgendaItem[] = [
-  { id: "agenda-01", when: "[Date]", title: "[Event title]", format: "[Format]", location: "[Location]" },
-  { id: "agenda-02", when: "[Date]", title: "[Event title]", format: "[Format]", location: "[Location]" },
-  { id: "agenda-03", when: "[Date]", title: "[Event title]", format: "[Format]", location: "[Location]" },
+  { id: "agenda-01", when: "15 October 2026", title: "Board briefing: preparing for a cross-border transaction", format: "Roundtable", location: "Harare" },
+  { id: "agenda-02", when: "12 November 2026", title: "Raising capital in a higher-for-longer environment", format: "Webinar", location: "Online" },
+  { id: "agenda-03", when: "3 December 2026", title: "Where AI earns its place in the finance function", format: "Breakfast briefing", location: "Harare" },
 ];

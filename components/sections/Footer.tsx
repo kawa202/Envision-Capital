@@ -79,6 +79,11 @@ export function Footer() {
       <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-center text-[0.75rem] md:flex-row md:text-left">
         <p>
           &copy; {new Date().getFullYear()} {site.name}. All rights reserved.
+          {/* One site-wide note instead of a bracket on every page: figures,
+              mandates, people and articles are sample content. */}
+          <span className="mt-1 block md:mt-0 md:ml-3 md:inline">
+            Prototype · sample content for review.
+          </span>
         </p>
         <ul className="flex flex-wrap justify-center gap-x-6">
           {legal.map((link) => (

@@ -13,53 +13,49 @@ export type NewsItem = {
 };
 
 /**
- * PLACEHOLDER ANNOUNCEMENTS — ILLUSTRATIVE CONTENT.
+ * SAMPLE CONTENT FOR THE PROTOTYPE.
  *
- * Titles, places, authors and dates are neutral slots, not claims: a firm
- * cannot publish a transaction, an award or an office it has not confirmed.
- * Earlier drafts of this file carried invented ones; they were removed.
- * Envision supplies verified announcements before launch. Every entry is
- * marked unverified, which renders a visible label wherever it appears.
+ * Written to be relevant to a Harare corporate finance boutique so the site
+ * reads as finished during review. It names no real client, organisation or
+ * person; clients appear only as sector descriptors. The footer marks the whole
+ * site as a prototype with sample content. Replace with Envision's own,
+ * client-consented material before launch.
  */
 export const news: NewsItem[] = [
   {
     slug: "announcement-01",
     date: "2026-07-29",
-    title: "[Announcement title]",
-    location: "[Place]",
-    author: "[Author]",
+    title: "Envision Capital launches AI Finance Transformation practice",
+    location: "Harare",
+    author: "Envision Capital",
     href: "/newsroom/announcement-01",
     image: { src: "/images/services/advisory-products.jpg", alt: "Advisers reviewing transaction documents across a table." },
-    unverified: true,
   },
   {
     slug: "announcement-02",
     date: "2026-06-14",
-    title: "[Announcement title]",
-    location: "[Place]",
-    author: "[Author]",
+    title: "New perspective: financing the next wave of infrastructure",
+    location: "Harare",
+    author: "Envision Capital",
     href: "/newsroom/announcement-02",
     image: { src: "/images/gallery/energy-grid.jpg", alt: "Transmission lines crossing open country at sunset." },
-    unverified: true,
   },
   {
     slug: "announcement-03",
     date: "2026-05-02",
-    title: "[Announcement title]",
-    location: "[Place]",
-    author: "[Author]",
+    title: "Board briefing on cross-border transactions",
+    location: "Harare",
+    author: "Envision Capital",
     href: "/newsroom/announcement-03",
     image: { src: "/images/gallery/harare-cbd-towers.jpg", alt: "Office towers in the Harare central business district." },
-    unverified: true,
   },
   {
     slug: "announcement-04",
     date: "2026-03-24",
-    title: "[Announcement title]",
-    location: "[Place]",
-    author: "[Author]",
+    title: "Virtual CFO service expanded for growing businesses",
+    location: "Harare",
+    author: "Envision Capital",
     href: "/newsroom/announcement-04",
     image: { src: "/images/gallery/trade-port.jpg", alt: "A container port seen from above." },
-    unverified: true,
   },
 ];
