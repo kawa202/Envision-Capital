@@ -1,67 +1,49 @@
-import { Reveal, RevealGroup, RevealItem } from "@/components/ui/Reveal";
 import { industries } from "@/content/industries";
 
 /**
- * Sector coverage as an editorial index.
+ * Sector coverage, as a light card grid under the navy page header.
  *
- * No photography and no cards: each sector earns its line by naming the
- * financial constraint that actually shapes mandates there. That says more
- * about sector fluency than eight recycled stock frames would, and it keeps
- * the section free of JavaScript entirely.
+ * Built on the homepage's "What We Do" pattern — a brass rule, the sector in
+ * serif, one line on the work, and the constraint that shapes mandates there
+ * — so the page moves navy → light → close, as the homepage does, instead of
+ * running two dark blocks together.
+ *
+ * No photography: there is a fitting frame for seven sectors and none for
+ * mining, and seven stock images plus a gap would read worse than eight
+ * clean cards. The layout takes an image per card later without restructuring.
+ * Server-rendered with no motion library, so the section ships no JavaScript.
  */
 export function IndustryExplorer() {
   return (
     <section
       id="industries"
-      className="section-y bg-navy"
+      className="border-b border-line bg-card px-[6%] py-20 md:py-32"
       aria-labelledby="industries-heading"
     >
-      <div className="shell">
-        <Reveal className="grid gap-8 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-6">
-            <h2
-              id="industries-heading"
-              className="font-display text-display-l text-white"
-            >
-              Sector insight. Financial discipline.
-            </h2>
-          </div>
-          <p className="max-w-lg text-lede text-white/60 lg:col-span-5 lg:col-start-8 lg:pt-12">
-            Financial technique transfers between sectors. Judgement does not —
-            it comes from knowing which constraint actually governs the
-            decision in front of you.
-          </p>
-        </Reveal>
+      <span className="eyebrow">Sectors We Cover</span>
+      {/* Sized as the homepage's section headings are. The page's h1 already
+          carries the statement, so this one does not repeat it. */}
+      <h2 id="industries-heading" className="text-[1.5rem] leading-normal">
+        Eight sectors, one standard of rigour.
+      </h2>
 
-        <RevealGroup
-          as="ul"
-          className="mt-14 border-t border-line-invert lg:mt-20"
-          stagger={0.05}
-        >
-          {industries.map((industry) => (
-            <RevealItem as="li" key={industry.index}>
-              <div className="group grid grid-cols-1 items-baseline gap-x-8 gap-y-2 border-b border-line-invert-soft py-6 transition-colors duration-[var(--ec-dur)] hover:bg-white/3 md:grid-cols-12 md:py-7">
-                <span className="text-meta text-on-navy tnum md:col-span-1">
-                  {industry.index}
-                </span>
-
-                <h3 className="font-display text-h4 leading-snug text-white transition-colors duration-300 group-hover:text-brass-light md:col-span-4 md:text-h4">
-                  {industry.name}
-                </h3>
-
-                <p className="text-meta leading-relaxed text-white/60 md:col-span-5">
-                  {industry.focus}
-                </p>
-
-                <p className="text-meta leading-snug text-on-navy md:col-span-2 md:text-right">
-                  {industry.constraint}
-                </p>
-              </div>
-            </RevealItem>
-          ))}
-        </RevealGroup>
-
-      </div>
+      <ul className="mt-12 grid gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+        {industries.map((industry) => (
+          <li key={industry.index} className="flex flex-col border-t-2 border-brass pt-8">
+            <span className="mb-4 font-sans text-[0.85rem] font-semibold tracking-[1px] text-brass-ink">
+              {industry.index}
+            </span>
+            <h3 className="mb-4 text-[1.4rem] leading-snug">{industry.name}</h3>
+            <p className="mb-6 text-[0.95rem] leading-[1.7] text-muted">{industry.focus}</p>
+            <p className="mt-auto border-t border-line pt-4 text-[0.85rem] leading-snug text-ink">
+              <span className="mb-1 block text-[0.7rem] font-bold tracking-[1.5px] text-brass-ink uppercase">
+                Key constraint
+              </span>
+              {industry.constraint}
+            </p>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }
