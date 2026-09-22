@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import { fontVariables } from "./fonts";
-import { ChatWidgetLoader } from "@/components/ChatWidgetLoader";
 import { SiteHeader } from "@/components/SiteHeader";
 import { getNavData } from "@/content/navigation";
 import { Footer } from "@/components/sections/Footer";
@@ -122,7 +121,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <SiteHeader navItems={getNavData()} />
         {children}
         <Footer />
-        <ChatWidgetLoader />
+        {/* Chat concierge hidden for now. To bring it back, import
+            ChatWidgetLoader from "@/components/ChatWidgetLoader" and render it here. */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
