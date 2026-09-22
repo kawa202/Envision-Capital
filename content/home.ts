@@ -103,7 +103,8 @@ export const PILLARS = {
 export const HERITAGE = {
   eyebrow: "Our Heritage & Scale",
   heading: "Built on more than two decades of experience in African finance.",
-  body: "Envision Capital is an independent financial advisory firm, built on the experience of its founders and a shared commitment to rigorous, conflict-free advice. We advise — we do not take principal positions, manage funds or broker products — and that independence is what makes the counsel worth having.",
+  /* Kept to the reference's length (four lines at 1440px). */
+  body: "Envision Capital is an independent financial advisory firm, built on its founders' experience and a commitment to rigorous, conflict-free advice. We advise; we do not take principal positions, manage funds or broker products.",
   metrics: [
     { value: "US$500m+", label: "Transactions Advised" },
     { value: "6", label: "Countries Covered" },
